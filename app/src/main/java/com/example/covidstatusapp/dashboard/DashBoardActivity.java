@@ -1,7 +1,6 @@
 package com.example.covidstatusapp.dashboard;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
