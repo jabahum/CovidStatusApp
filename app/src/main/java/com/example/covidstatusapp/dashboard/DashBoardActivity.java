@@ -2,6 +2,8 @@ package com.example.covidstatusapp.dashboard;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,19 +28,36 @@ public class DashBoardActivity extends AppCompatActivity {
 
     public static final String TAG = DashBoardActivity.class.getSimpleName();
     APIinterface apIinterface;
-    List<Countries> countries;
+    List<Countries> mCountries;
+    Spinner spinner;
+    ArrayAdapter<String> countriesArrayAdapter;
+    ArrayList<String> countriesList;
+
+    public List<Countries> getmCountries() {
+        return mCountries;
+    }
+
+    public void setmCountries(List<Countries> mCountries) {
+        this.mCountries = mCountries;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        apIinterface = APIClient.getClient().create(APIinterface.class);
+        spinner = findViewById(R.id.sp_countries);
 
-        countries = new ArrayList<>();
+        mCountries = new ArrayList<>();
+        countriesList = new ArrayList<>();
+        apIinterface = APIClient.getClient().create(APIinterface.class);
 
         getConfirmedCases();
         getCountries();
         getLiveCases();
+
+        countriesArrayAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, countriesList);
+        spinner.setAdapter(countriesArrayAdapter);
 
     }
 
@@ -115,6 +134,10 @@ public class DashBoardActivity extends AppCompatActivity {
                     public void onNext(List<Countries> countries) {
 
                         Timber.i(TAG, countries.toString());
+                        for (Countries country : countries){
+                            countriesList.add(country.getCountry());
+                        }
+                        setmCountries(countries);
 
                     }
 
