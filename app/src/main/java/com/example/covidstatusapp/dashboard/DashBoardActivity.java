@@ -1,12 +1,9 @@
 package com.example.covidstatusapp.dashboard;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.GridLayout;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,10 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.dashboard.models.Countries;
-import com.example.covidstatusapp.dashboard.viewModels.ConfirmedCasesViewModel;
 import com.example.covidstatusapp.dashboard.viewModels.CountriesViewModel;
-import com.example.covidstatusapp.dashboard.viewModels.LiveCasesViewModel;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,21 +25,27 @@ public class DashBoardActivity extends AppCompatActivity {
     public static final String TAG = DashBoardActivity.class.getSimpleName();
     GridLayout mainGrid;
     Spinner spinner;
+    CardView worldCardView;
+    CardView africaCardView;
+    CardView eastAfricaCardView;
+    CardView countryCardView;
 
     ArrayAdapter<String> countriesArrayAdapter;
     ArrayList<String> countriesList;
 
     CountriesViewModel countriesViewModel;
-    LiveCasesViewModel liveCasesViewModel;
-    ConfirmedCasesViewModel confirmedCasesViewModel;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
         spinner = findViewById(R.id.sp_countries);
         mainGrid = findViewById(R.id.mainGrid);
+        worldCardView = findViewById(R.id.world_stat);
+        africaCardView = findViewById(R.id.africa_stat);
+        eastAfricaCardView = findViewById(R.id.east_africa_stat);
+        countryCardView = findViewById(R.id.country_stat);
 
         getCountriesData();
 
@@ -75,48 +75,4 @@ public class DashBoardActivity extends AppCompatActivity {
                     }
                 });
     }
-
-    private void setToggleEvent(GridLayout mainGrid) {
-        //Loop all child item of Main Grid
-        for (int i = 0; i < mainGrid.getChildCount(); i++) {
-            //You can see , all child item is CardView , so we just cast object to CardView
-            final CardView cardView = (CardView) mainGrid.getChildAt(i);
-            cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (cardView.getCardBackgroundColor().getDefaultColor() == -1) {
-                        //Change background color
-                        cardView.setCardBackgroundColor(Color.parseColor("#FF6F00"));
-                        Toast.makeText(DashBoardActivity.this, "State : True", Toast.LENGTH_SHORT).show();
-
-                    } else {
-                        //Change background color
-                        cardView.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
-                        Toast.makeText(DashBoardActivity.this, "State : False", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        }
-    }
-
-
-    private void setSingleEvent(GridLayout mainGrid) {
-        //Loop all child item of Main Grid
-        for (int i = 0; i < mainGrid.getChildCount(); i++) {
-            //You can see , all child item is CardView , so we just cast object to CardView
-            CardView cardView = (CardView) mainGrid.getChildAt(i);
-            final int finalI = i;
-            cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    /*Intent intent = new Intent(DashBoardActivity.this,ActivityOne.class);
-                    intent.putExtra("info","This is activity from card item index  "+finalI);
-                    startActivity(intent);*/
-
-                }
-            });
-        }
-    }
-
 }

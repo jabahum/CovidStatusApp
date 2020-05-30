@@ -37,6 +37,7 @@
 
         <!-- Column 1 -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/world_stat"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -76,6 +77,8 @@
 
         <!-- Column 2 -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/africa_stat"
+
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -117,6 +120,8 @@
 
         <!-- Column 1 -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/east_africa_stat"
+
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -156,6 +161,7 @@
 
         <!-- Column 2 -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/country_stat"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
