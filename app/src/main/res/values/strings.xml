@@ -5,4 +5,8 @@
     <string name="world">World</string>
     <string name="uganda">Uganda</string>
     <string name="africa">Africa</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="from_date">2020/05/25</string>
+    <string name="to_date">2020/05/25</string>
 </resources>
