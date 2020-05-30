@@ -1,6 +1,5 @@
 package com.example.covidstatusapp.dashboard;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -12,40 +11,34 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.covidstatusapp.R;
-import com.example.covidstatusapp.common.APIClient;
-import com.example.covidstatusapp.common.APIinterface;
-import com.example.covidstatusapp.dashboard.models.ConfirmedCases;
 import com.example.covidstatusapp.dashboard.models.Countries;
-import com.example.covidstatusapp.dashboard.models.LiveCases;
+import com.example.covidstatusapp.dashboard.viewModels.ConfirmedCasesViewModel;
+import com.example.covidstatusapp.dashboard.viewModels.CountriesViewModel;
+import com.example.covidstatusapp.dashboard.viewModels.LiveCasesViewModel;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
 public class DashBoardActivity extends AppCompatActivity {
 
     public static final String TAG = DashBoardActivity.class.getSimpleName();
-    APIinterface apIinterface;
-    List<Countries> mCountries;
+    GridLayout mainGrid;
     Spinner spinner;
+
     ArrayAdapter<String> countriesArrayAdapter;
     ArrayList<String> countriesList;
-    GridLayout mainGrid;
 
-    public List<Countries> getmCountries() {
-        return mCountries;
-    }
+    CountriesViewModel countriesViewModel;
+    LiveCasesViewModel liveCasesViewModel;
+    ConfirmedCasesViewModel confirmedCasesViewModel;
 
-    public void setmCountries(List<Countries> mCountries) {
-        this.mCountries = mCountries;
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,115 +47,34 @@ public class DashBoardActivity extends AppCompatActivity {
         spinner = findViewById(R.id.sp_countries);
         mainGrid = findViewById(R.id.mainGrid);
 
-        mCountries = new ArrayList<>();
-        countriesList = new ArrayList<>();
-        apIinterface = APIClient.getClient().create(APIinterface.class);
+        getCountriesData();
 
-        getConfirmedCases();
-        getCountries();
-        getLiveCases();
-
-        setSingleEvent(mainGrid);
-        setToggleEvent(mainGrid);
-
-        countriesArrayAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, countriesList);
-        spinner.setAdapter(countriesArrayAdapter);
 
     }
 
-    private void getConfirmedCases() {
-        apIinterface.getConfirmedCase().
-                subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<List<ConfirmedCases>>() {
+    private void getCountriesData() {
+        countriesViewModel = new ViewModelProvider(DashBoardActivity.this).get(CountriesViewModel.class);
+        countriesViewModel.init();
+        countriesViewModel.getCountriesRepository().observe(
+                this,
+                new Observer<List<Countries>>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onChanged(List<Countries> countriesResponse) {
+                        Timber.d(TAG,countriesResponse);
+                        countriesList = new ArrayList<>();
 
-                    }
-
-                    @Override
-                    public void onNext(List<ConfirmedCases> confirmedCases) {
-
-                        Timber.i(TAG, confirmedCases.toString());
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-    }
-
-    private void getLiveCases() {
-        apIinterface.getLiveCases().
-                subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<List<LiveCases>>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(List<LiveCases> liveCases) {
-
-                        Timber.i(TAG, liveCases.toString());
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-    }
-
-
-    private void getCountries() {
-        apIinterface.getCountries().
-                subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<List<Countries>>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(List<Countries> countries) {
-
-                        Timber.i(TAG, countries.toString());
-                        for (Countries country : countries){
-                            countriesList.add(country.getCountry());
+                        if (countriesResponse !=null){
+                            for (Countries countries : countriesResponse){
+                                countriesList.add(countries.getCountry());
+                            }
                         }
-                        setmCountries(countries);
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
+                        countriesArrayAdapter = new ArrayAdapter<String>(DashBoardActivity.this,
+                                android.R.layout.simple_spinner_item, countriesList);
+                        spinner.setAdapter(countriesArrayAdapter);
 
                     }
                 });
     }
-
 
     private void setToggleEvent(GridLayout mainGrid) {
         //Loop all child item of Main Grid
