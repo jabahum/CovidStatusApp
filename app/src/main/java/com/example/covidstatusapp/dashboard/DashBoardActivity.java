@@ -38,6 +38,7 @@ public class DashBoardActivity extends AppCompatActivity {
 
     ArrayAdapter<String> countriesArrayAdapter;
     ArrayList<String> countriesList;
+    String countrySelected;
 
     CountriesViewModel countriesViewModel;
 
@@ -58,6 +59,7 @@ public class DashBoardActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent detailsIntent = new Intent(DashBoardActivity.this, DetailsActivity.class);
+                detailsIntent.putExtra("SelectedCountry",countrySelected);
                 startActivity(detailsIntent);
             }
         });
@@ -73,7 +75,7 @@ public class DashBoardActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String countrySelected = adapterView.getItemAtPosition(i).toString();
+                countrySelected = adapterView.getItemAtPosition(i).toString();
                 txtCountry.setText(countrySelected);
 
             }
