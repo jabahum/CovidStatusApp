@@ -1,5 +1,6 @@
 package com.example.covidstatusapp.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,6 +16,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.covidstatusapp.R;
+import com.example.covidstatusapp.countrydetails.DetailsActivity;
 import com.example.covidstatusapp.dashboard.models.Countries;
 import com.example.covidstatusapp.dashboard.viewModels.CountriesViewModel;
 
@@ -52,6 +54,13 @@ public class DashBoardActivity extends AppCompatActivity {
         countryCardView = findViewById(R.id.country_stat);
         txtCountry = findViewById(R.id.txt_country);
 
+        countryCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent detailsIntent = new Intent(DashBoardActivity.this, DetailsActivity.class);
+                startActivity(detailsIntent);
+            }
+        });
 
         setSelectedCountry();
 
