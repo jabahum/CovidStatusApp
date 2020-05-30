@@ -1,9 +1,12 @@
 package com.example.covidstatusapp.dashboard;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +32,7 @@ public class DashBoardActivity extends AppCompatActivity {
     CardView africaCardView;
     CardView eastAfricaCardView;
     CardView countryCardView;
+    TextView txtCountry;
 
     ArrayAdapter<String> countriesArrayAdapter;
     ArrayList<String> countriesList;
@@ -46,10 +50,30 @@ public class DashBoardActivity extends AppCompatActivity {
         africaCardView = findViewById(R.id.africa_stat);
         eastAfricaCardView = findViewById(R.id.east_africa_stat);
         countryCardView = findViewById(R.id.country_stat);
+        txtCountry = findViewById(R.id.txt_country);
+
+
+        setSelectedCountry();
 
         getCountriesData();
 
 
+    }
+
+    private void setSelectedCountry() {
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String countrySelected = adapterView.getItemAtPosition(i).toString();
+                txtCountry.setText(countrySelected);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     private void getCountriesData() {
