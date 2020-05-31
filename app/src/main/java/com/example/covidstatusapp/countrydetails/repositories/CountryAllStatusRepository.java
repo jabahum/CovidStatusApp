@@ -6,6 +6,7 @@ import com.example.covidstatusapp.common.APIClient;
 import com.example.covidstatusapp.common.APIinterface;
 import com.example.covidstatusapp.countrydetails.models.CountryAllStatus;
 
+import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.Observer;
@@ -44,7 +45,9 @@ public class CountryAllStatusRepository {
                     @Override
                     public void onNext(List<CountryAllStatus> countryAllStatuses) {
                         if (countryAllStatuses != null){
+                            Collections.reverse(countryAllStatuses);
                             countryAllStatusLiveData.setValue(countryAllStatuses);
+
                         }
                     }
 
