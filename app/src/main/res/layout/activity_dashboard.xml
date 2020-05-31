@@ -7,6 +7,17 @@
     android:background="@color/grey"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_margin="0dp"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.appcompat.widget.Toolbar>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

@@ -42,9 +42,9 @@ public class CountryAllStatusAdapter extends RecyclerView.Adapter<CountryAllStat
         holder.fullCountryName.setText(countryAllStatus.getCountry());
         holder.shortCountryName.setText(countryAllStatus.getCountryCode());
         holder.date.setText(countryAllStatus.getDate());
-        holder.recoveredCases.setText(countryAllStatus.getRecovered());
-        holder.confirmedCases.setText(countryAllStatus.getConfirmed());
-        holder.deathCases.setText(countryAllStatus.getDeaths());
+        holder.recoveredCases.setText(String.valueOf(countryAllStatus.getRecovered()));
+        holder.confirmedCases.setText(String.valueOf(countryAllStatus.getConfirmed()));
+        holder.deathCases.setText(String.valueOf(countryAllStatus.getDeaths()));
 
     }
 
