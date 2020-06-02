@@ -3,6 +3,7 @@ package com.example.covidstatusapp.countrydetails;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -13,6 +14,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.common.CommonUtils;
@@ -24,20 +26,23 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-public class DetailsActivity extends AppCompatActivity {
+public class DetailsActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     public static final String TAG = DetailsActivity.class.getSimpleName();
 
     Button btnFrom;
     Button btnTo;
     RecyclerView mRecyclerView;
+    SwipeRefreshLayout mSwipeRefreshLayout;
+
 
 
     CountryAllStatusViewModel countryAllStatusViewModel;
     CountryAllStatusAdapter countryAllStatusAdapter;
 
     private int mYear, mMonth, mDay;
-    private String from, to;
+    private String from, to, selectedCountry;
+    Intent intent;
 
 
     @Override
@@ -48,9 +53,17 @@ public class DetailsActivity extends AppCompatActivity {
         btnFrom = findViewById(R.id.btn_from);
         btnTo = findViewById(R.id.btn_to);
         mRecyclerView = findViewById(R.id.recycler_view_details);
+        mSwipeRefreshLayout = findViewById(R.id.refresh);
+
 
         from = btnFrom.getText().toString();
         to = btnTo.getText().toString();
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+
+        intent = getIntent();
+        selectedCountry = intent.getStringExtra("SelectedCountry");
+
+        setRecyclerData(selectedCountry);
 
         btnFrom.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,19 +76,16 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setDate(btnTo);
+                mSwipeRefreshLayout.setRefreshing(true);
             }
         });
 
-        Intent intent = getIntent();
-        String selectedCountry = intent.getStringExtra("SelectedCountry");
-
-        setRecyclerData(selectedCountry);
 
     }
 
     private void setRecyclerData(String selectedCountry) {
         countryAllStatusViewModel = new ViewModelProvider(DetailsActivity.this).get(CountryAllStatusViewModel.class);
-        countryAllStatusViewModel.init(selectedCountry, from, to);
+        countryAllStatusViewModel.init(selectedCountry, CommonUtils.dateFormat(from), CommonUtils.dateFormat(to));
         countryAllStatusViewModel.getCountryAllStatusRepository()
                 .observe(this, new Observer<List<CountryAllStatus>>() {
                     @Override
@@ -85,6 +95,7 @@ public class DetailsActivity extends AppCompatActivity {
                             countryAllStatusAdapter =  new CountryAllStatusAdapter(DetailsActivity.this,countryAllStatuses);
                             mRecyclerView.setAdapter(countryAllStatusAdapter);
                             mRecyclerView.setLayoutManager(new LinearLayoutManager(DetailsActivity.this, RecyclerView.VERTICAL,false));
+                            mSwipeRefreshLayout.setRefreshing(false);
                         }
 
                     }
@@ -105,5 +116,17 @@ public class DetailsActivity extends AppCompatActivity {
                     }
                 }, mYear, mMonth, mDay);
         datePickerDialog.show();
+    }
+
+    @Override
+    public void onRefresh() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSwipeRefreshLayout.setRefreshing(true);
+                setRecyclerData(selectedCountry);
+            }
+        }, 3000);
     }
 }

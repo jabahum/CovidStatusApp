@@ -14,6 +14,6 @@ public final class CommonUtils {
     }
 
     public static String dateFormat(String format){
-        return format;
+        return format + "T00:00:00Z";
     }
 }
