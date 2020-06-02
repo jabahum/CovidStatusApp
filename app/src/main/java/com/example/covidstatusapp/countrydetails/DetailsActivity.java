@@ -59,6 +59,7 @@ public class DetailsActivity extends AppCompatActivity implements SwipeRefreshLa
         from = btnFrom.getText().toString();
         to = btnTo.getText().toString();
         mSwipeRefreshLayout.setOnRefreshListener(this);
+        mSwipeRefreshLayout.setRefreshing(true);
 
         intent = getIntent();
         selectedCountry = intent.getStringExtra("SelectedCountry");
@@ -127,6 +128,6 @@ public class DetailsActivity extends AppCompatActivity implements SwipeRefreshLa
                 mSwipeRefreshLayout.setRefreshing(true);
                 setRecyclerData(selectedCountry);
             }
-        }, 3000);
+        }, 5000);
     }
 }
