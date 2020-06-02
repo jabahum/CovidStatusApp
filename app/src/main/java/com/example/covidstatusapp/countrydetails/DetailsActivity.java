@@ -135,6 +135,8 @@ public class DetailsActivity extends AppCompatActivity implements SwipeRefreshLa
                 if (mSwipeRefreshLayout.isRefreshing()) {
                     setRecyclerData(selectedCountry);
                     mSwipeRefreshLayout.setRefreshing(false);
+                }else {
+                    mSwipeRefreshLayout.setRefreshing(true);
                 }
 
             }
