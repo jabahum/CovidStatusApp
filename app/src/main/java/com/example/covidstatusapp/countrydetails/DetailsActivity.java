@@ -19,7 +19,6 @@ import com.example.covidstatusapp.common.CommonUtils;
 import com.example.covidstatusapp.countrydetails.adapter.CountryAllStatusAdapter;
 import com.example.covidstatusapp.countrydetails.models.CountryAllStatus;
 import com.example.covidstatusapp.countrydetails.viewModel.CountryAllStatusViewModel;
-import com.example.covidstatusapp.dashboard.models.Countries;
 
 import java.util.Calendar;
 import java.util.List;
@@ -38,6 +37,7 @@ public class DetailsActivity extends AppCompatActivity {
     CountryAllStatusAdapter countryAllStatusAdapter;
 
     private int mYear, mMonth, mDay;
+    private String from, to;
 
 
     @Override
@@ -48,6 +48,9 @@ public class DetailsActivity extends AppCompatActivity {
         btnFrom = findViewById(R.id.btn_from);
         btnTo = findViewById(R.id.btn_to);
         mRecyclerView = findViewById(R.id.recycler_view_details);
+
+        from = btnFrom.getText().toString();
+        to = btnTo.getText().toString();
 
         btnFrom.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +75,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     private void setRecyclerData(String selectedCountry) {
         countryAllStatusViewModel = new ViewModelProvider(DetailsActivity.this).get(CountryAllStatusViewModel.class);
-        countryAllStatusViewModel.init(selectedCountry,btnFrom.getText().toString(),btnTo.getText().toString());
+        countryAllStatusViewModel.init(selectedCountry, from, to);
         countryAllStatusViewModel.getCountryAllStatusRepository()
                 .observe(this, new Observer<List<CountryAllStatus>>() {
                     @Override

@@ -65,7 +65,7 @@
 
                     <TextView
                         android:maxLines="2"
-                        android:text="Confirmed Cases"
+                        android:text="@string/confirmed_cases"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
@@ -87,7 +87,7 @@
 
                     <TextView
                         android:maxLines="2"
-                        android:text="Recovered Cases"
+                        android:text="@string/recovered_cases"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
@@ -109,7 +109,7 @@
 
                     <TextView
                         android:maxLines="2"
-                        android:text="Deaths Cases"
+                        android:text="@string/deaths_cases"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />

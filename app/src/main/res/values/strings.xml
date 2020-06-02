@@ -7,6 +7,9 @@
     <string name="africa">Africa</string>
     <string name="from">From</string>
     <string name="to">To</string>
-    <string name="from_date">2020/05/25</string>
-    <string name="to_date">2020/05/25</string>
+    <string name="from_date">2020–05-25</string>
+    <string name="to_date">2020–05-25</string>
+    <string name="confirmed_cases">Confirmed Cases</string>
+    <string name="recovered_cases">Recovered Cases</string>
+    <string name="deaths_cases">Deaths Cases</string>
 </resources>

@@ -12,4 +12,8 @@ public final class CommonUtils {
             return String.valueOf(number);
         }
     }
+
+    public static String dateFormat(String format){
+        return format;
+    }
 }
