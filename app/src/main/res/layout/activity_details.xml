@@ -11,7 +11,8 @@
         android:layout_margin="0dp"
         android:background="@color/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Details">
 
     </androidx.appcompat.widget.Toolbar>
 

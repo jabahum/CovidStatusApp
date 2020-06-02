@@ -10,6 +10,7 @@ import android.widget.DatePicker;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,6 +35,7 @@ public class DetailsActivity extends AppCompatActivity implements SwipeRefreshLa
     Button btnTo;
     RecyclerView mRecyclerView;
     SwipeRefreshLayout mSwipeRefreshLayout;
+    Toolbar toolbar;
 
 
 
@@ -54,7 +56,10 @@ public class DetailsActivity extends AppCompatActivity implements SwipeRefreshLa
         btnTo = findViewById(R.id.btn_to);
         mRecyclerView = findViewById(R.id.recycler_view_details);
         mSwipeRefreshLayout = findViewById(R.id.refresh);
+        toolbar = findViewById(R.id.toolbar);
 
+
+        initToolbar(toolbar, true, true);
 
         from = btnFrom.getText().toString();
         to = btnTo.getText().toString();
@@ -63,7 +68,6 @@ public class DetailsActivity extends AppCompatActivity implements SwipeRefreshLa
 
         intent = getIntent();
         selectedCountry = intent.getStringExtra("SelectedCountry");
-
         setRecyclerData(selectedCountry);
 
         btnFrom.setOnClickListener(new View.OnClickListener() {
@@ -125,9 +129,21 @@ public class DetailsActivity extends AppCompatActivity implements SwipeRefreshLa
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mSwipeRefreshLayout.setRefreshing(true);
-                setRecyclerData(selectedCountry);
+                if (mSwipeRefreshLayout.isRefreshing()) {
+                    setRecyclerData(selectedCountry);
+                    mSwipeRefreshLayout.setRefreshing(false);
+                }
+
             }
         }, 5000);
+    }
+
+    private void initToolbar(final Toolbar toolbar, final boolean showNavigationButton, boolean showTitle) {
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(showNavigationButton);
+            getSupportActionBar().setDisplayShowTitleEnabled(showTitle);
+            toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        }
     }
 }
