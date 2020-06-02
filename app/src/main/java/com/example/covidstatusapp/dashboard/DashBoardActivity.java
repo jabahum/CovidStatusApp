@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -35,6 +36,7 @@ public class DashBoardActivity extends AppCompatActivity {
     CardView eastAfricaCardView;
     CardView countryCardView;
     TextView txtCountry;
+    Toolbar toolbar;
 
     ArrayAdapter<String> countriesArrayAdapter;
     ArrayList<String> countriesList;
@@ -54,6 +56,9 @@ public class DashBoardActivity extends AppCompatActivity {
         eastAfricaCardView = findViewById(R.id.east_africa_stat);
         countryCardView = findViewById(R.id.country_stat);
         txtCountry = findViewById(R.id.txt_country);
+        toolbar = findViewById(R.id.toolbar);
+
+        initToolbar(toolbar,true);
 
         countryCardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,5 +114,14 @@ public class DashBoardActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    private void initToolbar(final Toolbar toolbar, boolean showTitle) {
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            //getSupportActionBar().setDisplayHomeAsUpEnabled(showNavigationButton);
+            getSupportActionBar().setDisplayShowTitleEnabled(showTitle);
+            toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        }
     }
 }
