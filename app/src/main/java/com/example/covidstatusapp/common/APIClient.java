@@ -12,7 +12,6 @@ public class APIClient {
 
     public static Retrofit getClient() {
 
-
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(Config.base_Url)

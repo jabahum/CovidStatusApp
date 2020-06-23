@@ -69,9 +69,19 @@ public class DetailsActivity extends AppCompatActivity implements SwipeRefreshLa
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mSwipeRefreshLayout.setRefreshing(true);
 
+
+
+
+        countryAllStatusAdapter = new CountryAllStatusAdapter();
+
         intent = getIntent();
         selectedCountry = intent.getStringExtra("SelectedCountry");
         setRecyclerData(selectedCountry);
+
+
+        mRecyclerView.setAdapter(countryAllStatusAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(DetailsActivity.this, RecyclerView.VERTICAL,false));
+        mSwipeRefreshLayout.setRefreshing(false);
 
         btnFrom.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,12 +108,8 @@ public class DetailsActivity extends AppCompatActivity implements SwipeRefreshLa
                 .observe(this, new Observer<List<CountryAllStatus>>() {
                     @Override
                     public void onChanged(List<CountryAllStatus> countryAllStatuses) {
-
                         if (countryAllStatuses != null){
-                            countryAllStatusAdapter =  new CountryAllStatusAdapter(DetailsActivity.this,countryAllStatuses);
-                            mRecyclerView.setAdapter(countryAllStatusAdapter);
-                            mRecyclerView.setLayoutManager(new LinearLayoutManager(DetailsActivity.this, RecyclerView.VERTICAL,false));
-                            mSwipeRefreshLayout.setRefreshing(false);
+                            countryAllStatusAdapter.setDataList(countryAllStatuses);
                         }
 
                     }

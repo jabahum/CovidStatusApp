@@ -12,40 +12,32 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.countrydetails.models.CountryAllStatus;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CountryAllStatusAdapter extends RecyclerView.Adapter<CountryAllStatusAdapter.ItemViewHolder> {
 
-    private Context mContext;
-    private List<CountryAllStatus> dataList;
-
-    public CountryAllStatusAdapter(Context mContext, List<CountryAllStatus> dataList) {
-        this.mContext = mContext;
-        this.dataList = dataList;
-    }
+    private List<CountryAllStatus> dataList = new ArrayList<>();
 
     @NonNull
     @Override
     public CountryAllStatusAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        LayoutInflater layoutInflater =  LayoutInflater.from(mContext);
-
-        View view = layoutInflater.inflate(R.layout.item_details,parent,false);
-
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_details, parent, false);
         return new ItemViewHolder(view);
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull CountryAllStatusAdapter.ItemViewHolder holder, int position) {
-        CountryAllStatus countryAllStatus =  dataList.get(position);
+        ((ItemViewHolder) holder).bind(dataList.get(position));
 
-        holder.fullCountryName.setText(countryAllStatus.getCountry());
-        holder.shortCountryName.setText(countryAllStatus.getCountryCode());
-        holder.date.setText(countryAllStatus.getDate());
-        holder.recoveredCases.setText(String.valueOf(countryAllStatus.getRecovered()));
-        holder.confirmedCases.setText(String.valueOf(countryAllStatus.getConfirmed()));
-        holder.deathCases.setText(String.valueOf(countryAllStatus.getDeaths()));
+    }
 
+
+    public void setDataList(List<CountryAllStatus> dataList) {
+        this.dataList = dataList;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -53,7 +45,7 @@ public class CountryAllStatusAdapter extends RecyclerView.Adapter<CountryAllStat
         return dataList.size();
     }
 
-    public class ItemViewHolder extends RecyclerView.ViewHolder {
+    public static class ItemViewHolder extends RecyclerView.ViewHolder {
 
         TextView fullCountryName,shortCountryName,date,activeCases,confirmedCases,deathCases,recoveredCases;
 
@@ -66,6 +58,16 @@ public class CountryAllStatusAdapter extends RecyclerView.Adapter<CountryAllStat
             this.confirmedCases = itemView.findViewById(R.id.txt_confirmed_cases_numbers);
             this.deathCases = itemView.findViewById(R.id.txt_deaths_cases_numbers);
             this.recoveredCases = itemView.findViewById(R.id.txt_recovered_cases_numbers);
+        }
+
+        public void bind(CountryAllStatus countryAllStatus) {
+            fullCountryName.setText(countryAllStatus.getCountry());
+            shortCountryName.setText(countryAllStatus.getCountryCode());
+            date.setText(countryAllStatus.getDate());
+            confirmedCases.setText(countryAllStatus.getConfirmed());
+            deathCases.setText(countryAllStatus.getDeaths());
+            recoveredCases.setText(countryAllStatus.getRecovered());
+
         }
     }
 }
