@@ -29,6 +29,9 @@
     <string name="recovered">Recovered</string>
     <string name="active">Active</string>
     <string name="serious">Serious</string>
+    <string name="total">Total</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
 
 
     <!--Trending fragment strings-->
