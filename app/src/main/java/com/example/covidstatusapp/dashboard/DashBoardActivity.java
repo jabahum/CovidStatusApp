@@ -1,38 +1,38 @@
 package com.example.covidstatusapp.dashboard;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.GridLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.dashboard.models.Countries;
 import com.example.covidstatusapp.dashboard.viewModels.CountriesViewModel;
+import com.example.covidstatusapp.fragments.AboutFragment;
+import com.example.covidstatusapp.fragments.HomeFragment;
+import com.example.covidstatusapp.fragments.StatisticsFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import timber.log.Timber;
 
-public class DashBoardActivity extends AppCompatActivity {
+public class DashBoardActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     public static final String TAG = DashBoardActivity.class.getSimpleName();
-    GridLayout mainGrid;
     Spinner spinner;
-    CardView worldCardView;
-    CardView africaCardView;
-    CardView eastAfricaCardView;
-    CardView countryCardView;
     TextView txtCountry;
     Toolbar toolbar;
 
@@ -46,30 +46,12 @@ public class DashBoardActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
-        /*//spinner = findViewById(R.id.sp_countries);
-        mainGrid = findViewById(R.id.mainGrid);
-        worldCardView = findViewById(R.id.world_stat);
-        africaCardView = findViewById(R.id.africa_stat);
-        eastAfricaCardView = findViewById(R.id.east_africa_stat);
-        countryCardView = findViewById(R.id.country_stat);
-        txtCountry = findViewById(R.id.txt_country);*/
         toolbar = findViewById(R.id.toolbar);
 
-        //initToolbar(toolbar,true);
+        loadFragment(new HomeFragment());
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-        /*countryCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent detailsIntent = new Intent(DashBoardActivity.this, DetailsActivity.class);
-                detailsIntent.putExtra("SelectedCountry",countrySelected);
-                startActivity(detailsIntent);
-            }
-        });*/
-
-        //setSelectedCountry();
-
-        //getCountriesData();
 
 
     }
@@ -114,12 +96,37 @@ public class DashBoardActivity extends AppCompatActivity {
                 });
     }
 
-    private void initToolbar(final Toolbar toolbar, boolean showTitle) {
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            //getSupportActionBar().setDisplayHomeAsUpEnabled(showNavigationButton);
-            getSupportActionBar().setDisplayShowTitleEnabled(showTitle);
-            toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        Fragment fragment = null;
+        switch (menuItem.getItemId()) {
+            case R.id.action_home:
+                fragment = new HomeFragment();
+                break;
+            case R.id.action_statistics:
+                fragment = new StatisticsFragment();
+                break;
+            case R.id.action_help:
+                fragment = new AboutFragment();
+                break;
         }
+        return loadFragment(fragment);
+    }
+
+    private boolean loadFragment(Fragment fragment) {
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .addToBackStack(null)
+                    .commit();
+            return true;
+        }
+        return false;
     }
 }
