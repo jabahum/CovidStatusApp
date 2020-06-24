@@ -1,6 +1,5 @@
 package com.example.covidstatusapp.dashboard;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,7 +16,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.covidstatusapp.R;
-import com.example.covidstatusapp.countrydetails.DetailsActivity;
 import com.example.covidstatusapp.dashboard.models.Countries;
 import com.example.covidstatusapp.dashboard.viewModels.CountriesViewModel;
 
@@ -49,29 +47,29 @@ public class DashBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        //spinner = findViewById(R.id.sp_countries);
+        /*//spinner = findViewById(R.id.sp_countries);
         mainGrid = findViewById(R.id.mainGrid);
         worldCardView = findViewById(R.id.world_stat);
         africaCardView = findViewById(R.id.africa_stat);
         eastAfricaCardView = findViewById(R.id.east_africa_stat);
         countryCardView = findViewById(R.id.country_stat);
-        txtCountry = findViewById(R.id.txt_country);
+        txtCountry = findViewById(R.id.txt_country);*/
         toolbar = findViewById(R.id.toolbar);
 
         //initToolbar(toolbar,true);
 
-        countryCardView.setOnClickListener(new View.OnClickListener() {
+        /*countryCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent detailsIntent = new Intent(DashBoardActivity.this, DetailsActivity.class);
                 detailsIntent.putExtra("SelectedCountry",countrySelected);
                 startActivity(detailsIntent);
             }
-        });
+        });*/
 
         //setSelectedCountry();
 
-        getCountriesData();
+        //getCountriesData();
 
 
     }

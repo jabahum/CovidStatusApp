@@ -13,4 +13,7 @@
     <string name="recovered_cases">Recovered Cases</string>
     <string name="deaths_cases">Deaths Cases</string>
     <string name="title_prevention">Prevention</string>
+    <string name="home">HOME</string>
+    <string name="statistics">STATISTICS</string>
+    <string name="about">ABOUT</string>
 </resources>
