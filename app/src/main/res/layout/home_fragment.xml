@@ -151,14 +151,13 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
+                        android:layout_height="wrap_content" android:layout_marginStart="30dp"
                         android:layout_marginEnd="30dp"
                         android:orientation="horizontal">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:orientation="vertical">
 
                             <de.hdodenhof.circleimageview.CircleImageView
@@ -166,14 +165,14 @@
                                 android:layout_width="96dp"
                                 android:layout_height="96dp"
                                 android:layout_margin="10dp"
-                                android:src="@mipmap/ic_launcher"
+                                android:src="@drawable/distance"
                                 app:civ_border_width="2dp" />
 
                             <TextView
+                                android:text="@string/avoid_close_contact"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:minLines="2"
-                                android:text="Avoid Close Contact"
+                                android:textSize="12sp"
                                 android:textColor="@color/black" />
 
                         </LinearLayout>
@@ -188,14 +187,14 @@
                                 android:layout_width="96dp"
                                 android:layout_height="96dp"
                                 android:layout_margin="10dp"
-                                android:src="@mipmap/ic_launcher"
+                                android:src="@drawable/washhands"
                                 app:civ_border_width="2dp" />
 
                             <TextView
+                                android:text="@string/clean_your_hand_n_often"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:minLines="2"
-                                android:text="Clean Your Hands Often"
+                                android:textSize="12sp"
                                 android:textColor="@color/black" />
                         </LinearLayout>
 
@@ -209,14 +208,15 @@
                                 android:layout_width="96dp"
                                 android:layout_height="96dp"
                                 android:layout_margin="10dp"
-                                android:src="@mipmap/ic_launcher"
+                                android:src="@drawable/wearmask"
                                 app:civ_border_width="2dp" />
 
                             <TextView
+                                android:text="@string/wear_a_face_mask"
+                                android:textAlignment="center"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:minLines="2"
-                                android:text="Wear a Face Mask"
+                                android:textSize="12sp"
                                 android:textColor="@color/black" />
                         </LinearLayout>
 
@@ -243,6 +243,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="20dp"
                 app:cardCornerRadius="5dp"
+                android:layout_marginBottom="40dp"
                 app:cardElevation="10dp">
 
                 <ImageView

@@ -16,4 +16,7 @@
     <string name="home">HOME</string>
     <string name="statistics">STATISTICS</string>
     <string name="about">ABOUT</string>
+    <string name="clean_your_hand_n_often">Clean Your Hand \n Often</string>
+    <string name="avoid_close_contact">Avoid Close Contact</string>
+    <string name="wear_a_face_mask">Wear a Face Mask</string>
 </resources>
