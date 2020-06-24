@@ -15,6 +15,7 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.Toolbar
+                android:layout_marginTop="20dp"
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
@@ -26,6 +27,17 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:src="@drawable/ic_menu_foreground" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_bell_foreground" />
 
                 </RelativeLayout>
 
@@ -39,6 +51,7 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
+                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -131,43 +144,85 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <ScrollView
+                <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/prevention_title">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="30dp"
                         android:orientation="horizontal">
 
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/image_1"
-                            android:layout_width="96dp"
-                            android:layout_height="96dp"
-                            android:layout_margin="10dp"
-                            android:src="@mipmap/ic_launcher"
-                            app:civ_border_width="2dp" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/image_2"
-                            android:layout_width="96dp"
-                            android:layout_height="96dp"
-                            android:layout_margin="10dp"
-                            android:src="@mipmap/ic_launcher"
-                            app:civ_border_width="2dp" />
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/image_1"
+                                android:layout_width="96dp"
+                                android:layout_height="96dp"
+                                android:layout_margin="10dp"
+                                android:src="@mipmap/ic_launcher"
+                                app:civ_border_width="2dp" />
 
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/image_3"
-                            android:layout_width="96dp"
-                            android:layout_height="96dp"
-                            android:layout_margin="10dp"
-                            android:src="@mipmap/ic_launcher"
-                            app:civ_border_width="2dp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minLines="2"
+                                android:text="Avoid Close Contact"
+                                android:textColor="@color/black" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/image_2"
+                                android:layout_width="96dp"
+                                android:layout_height="96dp"
+                                android:layout_margin="10dp"
+                                android:src="@mipmap/ic_launcher"
+                                app:civ_border_width="2dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minLines="2"
+                                android:text="Clean Your Hands Often"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/image_3"
+                                android:layout_width="96dp"
+                                android:layout_height="96dp"
+                                android:layout_margin="10dp"
+                                android:src="@mipmap/ic_launcher"
+                                app:civ_border_width="2dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minLines="2"
+                                android:text="Wear a Face Mask"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+
                     </LinearLayout>
-                </ScrollView>
+                </HorizontalScrollView>
 
 
                 <!-- <androidx.appcompat.widget.AppCompatSpinner
