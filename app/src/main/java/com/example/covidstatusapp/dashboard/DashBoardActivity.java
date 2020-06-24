@@ -49,7 +49,7 @@ public class DashBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        spinner = findViewById(R.id.sp_countries);
+        //spinner = findViewById(R.id.sp_countries);
         mainGrid = findViewById(R.id.mainGrid);
         worldCardView = findViewById(R.id.world_stat);
         africaCardView = findViewById(R.id.africa_stat);
@@ -58,7 +58,7 @@ public class DashBoardActivity extends AppCompatActivity {
         txtCountry = findViewById(R.id.txt_country);
         toolbar = findViewById(R.id.toolbar);
 
-        initToolbar(toolbar,true);
+        //initToolbar(toolbar,true);
 
         countryCardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +69,7 @@ public class DashBoardActivity extends AppCompatActivity {
             }
         });
 
-        setSelectedCountry();
+        //setSelectedCountry();
 
         getCountriesData();
 

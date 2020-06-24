@@ -12,4 +12,5 @@
     <string name="confirmed_cases">Confirmed Cases</string>
     <string name="recovered_cases">Recovered Cases</string>
     <string name="deaths_cases">Deaths Cases</string>
+    <string name="title_prevention">Prevention</string>
 </resources>
