@@ -8,8 +8,4 @@
         android:id="@+id/action_statistics"
         android:icon="@drawable/ic_statistics_foreground"
         android:title="@string/statistics" />
-    <item
-        android:id="@+id/action_help"
-        android:icon="@drawable/ic_help_foreground"
-        android:title="@string/about" />
 </menu>

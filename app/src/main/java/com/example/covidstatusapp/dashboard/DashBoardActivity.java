@@ -112,9 +112,6 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
             case R.id.action_statistics:
                 fragment = new StatisticsFragment();
                 break;
-            case R.id.action_help:
-                fragment = new AboutFragment();
-                break;
         }
         return loadFragment(fragment);
     }
