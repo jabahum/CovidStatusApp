@@ -29,4 +29,12 @@
     <string name="recovered">Recovered</string>
     <string name="active">Active</string>
     <string name="serious">Serious</string>
+
+
+    <!--Trending fragment strings-->
+    <string-array name="statistics_tabs_array">
+        <item>My Country</item>
+        <item>Global</item>
+
+    </string-array>
 </resources>

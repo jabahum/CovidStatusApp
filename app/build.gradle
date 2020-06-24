@@ -109,4 +109,16 @@ dependencies {
     def material_version = "1.0.0"
     implementation "com.google.android.material:material:$material_version"
 
+
+    //tablayout
+    def smarttablayout_version ="2.0.0@aar"
+    implementation "com.ogaclejapan.smarttablayout:library:$smarttablayout_version"
+
+
+    //dimensions
+    def sdp_android_version = "1.0.6";
+    implementation "com.intuit.sdp:sdp-android:$sdp_android_version"
+    implementation "com.intuit.ssp:ssp-android:$sdp_android_version"
+
+
 }
