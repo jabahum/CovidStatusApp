@@ -1,4 +1,6 @@
-package com.example.covidstatusapp.common;
+package com.example.covidstatusapp.network;
+
+import com.example.covidstatusapp.common.Config;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;

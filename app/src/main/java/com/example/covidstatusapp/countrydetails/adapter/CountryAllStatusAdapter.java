@@ -45,28 +45,28 @@ public class CountryAllStatusAdapter extends RecyclerView.Adapter<CountryAllStat
         return dataList.size();
     }
 
-    public static class ItemViewHolder extends RecyclerView.ViewHolder {
+    public  class ItemViewHolder extends RecyclerView.ViewHolder {
 
         TextView fullCountryName,shortCountryName,date,activeCases,confirmedCases,deathCases,recoveredCases;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.fullCountryName = itemView.findViewById(R.id.txt_full_country_name);
-            this.shortCountryName = itemView.findViewById(R.id.txt_country_short);
-            this.date = itemView.findViewById(R.id.txt_date);
-            this.activeCases = activeCases;
-            this.confirmedCases = itemView.findViewById(R.id.txt_confirmed_cases_numbers);
-            this.deathCases = itemView.findViewById(R.id.txt_deaths_cases_numbers);
-            this.recoveredCases = itemView.findViewById(R.id.txt_recovered_cases_numbers);
+            fullCountryName = itemView.findViewById(R.id.txt_full_country_name);
+            shortCountryName = itemView.findViewById(R.id.txt_country_short);
+            date = itemView.findViewById(R.id.txt_date);
+            activeCases = activeCases;
+            confirmedCases = itemView.findViewById(R.id.txt_confirmed_cases_numbers);
+            deathCases = itemView.findViewById(R.id.txt_deaths_cases_numbers);
+            recoveredCases = itemView.findViewById(R.id.txt_recovered_cases_numbers);
         }
 
         public void bind(CountryAllStatus countryAllStatus) {
-            fullCountryName.setText(countryAllStatus.getCountry());
+            /*fullCountryName.setText(countryAllStatus.getCountry());
             shortCountryName.setText(countryAllStatus.getCountryCode());
             date.setText(countryAllStatus.getDate());
             confirmedCases.setText(countryAllStatus.getConfirmed());
             deathCases.setText(countryAllStatus.getDeaths());
-            recoveredCases.setText(countryAllStatus.getRecovered());
+            recoveredCases.setText(countryAllStatus.getRecovered());*/
 
         }
     }

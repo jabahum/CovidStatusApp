@@ -1,4 +1,4 @@
-package com.example.covidstatusapp.common;
+package com.example.covidstatusapp.network;
 
 import com.example.covidstatusapp.countrydetails.models.CountryAllStatus;
 import com.example.covidstatusapp.dashboard.models.ConfirmedCases;

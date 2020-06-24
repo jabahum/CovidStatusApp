@@ -2,8 +2,8 @@ package com.example.covidstatusapp.dashboard.repositories;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.covidstatusapp.common.APIClient;
-import com.example.covidstatusapp.common.APIinterface;
+import com.example.covidstatusapp.network.APIClient;
+import com.example.covidstatusapp.network.APIinterface;
 import com.example.covidstatusapp.dashboard.models.LiveCases;
 
 import java.util.List;
