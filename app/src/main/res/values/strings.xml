@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">CovidStatusApp</string>
-    <string name="select_country">Select Country</string>
+    <string name="select_country">UG</string>
     <string name="e_africa">E.Africa</string>
     <string name="world">World</string>
     <string name="uganda">Uganda</string>
@@ -19,4 +19,7 @@
     <string name="clean_your_hand_n_often">Clean Your Hand \n Often</string>
     <string name="avoid_close_contact">Avoid Close Contact</string>
     <string name="wear_a_face_mask">Wear a Face Mask</string>
+    <string name="are_you_feeling_sick">Are you Feeling sick</string>
+    <string name="if_you_are_feeling_sick_with_any_of_the_covid_19_symptoms_please_cal_or_sms_us_immediately_for_help">If you are feeling sick with any of the covid-19 symptoms please cal or SMS us immediately for help</string>
+    <string name="covid_19">COVID-19</string>
 </resources>
