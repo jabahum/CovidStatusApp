@@ -22,6 +22,9 @@ public class HomeFragment extends Fragment {
     private Button callbutton;
     private Button smsButton;
     private TextView pageSubHeadingTitle;
+    private TextView cautionOne;
+    private TextView cautionTwo;
+    private TextView cautionThree;
 
     @Nullable
     @Override
@@ -39,11 +42,19 @@ public class HomeFragment extends Fragment {
         smsButton = view.findViewById(R.id.btnSmsButton);
         pageSubHeadingTitle = view.findViewById(R.id.prevention_title);
 
+        cautionOne = view.findViewById(R.id.txt_caution_1);
+        cautionTwo = view.findViewById(R.id.txt_caution_2);
+        cautionThree = view.findViewById(R.id.txt_caution_3);
+
 
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(pageTitle);
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(pageSubTitle);
         FontUtils.getFontUtils(getActivity()).setTextViewLightFont(pageParagraph);
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(pageSubHeadingTitle);
+
+        FontUtils.getFontUtils(getActivity()).setTextViewLightFont(cautionOne);
+        FontUtils.getFontUtils(getActivity()).setTextViewLightFont(cautionTwo);
+        FontUtils.getFontUtils(getActivity()).setTextViewLightFont(cautionThree);
 
         FontUtils.getFontUtils(getActivity()).setButtonBoldFont(callbutton);
         FontUtils.getFontUtils(getActivity()).setButtonBoldFont(smsButton);

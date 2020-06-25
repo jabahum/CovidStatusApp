@@ -57,6 +57,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:layout_centerVertical="true"
                         android:id="@+id/pagetitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -75,7 +76,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="20dp"
                         android:background="@drawable/full_white_background"
-                        android:textSize="24sp"
+                        android:textSize="18sp"
                         android:id="@+id/sp_countries"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
@@ -189,6 +190,7 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
+                            android:id="@+id/layout_caution_1"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:orientation="vertical">
@@ -202,6 +204,7 @@
                                 app:civ_border_width="2dp" />
 
                             <TextView
+                                android:id="@+id/txt_caution_1"
                                 android:gravity="center"
                                 android:text="@string/avoid_close_contact"
                                 android:layout_width="match_parent"
@@ -212,6 +215,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/layout_caution_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
@@ -225,6 +229,7 @@
                                 app:civ_border_width="2dp" />
 
                             <TextView
+                                android:id="@+id/txt_caution_2"
                                 android:gravity="center"
                                 android:text="@string/clean_your_hand_n_often"
                                 android:layout_width="match_parent"
@@ -234,6 +239,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/layout_caution_3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
@@ -247,6 +253,7 @@
                                 app:civ_border_width="2dp" />
 
                             <TextView
+                                android:id="@+id/txt_caution_3"
                                 android:gravity="center"
                                 android:text="@string/wear_a_face_mask"
                                 android:textAlignment="center"
