@@ -20,6 +20,8 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
 public class StatisticsFragment extends Fragment {
     private SmartTabLayout mTabLayout;
     private ViewPager mViewPager;
+    private TextView pageTitle;
+    private TextView chartTitle;
 
     @Nullable
     @Override
@@ -31,6 +33,11 @@ public class StatisticsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mTabLayout = view.findViewById(R.id.tl_main_statistics);
         mViewPager = view.findViewById(R.id.vp_region);
+        pageTitle = view.findViewById(R.id.pagetitle);
+        chartTitle = view.findViewById(R.id.chart_title);
+        FontUtils.getFontUtils(getActivity()).setTextViewRegularFont(pageTitle);
+        FontUtils.getFontUtils(getActivity()).setTextViewRegularFont(chartTitle);
+
 
         init();
     }
