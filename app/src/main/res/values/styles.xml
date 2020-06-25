@@ -20,8 +20,6 @@
         <item name="android:paddingBottom">5dp</item>
         <item name="android:popupBackground">#DFFFFFFF</item>
     </style>
-
-
     <style name="LightTheme" parent="AppTheme">
         <item name="textColor">#000000</item>
         <item name="metaTextColor">#606060</item>
