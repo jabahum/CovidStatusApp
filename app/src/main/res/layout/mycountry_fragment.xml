@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/full_dashboard_background">
 
     <LinearLayout
@@ -28,7 +28,7 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="@string/total"
-                android:textSize="18sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -36,7 +36,7 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="@string/today"
-                android:textSize="18sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -44,7 +44,7 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="@string/yesterday"
-                android:textSize="18sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
 
@@ -73,8 +73,14 @@
                         android:layout_alignParentStart="true"
                         android:layout_margin="5dp"
                         android:text="@string/affected"
-                        android:textSize="20sp"
+                        android:textSize="8sp"
                         android:textStyle="bold" />
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_launcher_foreground"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -83,7 +89,7 @@
                         android:layout_margin="5dp"
                         android:layout_marginStart="10dp"
                         android:text="345786"
-                        android:textSize="28sp"
+                        android:textSize="10sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
@@ -109,8 +115,14 @@
                         android:layout_alignParentStart="true"
                         android:layout_margin="5dp"
                         android:text="@string/deaths"
-                        android:textSize="20sp"
+                        android:textSize="8sp"
                         android:textStyle="bold" />
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_launcher_foreground"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -119,7 +131,7 @@
                         android:layout_margin="5dp"
                         android:layout_marginStart="10dp"
                         android:text="3456"
-                        android:textSize="28sp"
+                        android:textSize="10sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
@@ -150,8 +162,14 @@
                         android:layout_alignParentStart="true"
                         android:layout_margin="5dp"
                         android:text="@string/recovered"
-                        android:textSize="20sp"
+                        android:textSize="8sp"
                         android:textStyle="bold" />
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_launcher_foreground"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -160,7 +178,7 @@
                         android:layout_margin="5dp"
                         android:layout_marginStart="10dp"
                         android:text="3456"
-                        android:textSize="28sp"
+                        android:textSize="10sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -185,8 +203,14 @@
                         android:layout_alignParentStart="true"
                         android:layout_margin="5dp"
                         android:text="@string/active"
-                        android:textSize="20sp"
+                        android:textSize="8sp"
                         android:textStyle="bold" />
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_launcher_foreground"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -195,7 +219,7 @@
                         android:layout_margin="5dp"
                         android:layout_marginStart="10dp"
                         android:text="3456"
-                        android:textSize="28sp"
+                        android:textSize="10sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -220,8 +244,14 @@
                         android:layout_alignParentStart="true"
                         android:layout_margin="5dp"
                         android:text="@string/serious"
-                        android:textSize="20sp"
+                        android:textSize="8sp"
                         android:textStyle="bold" />
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_launcher_foreground"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -230,7 +260,7 @@
                         android:layout_margin="5dp"
                         android:layout_marginStart="10dp"
                         android:text="3456"
-                        android:textSize="28sp"
+                        android:textSize="10sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>

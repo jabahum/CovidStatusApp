@@ -67,12 +67,11 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"/>
 
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
+                    <com.hbb20.CountryCodePicker
+                        android:layout_width="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="20dp"
-                        android:backgroundTint="@color/white"
+                        android:background="@drawable/full_white_background"
                         android:textSize="24sp"
                         android:id="@+id/sp_countries"
                         android:layout_marginStart="10dp"
@@ -80,7 +79,19 @@
                         android:layout_marginBottom="10dp"
                         android:prompt="@string/select_country"
                         android:spinnerMode="dropdown"
-                        android:textAlignment="center"/>
+                        android:textAlignment="center"
+                        android:layout_height="wrap_content"
+                        app:ccp_showFullName="true"
+                        app:ccp_showPhoneCode="false"
+                        app:ccp_showNameCode="false"
+                        />
+                    <!--<com.hbb20.CountryCodePicker
+                        android:id="@+id/ccp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:ccp_showFullName="true"
+                        app:ccp_showPhoneCode="false"
+                        app:ccp_showNameCode="false"/>-->
 
                 </RelativeLayout>
 

@@ -34,12 +34,14 @@ dependencies {
 
     def swiperefreshlayout= "1.0.0"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swiperefreshlayout"
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    def constraint_version = "1.1.3"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
 
     /**
      * Testing libraries/dependencies
      * */
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
@@ -97,16 +99,18 @@ dependencies {
     implementation "android.arch.lifecycle:reactivestreams:$reactivestreams_version"
 
 
-    implementation 'android.arch.lifecycle:viewmodel:1.1.1'
-    implementation 'android.arch.lifecycle:extensions:1.1.1'
-    annotationProcessor 'android.arch.lifecycle:compiler:1.1.1'
+
+    def viewmodel = "1.1.1"
+    implementation "android.arch.lifecycle:viewmodel:$viewmodel"
+    implementation "android.arch.lifecycle:extensions:$viewmodel"
+    annotationProcessor "android.arch.lifecycle:compiler:$viewmodel"
 
     def recyclerview_version = "1.1.0"
     implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
 
     def circle_image_versiom = "3.1.0"
     implementation "de.hdodenhof:circleimageview:$circle_image_versiom"
-    def material_version = "1.0.0"
+    def material_version = "1.1.0"
     implementation "com.google.android.material:material:$material_version"
 
 
@@ -119,6 +123,13 @@ dependencies {
     def sdp_android_version = "1.0.6";
     implementation "com.intuit.sdp:sdp-android:$sdp_android_version"
     implementation "com.intuit.ssp:ssp-android:$sdp_android_version"
+
+    def chart_version= "3.1.0"
+    implementation "com.github.PhilJay:MPAndroidChart:v$chart_version"
+
+
+    def hbb_version ="2.4.0"
+    implementation "com.hbb20:ccp:$hbb_version"
 
 
 }

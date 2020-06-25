@@ -47,8 +47,6 @@ public class StatisticsFragment extends Fragment {
                 FontUtils.getFontUtils(getActivity()).setTextViewRegularFont(customText);
                 switch (position) {
                     case 0:
-                        customText.setText(adapter.getPageTitle(position));
-                        break;
                     case 1:
                         customText.setText(adapter.getPageTitle(position));
                         break;
