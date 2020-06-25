@@ -90,7 +90,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:stl_defaultTabTextColor="@color/white"
-                    app:stl_defaultTabTextHorizontalPadding="18dp"
+                    app:stl_defaultTabTextHorizontalPadding="14dp"
                     app:stl_defaultTabTextSize="@dimen/_10ssp"
                     app:stl_distributeEvenly="true"
                     app:stl_dividerColor="@android:color/transparent"

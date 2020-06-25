@@ -28,8 +28,8 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="@string/total"
-                android:visibility="gone"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:visibility="gone"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -37,10 +37,10 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="@string/today"
-                android:textSize="12sp"
-                />
+                android:textSize="12sp" />
 
             <!--<TextView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -65,11 +65,13 @@
                 app:cardElevation="8dp">
 
                 <RelativeLayout
+                    android:id="@+id/country_layout_affected"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp">
 
                     <TextView
+                        android:id="@+id/country_txt_affected"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -86,6 +88,7 @@
                         android:visibility="gone"/>
 
                     <TextView
+                        android:id="@+id/country_txt_affected_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
@@ -108,11 +111,13 @@
                 app:cardElevation="8dp">
 
                 <RelativeLayout
+                    android:id="@+id/country_layout_deaths"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp">
 
                     <TextView
+                        android:id="@+id/country_txt_deaths"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -129,6 +134,7 @@
                         android:visibility="gone"/>
 
                     <TextView
+                        android:id="@+id/country_txt_deaths_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
@@ -156,11 +162,13 @@
                 app:cardCornerRadius="8dp">
 
                 <RelativeLayout
+                    android:id="@+id/country_layout_recovered"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp">
 
                     <TextView
+                        android:id="@+id/country_txt_recovered"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -177,6 +185,7 @@
                         android:visibility="gone"/>
 
                     <TextView
+                        android:id="@+id/country_txt_recovered_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
@@ -198,11 +207,13 @@
                 app:cardElevation="8dp">
 
                 <RelativeLayout
+                    android:id="@+id/country_layout_active"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp">
 
                     <TextView
+                        android:id="@+id/country_txt_active"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -219,6 +230,7 @@
                         android:visibility="gone"/>
 
                     <TextView
+                        android:id="@+id/country_txt_active_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
@@ -240,11 +252,13 @@
                 app:cardElevation="8dp">
 
                 <RelativeLayout
+                    android:id="@+id/country_layout_serious"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp">
 
                     <TextView
+                        android:id="@+id/country_txt_serious"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -261,6 +275,7 @@
                         android:visibility="gone"/>
 
                     <TextView
+                        android:id="@+id/country_txt_serious_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
