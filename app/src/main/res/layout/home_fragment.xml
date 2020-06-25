@@ -195,8 +195,8 @@
 
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:id="@+id/image_1"
-                                android:layout_width="96dp"
-                                android:layout_height="96dp"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
                                 android:layout_margin="10dp"
                                 android:src="@drawable/distance"
                                 app:civ_border_width="2dp" />
@@ -218,8 +218,8 @@
 
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:id="@+id/image_2"
-                                android:layout_width="96dp"
-                                android:layout_height="96dp"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
                                 android:layout_margin="10dp"
                                 android:src="@drawable/washhands"
                                 app:civ_border_width="2dp" />
@@ -240,8 +240,8 @@
 
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:id="@+id/image_3"
-                                android:layout_width="96dp"
-                                android:layout_height="96dp"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
                                 android:layout_margin="10dp"
                                 android:src="@drawable/wearmask"
                                 app:civ_border_width="2dp" />
