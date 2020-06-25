@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_bell_foreground" />
+                android:src="@drawable/ic_bell_second_foreground" />
 
         </RelativeLayout>
 

@@ -19,9 +19,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.dashboard.models.Countries;
 import com.example.covidstatusapp.dashboard.viewModels.CountriesViewModel;
-import com.example.covidstatusapp.fragments.AboutFragment;
-import com.example.covidstatusapp.fragments.HomeFragment;
-import com.example.covidstatusapp.fragments.StatisticsFragment;
+import com.example.covidstatusapp.fragments.home.HomeFragment;
+import com.example.covidstatusapp.fragments.statistics.StatisticsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.covidstatusapp.fragments;
+package com.example.covidstatusapp.fragments.statistics;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
