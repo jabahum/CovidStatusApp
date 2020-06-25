@@ -14,8 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -23,11 +21,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.common.CommonUtils;
 import com.example.covidstatusapp.countrydetails.adapter.CountryAllStatusAdapter;
-import com.example.covidstatusapp.countrydetails.models.CountryAllStatus;
-import com.example.covidstatusapp.viewModel.CountryAllStatusViewModel;
 
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 
 public class DetailsActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
@@ -42,7 +37,7 @@ public class DetailsActivity extends AppCompatActivity implements SwipeRefreshLa
 
 
 
-    CountryAllStatusViewModel countryAllStatusViewModel;
+    //CountryAllStatusViewModel countryAllStatusViewModel;
     CountryAllStatusAdapter countryAllStatusAdapter;
 
     private int mYear, mMonth, mDay;
@@ -102,7 +97,7 @@ public class DetailsActivity extends AppCompatActivity implements SwipeRefreshLa
     }
 
     private void setRecyclerData(String selectedCountry) {
-        countryAllStatusViewModel = new ViewModelProvider(DetailsActivity.this).get(CountryAllStatusViewModel.class);
+       /* countryAllStatusViewModel = new ViewModelProvider(DetailsActivity.this).get(CountryAllStatusViewModel.class);
         countryAllStatusViewModel.init(selectedCountry, CommonUtils.dateFormat(from), CommonUtils.dateFormat(to));
         countryAllStatusViewModel.getCountryAllStatusRepository()
                 .observe(this, new Observer<List<CountryAllStatus>>() {
@@ -113,7 +108,7 @@ public class DetailsActivity extends AppCompatActivity implements SwipeRefreshLa
                         }
 
                     }
-                });
+                });*/
     }
 
     private void setDate(final Button btn) {
