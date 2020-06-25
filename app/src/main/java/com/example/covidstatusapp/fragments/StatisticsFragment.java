@@ -35,8 +35,8 @@ public class StatisticsFragment extends Fragment {
         mViewPager = view.findViewById(R.id.vp_region);
         pageTitle = view.findViewById(R.id.pagetitle);
         chartTitle = view.findViewById(R.id.chart_title);
-        FontUtils.getFontUtils(getActivity()).setTextViewRegularFont(pageTitle);
-        FontUtils.getFontUtils(getActivity()).setTextViewRegularFont(chartTitle);
+        FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(pageTitle);
+        FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(chartTitle);
 
 
         init();

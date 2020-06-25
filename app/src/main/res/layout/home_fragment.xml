@@ -57,6 +57,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/pagetitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
@@ -64,7 +65,7 @@
                         android:layout_alignParentStart="true"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="24sp"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"/>
@@ -96,21 +97,24 @@
                     android:orientation="vertical">
 
                     <TextView
+
+                        android:id="@+id/pageSubTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:text="@string/are_you_feeling_sick"
                         android:textColor="@color/white"
-                        android:textSize="24sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/pageParagraph"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:text="@string/if_you_are_feeling_sick_with_any_of_the_covid_19_symptoms_please_cal_or_sms_us_immediately_for_help"
                         android:textColor="@color/white"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
@@ -121,6 +125,7 @@
                     android:orientation="horizontal">
 
                     <Button
+                        android:id="@+id/btnCallButton"
                         android:layout_width="150sp"
                         android:layout_height="50dp"
                         android:layout_alignParentStart="true"
@@ -136,6 +141,7 @@
                         android:text="@string/call_now" />
 
                     <Button
+                        android:id="@+id/btnSmsButton"
                         android:layout_width="150sp"
                         android:layout_height="50dp"
                         android:layout_alignParentEnd="true"
@@ -166,7 +172,7 @@
                     android:layout_marginStart="20dp"
                     android:text="@string/title_prevention"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <HorizontalScrollView
