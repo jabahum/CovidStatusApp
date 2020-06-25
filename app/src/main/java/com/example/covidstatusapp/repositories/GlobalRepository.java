@@ -1,4 +1,4 @@
-package com.example.covidstatusapp.countrydetails.repositories;
+package com.example.covidstatusapp.repositories;
 
 import com.example.covidstatusapp.network.APIClient;
 import com.example.covidstatusapp.network.APIinterface;

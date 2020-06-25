@@ -1,11 +1,11 @@
-package com.example.covidstatusapp.countrydetails.viewModel;
+package com.example.covidstatusapp.viewModel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.covidstatusapp.countrydetails.models.CountryAllStatus;
-import com.example.covidstatusapp.countrydetails.repositories.CountryAllStatusRepository;
+import com.example.covidstatusapp.repositories.CountryAllStatusRepository;
 
 import java.util.List;
 

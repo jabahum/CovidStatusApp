@@ -1,4 +1,4 @@
-package com.example.covidstatusapp.countrydetails.repositories;
+package com.example.covidstatusapp.repositories;
 
 import androidx.lifecycle.MutableLiveData;
 

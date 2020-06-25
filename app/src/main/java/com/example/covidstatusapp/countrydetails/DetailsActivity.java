@@ -24,7 +24,7 @@ import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.common.CommonUtils;
 import com.example.covidstatusapp.countrydetails.adapter.CountryAllStatusAdapter;
 import com.example.covidstatusapp.countrydetails.models.CountryAllStatus;
-import com.example.covidstatusapp.countrydetails.viewModel.CountryAllStatusViewModel;
+import com.example.covidstatusapp.viewModel.CountryAllStatusViewModel;
 
 import java.util.Calendar;
 import java.util.List;

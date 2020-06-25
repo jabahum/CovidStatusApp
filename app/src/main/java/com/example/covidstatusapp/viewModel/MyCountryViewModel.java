@@ -1,4 +1,4 @@
-package com.example.covidstatusapp.countrydetails.viewModel;
+package com.example.covidstatusapp.viewModel;
 
 import androidx.lifecycle.ViewModel;
 
