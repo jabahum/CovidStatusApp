@@ -36,7 +36,6 @@
     <string name="send_sms">Send SMS</string>
     <string name="daily_new_cases">Daily New Cases</string>
 
-
     <!--Trending fragment strings-->
     <string-array name="statistics_tabs_array">
         <item>My Country</item>
