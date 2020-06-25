@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/full_dashboard_background"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ScrollView
         android:layout_width="match_parent"
@@ -133,7 +133,7 @@
                         android:paddingLeft="10dp"
                         android:paddingBottom="10dp"
                         android:paddingTop="10dp"
-                        android:text="Call Now" />
+                        android:text="@string/call_now" />
 
                     <Button
                         android:layout_width="150sp"
@@ -148,7 +148,7 @@
                         android:paddingLeft="10dp"
                         android:paddingBottom="10dp"
                         android:paddingTop="10dp"
-                        android:text="Send SMS" />
+                        android:text="@string/send_sms" />
 
                 </RelativeLayout>
 
@@ -253,24 +253,11 @@
 
                     </LinearLayout>
                 </HorizontalScrollView>
-
-
-                <!-- <androidx.appcompat.widget.AppCompatSpinner
-                     android:id="@+id/sp_countries"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginStart="10dp"
-                     android:layout_marginTop="10dp"
-                     android:layout_marginEnd="10dp"
-                     android:layout_marginBottom="10dp"
-                     android:prompt="@string/select_country"
-                     android:spinnerMode="dropdown"
-                     android:textAlignment="center" />-->
             </RelativeLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_margin="20dp"
                 app:cardCornerRadius="5dp"
                 app:cardBackgroundColor="@color/grey"

@@ -55,12 +55,12 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="180dp"
-                android:layout_height="150dp"
-                android:layout_margin="10dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                card_view:cardBackgroundColor="@color/orange"
-                card_view:cardCornerRadius="8dp"
-                card_view:cardElevation="8dp">
+                app:cardBackgroundColor="@color/orange"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -80,7 +80,8 @@
                         android:src="@drawable/ic_launcher_foreground"
                         android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -97,12 +98,12 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="180dp"
-                android:layout_height="150dp"
-                android:layout_margin="10dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                card_view:cardBackgroundColor="@color/red"
-                card_view:cardCornerRadius="8dp"
-                card_view:cardElevation="8dp">
+                app:cardBackgroundColor="@color/red"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -122,7 +123,8 @@
                         android:src="@drawable/ic_launcher_foreground"
                         android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -144,12 +146,12 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="180dp"
-                android:layout_height="150dp"
-                android:layout_margin="10dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                card_view:cardBackgroundColor="@color/green"
-                card_view:cardCornerRadius="8dp"
-                card_view:cardElevation="8dp">
+                app:cardBackgroundColor="@color/green"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="8dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -169,7 +171,8 @@
                         android:src="@drawable/ic_launcher_foreground"
                         android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -185,12 +188,12 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="180dp"
-                android:layout_height="150dp"
-                android:layout_margin="10dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                card_view:cardBackgroundColor="@color/lightblue"
-                card_view:cardCornerRadius="8dp"
-                card_view:cardElevation="8dp">
+                app:cardBackgroundColor="@color/lightblue"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -210,7 +213,8 @@
                         android:src="@drawable/ic_launcher_foreground"
                         android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -226,12 +230,12 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="180dp"
-                android:layout_height="150dp"
-                android:layout_margin="10dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                card_view:cardBackgroundColor="@color/lightpurple"
-                card_view:cardCornerRadius="8dp"
-                card_view:cardElevation="8dp">
+                app:cardBackgroundColor="@color/lightpurple"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -251,7 +255,8 @@
                         android:src="@drawable/ic_launcher_foreground"
                         android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"/>
 
                     <TextView
                         android:layout_width="wrap_content"

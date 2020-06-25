@@ -32,6 +32,8 @@
     <string name="total">Total</string>
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
+    <string name="call_now">Call Now</string>
+    <string name="send_sms">Send SMS</string>
 
 
     <!--Trending fragment strings-->
