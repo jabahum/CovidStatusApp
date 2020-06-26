@@ -87,7 +87,7 @@ public class MyCountryFragment extends Fragment {
                         break;
                     case SUCCESS:
                         if (listResource.data != null) {
-                            //setCountryData(listResource.data);
+                            setCountryData(listResource.data);
                         }
                         break;
                     case LOADING:
@@ -103,9 +103,9 @@ public class MyCountryFragment extends Fragment {
         for (LiveCases cases : liveCases){
 
             if (cases.getDate().equals(liveCases.get(0).getDate())){
-                /*affectedCasesValue.setText(String.valueOf(cases.getConfirmed()));
+                affectedCasesValue.setText(String.valueOf(cases.getConfirmed()));
                 deathsCasesValue.setText(String.valueOf(cases.getDeaths()));
-                recoveredCasesValue.setText(String.valueOf(cases.getRecovered()));*/
+                recoveredCasesValue.setText(String.valueOf(cases.getRecovered()));
             }
 
         }

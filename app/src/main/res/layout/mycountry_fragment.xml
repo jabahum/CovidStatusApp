@@ -94,7 +94,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_margin="5dp"
                         android:layout_marginStart="10dp"
-                        android:text="345786"
+                        android:text="..."
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
@@ -140,7 +140,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_margin="5dp"
                         android:layout_marginStart="10dp"
-                        android:text="3456"
+                        android:text="..."
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
@@ -191,7 +191,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_margin="5dp"
                         android:layout_marginStart="10dp"
-                        android:text="3456"
+                        android:text="..."
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
@@ -236,7 +236,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_margin="5dp"
                         android:layout_marginStart="10dp"
-                        android:text="3456"
+                        android:text="..."
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
@@ -281,7 +281,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_margin="5dp"
                         android:layout_marginStart="10dp"
-                        android:text="3456"
+                        android:text="..."
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </RelativeLayout>

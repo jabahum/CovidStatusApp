@@ -86,7 +86,7 @@ public class GlobalFragment extends Fragment {
                         break;
                     case SUCCESS:
                         if (summaryResponseResource.data != null) {
-                            //setGlobalSummary(summaryResponseResource.data.getGlobal());
+                            setGlobalSummary(summaryResponseResource.data.getGlobal());
                         }
                         break;
                 }
