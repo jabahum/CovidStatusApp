@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,8 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.covidstatusapp.R;
-import com.example.covidstatusapp.utils.FontUtils;
 import com.example.covidstatusapp.models.Global;
+import com.example.covidstatusapp.utils.FontUtils;
 import com.example.covidstatusapp.viewModel.GlobalViewModel;
 
 public class GlobalFragment extends Fragment {
@@ -79,6 +80,7 @@ public class GlobalFragment extends Fragment {
             if (summaryResponseResource != null) {
                 switch (summaryResponseResource.status) {
                     case ERROR:
+                        Toast.makeText(getActivity(), "Failed to Fetch Data", Toast.LENGTH_SHORT).show();
                         break;
                     case LOADING:
                         break;
@@ -94,10 +96,12 @@ public class GlobalFragment extends Fragment {
 
     }
 
-    private void setGlobalSummary(Global summary) {
-        affectedCasesValue.setText(String.valueOf(summary.getNewConfirmed()));
-        deathsCasesValue.setText(String.valueOf(summary.getNewDeaths()));
-        recoveredCasesValue.setText(String.valueOf(summary.getNewRecovered()));
-
+    private void setGlobalSummary(Global globalSummary) {
+        if (globalSummary !=null){
+            affectedCasesValue.setText(String.valueOf(globalSummary.getTotalConfirmed()));
+            deathsCasesValue.setText(String.valueOf(globalSummary.getTotalDeaths()));
+            recoveredCasesValue.setText(String.valueOf(globalSummary.getTotalRecovered()));
+            activeCasesValue.setText(String.valueOf(globalSummary.getNewConfirmed()));
+        }
     }
 }

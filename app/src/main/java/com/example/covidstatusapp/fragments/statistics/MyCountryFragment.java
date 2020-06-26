@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,8 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.covidstatusapp.R;
+import com.example.covidstatusapp.models.Country;
 import com.example.covidstatusapp.utils.FontUtils;
-import com.example.covidstatusapp.dashboard.models.LiveCases;
+import com.example.covidstatusapp.viewModel.GlobalViewModel;
 import com.example.covidstatusapp.viewModel.MyCountryViewModel;
 
 import java.util.List;
@@ -33,6 +35,8 @@ public class MyCountryFragment extends Fragment {
     private TextView seriousCasesValue;
 
     private MyCountryViewModel countryViewModel;
+    private GlobalViewModel globalViewModel;
+
 
 
     @Nullable
@@ -76,35 +80,40 @@ public class MyCountryFragment extends Fragment {
 
 
     private void subscribeObservers() {
-        countryViewModel = new ViewModelProvider(this).get(MyCountryViewModel.class);
-        countryViewModel.init("south-africa");
-        countryViewModel.getMyCountryRepository().removeObservers(getViewLifecycleOwner());
-        countryViewModel.getMyCountryRepository().observe(getViewLifecycleOwner(), listResource -> {
-            if (listResource != null) {
-                switch (listResource.status) {
+        globalViewModel = new ViewModelProvider(this).get(GlobalViewModel.class);
+        globalViewModel.init();
+        globalViewModel.getGlobalRepository().removeObservers(getViewLifecycleOwner());
+        globalViewModel.getGlobalRepository().observe(getViewLifecycleOwner(), summaryResponseResource -> {
+            if (summaryResponseResource != null) {
+                switch (summaryResponseResource.status) {
                     case ERROR:
-                        break;
-                    case SUCCESS:
-                        if (listResource.data != null) {
-                            setCountryData(listResource.data);
-                        }
+                        Toast.makeText(getActivity(), "Failed to Fetch Data", Toast.LENGTH_SHORT).show();
                         break;
                     case LOADING:
                         break;
+                    case SUCCESS:
+                        if (summaryResponseResource.data != null) {
+                            setMyCountrySummary(summaryResponseResource.data.getCountries());
+                        }
+                        break;
                 }
             }
+
         });
 
 
     }
 
-    private void setCountryData(List<LiveCases> liveCases) {
-        for (LiveCases cases : liveCases){
+    private void setMyCountrySummary(List<Country> countryList) {
+        if (countryList != null) {
+            for (Country country : countryList) {
+                if (country.getCountry().equals("Uganda")) {
+                    affectedCasesValue.setText(String.valueOf(country.getTotalConfirmed()));
+                    deathsCasesValue.setText(String.valueOf(country.getTotalDeaths()));
+                    recoveredCasesValue.setText(String.valueOf(country.getTotalRecovered()));
+                    activeCasesValue.setText(String.valueOf(country.getNewConfirmed()));
+                }
 
-            if (cases.getDate().equals(liveCases.get(0).getDate())){
-                affectedCasesValue.setText(String.valueOf(cases.getConfirmed()));
-                deathsCasesValue.setText(String.valueOf(cases.getDeaths()));
-                recoveredCasesValue.setText(String.valueOf(cases.getRecovered()));
             }
 
         }

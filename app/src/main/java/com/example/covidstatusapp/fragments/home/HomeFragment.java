@@ -69,34 +69,28 @@ public class HomeFragment extends Fragment {
     }
 
     private void sendSms() {
-        smsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Uri uri = Uri.parse("smsto:" + "+256800100066");
+        smsButton.setOnClickListener(view -> {
+            Uri uri = Uri.parse("smsto:" + "+256800100066");
 
-                Intent sms = new Intent(android.content.Intent.ACTION_SENDTO, uri);
+            Intent sms = new Intent(Intent.ACTION_SENDTO, uri);
 
-                startActivity(sms);
-            }
+            startActivity(sms);
         });
     }
 
     private void call() {
-        callbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        callbutton.setOnClickListener(view -> {
 
-                if (ContextCompat.checkSelfPermission(requireContext(),
-                        Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(requireActivity(),
-                            new String[]{Manifest.permission.CALL_PHONE}, PERMISSIONS_REQUEST_READ_CONTACTS);
-                } else if (!isSimCardAvailable(requireContext())) {
-                    Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
+            if (ContextCompat.checkSelfPermission(requireContext(),
+                    Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(requireActivity(),
+                        new String[]{Manifest.permission.CALL_PHONE}, PERMISSIONS_REQUEST_READ_CONTACTS);
+            } else if (!isSimCardAvailable(requireContext())) {
+                Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
 
-                } else {
-                    String dial = "tel:" + "+256800100066";
-                    startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
-                }
+            } else {
+                String dial = "tel:" + "+256800100066";
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
             }
         });
     }
