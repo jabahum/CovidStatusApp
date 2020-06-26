@@ -19,7 +19,7 @@ public class GlobalRepository {
 
     private MediatorLiveData<Resource<SummaryResponse>> data = new MediatorLiveData<>();
 
-    public GlobalRepository() {
+    private GlobalRepository() {
         apIinterface = APIClient.getClient().create(APIinterface.class);
     }
 

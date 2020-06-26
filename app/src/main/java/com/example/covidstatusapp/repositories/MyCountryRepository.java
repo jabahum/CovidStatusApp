@@ -22,7 +22,7 @@ public class MyCountryRepository {
 
     private MediatorLiveData<Resource<List<LiveCases>>> data = new MediatorLiveData<>();
 
-    public MyCountryRepository() {
+    private MyCountryRepository() {
         apIinterface = APIClient.getClient().create(APIinterface.class);
     }
 
