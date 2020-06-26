@@ -18,14 +18,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:contentDescription="@string/todo"
+            <TextView
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                android:visibility="visible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/_20ssp"
                 android:layout_alignParentStart="true"
-                android:src="@drawable/ic_keyboard_arrow_foreground" />
+                android:text="About"
+                />
 
             <ImageView
+                android:id="@+id/img_options"
                 android:contentDescription="@string/todo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,11 +58,12 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/pagetitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/covid_19_app"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_30ssp"
+                android:textSize="@dimen/_20ssp"
                 android:textStyle="bold">
 
             </TextView>
@@ -80,6 +86,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/pageSubTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/version"
@@ -89,6 +96,7 @@
             </TextView>
 
             <TextView
+                android:id="@+id/version_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -107,6 +115,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/pageSubTitleHeading1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Last Update"
@@ -116,6 +125,7 @@
             </TextView>
 
             <TextView
+                android:id="@+id/last_update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -135,6 +145,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/pageSubTitleHeading2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/long_text"
@@ -144,16 +155,18 @@
             </TextView>
 
             <TextView
+                android:id="@+id/pageSubTitleHeading3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/lyec_developers"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_20sdp"
+                android:textSize="@dimen/_18ssp"
 
                 />
 
             <TextView
+                android:id="@+id/pageSubTitleHeading4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_email"

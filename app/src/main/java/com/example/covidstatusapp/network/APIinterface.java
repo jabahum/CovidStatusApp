@@ -1,7 +1,6 @@
 package com.example.covidstatusapp.network;
 
 import com.example.covidstatusapp.dashboard.models.LiveCases;
-import com.example.covidstatusapp.models.Country;
 import com.example.covidstatusapp.models.CountryChartModel;
 import com.example.covidstatusapp.models.SummaryResponse;
 

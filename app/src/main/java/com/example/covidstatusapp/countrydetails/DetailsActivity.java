@@ -19,8 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.covidstatusapp.R;
-import com.example.covidstatusapp.utils.CommonUtils;
 import com.example.covidstatusapp.countrydetails.adapter.CountryAllStatusAdapter;
+import com.example.covidstatusapp.utils.CommonUtils;
 
 import java.util.Calendar;
 import java.util.Locale;

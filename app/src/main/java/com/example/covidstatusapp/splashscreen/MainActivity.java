@@ -1,17 +1,14 @@
 package com.example.covidstatusapp.splashscreen;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.BroadcastReceiver;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
 
-import com.example.covidstatusapp.dashboard.DashBoardActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.covidstatusapp.R;
+import com.example.covidstatusapp.dashboard.DashBoardActivity;
 import com.example.covidstatusapp.utils.FontUtils;
 
 public class MainActivity extends AppCompatActivity {

@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.LiveDataReactiveStreams;
 import androidx.lifecycle.MediatorLiveData;
 
-import com.example.covidstatusapp.utils.Resource;
 import com.example.covidstatusapp.dashboard.models.LiveCases;
 import com.example.covidstatusapp.network.APIClient;
 import com.example.covidstatusapp.network.APIinterface;
+import com.example.covidstatusapp.utils.Resource;
 
 import java.util.ArrayList;
 import java.util.List;

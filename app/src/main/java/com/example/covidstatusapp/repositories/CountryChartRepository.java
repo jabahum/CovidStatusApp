@@ -9,7 +9,6 @@ import com.example.covidstatusapp.models.CountryChartModel;
 import com.example.covidstatusapp.network.APIClient;
 import com.example.covidstatusapp.network.APIinterface;
 import com.example.covidstatusapp.utils.Resource;
-import com.github.mikephil.charting.data.BarEntry;
 
 import java.util.ArrayList;
 import java.util.List;
