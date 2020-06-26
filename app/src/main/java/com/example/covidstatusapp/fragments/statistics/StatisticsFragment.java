@@ -9,18 +9,26 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.adapters.CustomPagerAdapter;
+import com.example.covidstatusapp.models.CountryChartModel;
 import com.example.covidstatusapp.utils.FontUtils;
+import com.example.covidstatusapp.utils.Resource;
+import com.example.covidstatusapp.viewModel.CountryChartViewModel;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
+
+import java.util.List;
 
 public class StatisticsFragment extends Fragment {
     private SmartTabLayout mTabLayout;
     private ViewPager mViewPager;
     private TextView pageTitle;
     private TextView chartTitle;
+    private CountryChartViewModel chartViewModel;
 
     @Nullable
     @Override
@@ -37,7 +45,27 @@ public class StatisticsFragment extends Fragment {
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(pageTitle);
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(chartTitle);
         init();
+        subscriberObservers();
     }
+
+    private void subscriberObservers() {
+        chartViewModel = new ViewModelProvider(this).get(CountryChartViewModel.class);
+        chartViewModel.init("uganda");
+        chartViewModel.getCountryChartRepository().removeObservers(getViewLifecycleOwner());
+        chartViewModel.getCountryChartRepository().observe(getViewLifecycleOwner(), listResource -> {
+            if (listResource != null) {
+                switch (listResource.status){
+                    case ERROR:
+                        break;
+                    case SUCCESS:
+                        break;
+                    case LOADING:
+                        break;
+                }
+            }
+        });
+    }
+
     private void init() {
         mViewPager.setAdapter(new CustomPagerAdapter(getChildFragmentManager(), getContext()));
         mTabLayout.setCustomTabView((container, position, adapter) -> {

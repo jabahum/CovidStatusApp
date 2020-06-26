@@ -2,6 +2,7 @@ package com.example.covidstatusapp.network;
 
 import com.example.covidstatusapp.dashboard.models.LiveCases;
 import com.example.covidstatusapp.models.Country;
+import com.example.covidstatusapp.models.CountryChartModel;
 import com.example.covidstatusapp.models.SummaryResponse;
 
 import java.util.List;
@@ -18,4 +19,8 @@ public interface APIinterface {
     @GET("summary")
     Single<SummaryResponse> getSummary();
 
+    //https://api.covid19api.com/total/country/uganda
+
+    @GET("/total/country/{country}")
+    Single<List<CountryChartModel>> getCountryChartData(@Path("country") String country);
 }
