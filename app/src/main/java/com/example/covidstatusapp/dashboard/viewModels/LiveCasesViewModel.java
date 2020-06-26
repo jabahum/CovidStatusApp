@@ -1,3 +1,4 @@
+/*
 package com.example.covidstatusapp.dashboard.viewModels;
 
 import androidx.lifecycle.LiveData;
@@ -27,3 +28,4 @@ public class LiveCasesViewModel extends ViewModel {
         return mutableLiveData;
     }
 }
+*/

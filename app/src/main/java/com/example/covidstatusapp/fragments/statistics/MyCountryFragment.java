@@ -9,23 +9,31 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.common.FontUtils;
+import com.example.covidstatusapp.dashboard.models.LiveCases;
+import com.example.covidstatusapp.models.Country;
+import com.example.covidstatusapp.viewModel.MyCountryViewModel;
+
+import java.util.List;
 
 public class MyCountryFragment extends Fragment {
 
-    TextView affectedCases;
-    TextView deathsCases;
-    TextView recoveredCases;
-    TextView activeCases;
-    TextView seriousCases;
+    private TextView affectedCases;
+    private TextView deathsCases;
+    private TextView recoveredCases;
+    private TextView activeCases;
+    private TextView seriousCases;
 
-    TextView affectedCasesValue;
-    TextView deathsCasesValue;
-    TextView recoveredCasesValue;
-    TextView activeCasesValue;
-    TextView seriousCasesValue;
+    private TextView affectedCasesValue;
+    private TextView deathsCasesValue;
+    private TextView recoveredCasesValue;
+    private TextView activeCasesValue;
+    private TextView seriousCasesValue;
+
+    private MyCountryViewModel countryViewModel;
 
 
     @Nullable
@@ -50,6 +58,8 @@ public class MyCountryFragment extends Fragment {
         activeCasesValue = view.findViewById(R.id.country_txt_active_value);
         seriousCasesValue = view.findViewById(R.id.country_txt_serious_value);
 
+        subscribeObservers();
+
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(affectedCases);
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(deathsCases);
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(recoveredCases);
@@ -63,5 +73,41 @@ public class MyCountryFragment extends Fragment {
         FontUtils.getFontUtils(getActivity()).setTextViewRegularFont(seriousCasesValue);
 
 
+    }
+
+
+    private void subscribeObservers() {
+        countryViewModel = new ViewModelProvider(this).get(MyCountryViewModel.class);
+        countryViewModel.init("south-africa");
+        countryViewModel.getMyCountryRepository().removeObservers(getViewLifecycleOwner());
+        countryViewModel.getMyCountryRepository().observe(getViewLifecycleOwner(), listResource -> {
+            if (listResource != null) {
+                switch (listResource.status) {
+                    case ERROR:
+                        break;
+                    case SUCCESS:
+                        if (listResource.data != null) {
+                            //setCountryData(listResource.data);
+                        }
+                        break;
+                    case LOADING:
+                        break;
+                }
+            }
+        });
+
+
+    }
+
+    private void setCountryData(List<LiveCases> liveCases) {
+        for (LiveCases cases : liveCases){
+
+            if (cases.getDate().equals(liveCases.get(0).getDate())){
+                /*affectedCasesValue.setText(String.valueOf(cases.getConfirmed()));
+                deathsCasesValue.setText(String.valueOf(cases.getDeaths()));
+                recoveredCasesValue.setText(String.valueOf(cases.getRecovered()));*/
+            }
+
+        }
     }
 }

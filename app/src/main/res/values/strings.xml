@@ -19,7 +19,7 @@
     <string name="clean_your_hand_n_often">Clean Your Hand \n Often</string>
     <string name="avoid_close_contact">Avoid Close \n Contact</string>
     <string name="wear_a_face_mask">Wear a Face \n Mask</string>
-    <string name="are_you_feeling_sick">Are you feeling sick</string>
+    <string name="are_you_feeling_sick">Are you feeling sick ?</string>
     <string name="if_you_are_feeling_sick_with_any_of_the_covid_19_symptoms_please_cal_or_sms_us_immediately_for_help">If you are feeling sick with any of the covid-19  symptoms \n please call or SMS us immediately for help</string>
     <string name="covid_19">Covid-19</string>
     <string name="title_statistics">Statistics</string>
@@ -40,6 +40,9 @@
     <string name="long_text">This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.</string>
     <string name="_1_0">1.0</string>
     <string name="last_update">June 2020</string>
+    <string name="lyec_developers">Lyec Developers</string>
+    <string name="txt_email">jabajnan8@gmail.com</string>
+    <string name="todo">TODO</string>
 
     <!--Trending fragment strings-->
     <string-array name="statistics_tabs_array">

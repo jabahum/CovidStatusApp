@@ -1,13 +1,21 @@
 package com.example.covidstatusapp.network;
 
 import com.example.covidstatusapp.dashboard.models.LiveCases;
+import com.example.covidstatusapp.models.Country;
+import com.example.covidstatusapp.models.SummaryResponse;
+
+import java.util.List;
 
 import io.reactivex.Single;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 public interface APIinterface {
 
-    @GET("live/country/uganda")
-    Single<LiveCases> getLiveCases();
+    @GET("live/country/{country}")
+    Single<List<LiveCases>> getCountryCases(@Path("country") String country );
+
+    @GET("summary")
+    Single<SummaryResponse> getSummary();
 
 }

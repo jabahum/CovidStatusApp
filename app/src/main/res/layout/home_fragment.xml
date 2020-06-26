@@ -29,16 +29,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <ImageView
+                        android:contentDescription="@string/todo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:src="@drawable/ic_menu_foreground" />
 
                     <ImageView
+                        android:contentDescription="@string/todo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:src="@drawable/ic_bell_second_foreground" />
+                        android:src="@drawable/ic_options_menu_foreground" />
 
                 </RelativeLayout>
 
@@ -189,6 +191,7 @@
                         android:layout_height="wrap_content">
 
                         <LinearLayout
+                            android:layout_margin="10dp"
                             android:id="@+id/layout_caution_1"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -215,6 +218,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:layout_margin="10dp"
                             android:id="@+id/layout_caution_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -240,6 +244,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:layout_margin="10dp"
                             android:id="@+id/layout_caution_3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

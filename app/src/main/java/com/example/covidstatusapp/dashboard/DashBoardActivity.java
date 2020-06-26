@@ -13,20 +13,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.covidstatusapp.R;
-import com.example.covidstatusapp.dashboard.models.Countries;
-import com.example.covidstatusapp.dashboard.viewModels.CountriesViewModel;
 import com.example.covidstatusapp.fragments.home.HomeFragment;
 import com.example.covidstatusapp.fragments.statistics.StatisticsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import timber.log.Timber;
 
 public class DashBoardActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -39,7 +32,7 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
     ArrayList<String> countriesList;
     String countrySelected;
 
-    CountriesViewModel countriesViewModel;
+    //CountriesViewModel countriesViewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,7 +64,7 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
         });
     }
 
-    private void getCountriesData() {
+    /*private void getCountriesData() {
         countriesViewModel = new ViewModelProvider(DashBoardActivity.this).get(CountriesViewModel.class);
         countriesViewModel.init();
         countriesViewModel.getCountriesRepository().observe(
@@ -94,7 +87,7 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
                     }
                 });
     }
-
+*/
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {

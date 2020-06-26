@@ -9,12 +9,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.PagerAdapter;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.adapters.CustomPagerAdapter;
 import com.example.covidstatusapp.common.FontUtils;
+import com.example.covidstatusapp.models.Global;
+import com.example.covidstatusapp.models.SummaryResponse;
+import com.example.covidstatusapp.viewModel.GlobalViewModel;
+import com.example.covidstatusapp.viewModel.MyCountryViewModel;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 public class StatisticsFragment extends Fragment {
@@ -37,31 +41,24 @@ public class StatisticsFragment extends Fragment {
         chartTitle = view.findViewById(R.id.chart_title);
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(pageTitle);
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(chartTitle);
-
-
         init();
     }
-
     private void init() {
         mViewPager.setAdapter(new CustomPagerAdapter(getChildFragmentManager(), getContext()));
-
-        mTabLayout.setCustomTabView(new SmartTabLayout.TabProvider() {
-            @Override
-            public View createTabView(ViewGroup container, int position, PagerAdapter adapter) {
-                LayoutInflater inflater = LayoutInflater.from(container.getContext());
-                View tab = inflater.inflate(R.layout.layout_custom_tab, container, false);
-                TextView customText = tab.findViewById(R.id.textViewCustomTab);
-                FontUtils.getFontUtils(getActivity()).setTextViewRegularFont(customText);
-                switch (position) {
-                    case 0:
-                    case 1:
-                        customText.setText(adapter.getPageTitle(position));
-                        break;
-                    default:
-                        throw new IllegalStateException("Invalid position: " + position);
-                }
-                return tab;
+        mTabLayout.setCustomTabView((container, position, adapter) -> {
+            LayoutInflater inflater = LayoutInflater.from(container.getContext());
+            View tab = inflater.inflate(R.layout.layout_custom_tab, container, false);
+            TextView customText = tab.findViewById(R.id.textViewCustomTab);
+            FontUtils.getFontUtils(getActivity()).setTextViewRegularFont(customText);
+            switch (position) {
+                case 0:
+                case 1:
+                    customText.setText(adapter.getPageTitle(position));
+                    break;
+                default:
+                    throw new IllegalStateException("Invalid position: " + position);
             }
+            return tab;
         });
 
         mTabLayout.setViewPager(mViewPager);

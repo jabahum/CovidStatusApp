@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/full_dashboard_background">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -16,18 +17,16 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <TextView
-                android:textColor="@color/white"
-                android:drawableStart="@drawable/ic_keyboard_arrow_foreground"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:gravity="center_vertical"
-                android:layout_alignParentStart="true"
-                 />
 
             <ImageView
+                android:contentDescription="@string/todo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/ic_keyboard_arrow_foreground" />
+
+            <ImageView
+                android:contentDescription="@string/todo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -58,7 +57,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/covid_19_app"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_30ssp">
+                android:textSize="@dimen/_30ssp"
+                android:textStyle="bold">
 
             </TextView>
 
@@ -144,14 +144,21 @@
             </TextView>
 
             <TextView
-                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Lyec Developers"
+                android:text="@string/lyec_developers"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_20sdp"
 
                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_email"
+                android:textSize="@dimen/_15sdp"
+                android:visibility="gone" />
 
         </LinearLayout>
 

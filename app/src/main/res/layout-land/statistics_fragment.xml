@@ -23,15 +23,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:src="@drawable/ic_keyboard_arrow_foreground"
-                android:contentDescription="@string/todo" />
+                android:src="@drawable/ic_keyboard_arrow_foreground" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_options_menu_foreground"
-                android:contentDescription="@string/todo" />
+                android:src="@drawable/ic_options_menu_foreground" />
 
         </RelativeLayout>
 

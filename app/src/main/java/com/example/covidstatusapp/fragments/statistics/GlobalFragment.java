@@ -9,23 +9,30 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.common.FontUtils;
+import com.example.covidstatusapp.models.Global;
+import com.example.covidstatusapp.models.SummaryResponse;
+import com.example.covidstatusapp.viewModel.GlobalViewModel;
+import com.example.covidstatusapp.viewModel.MyCountryViewModel;
 
 public class GlobalFragment extends Fragment {
 
-    TextView affectedCases;
-    TextView deathsCases;
-    TextView recoveredCases;
-    TextView activeCases;
-    TextView seriousCases;
+    private TextView affectedCases;
+    private TextView deathsCases;
+    private TextView recoveredCases;
+    private TextView activeCases;
+    private TextView seriousCases;
 
-    TextView affectedCasesValue;
-    TextView deathsCasesValue;
-    TextView recoveredCasesValue;
-    TextView activeCasesValue;
-    TextView seriousCasesValue;
+    private TextView affectedCasesValue;
+    private TextView deathsCasesValue;
+    private TextView recoveredCasesValue;
+    private TextView activeCasesValue;
+    private TextView seriousCasesValue;
+
+    private GlobalViewModel globalViewModel;
 
     @Nullable
     @Override
@@ -49,6 +56,8 @@ public class GlobalFragment extends Fragment {
         activeCasesValue = view.findViewById(R.id.global_txt_active_value);
         seriousCasesValue = view.findViewById(R.id.global_txt_serious_value);
 
+        subscribeObservers();
+
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(affectedCases);
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(deathsCases);
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(recoveredCases);
@@ -60,5 +69,37 @@ public class GlobalFragment extends Fragment {
         FontUtils.getFontUtils(getActivity()).setTextViewRegularFont(recoveredCasesValue);
         FontUtils.getFontUtils(getActivity()).setTextViewRegularFont(activeCasesValue);
         FontUtils.getFontUtils(getActivity()).setTextViewRegularFont(seriousCasesValue);
+    }
+
+
+    private void subscribeObservers() {
+
+        globalViewModel = new ViewModelProvider(this).get(GlobalViewModel.class);
+        globalViewModel.init();
+        globalViewModel.getGlobalRepository().removeObservers(getViewLifecycleOwner());
+        globalViewModel.getGlobalRepository().observe(getViewLifecycleOwner(), summaryResponseResource -> {
+            if (summaryResponseResource != null) {
+                switch (summaryResponseResource.status) {
+                    case ERROR:
+                        break;
+                    case LOADING:
+                        break;
+                    case SUCCESS:
+                        if (summaryResponseResource.data != null) {
+                            //setGlobalSummary(summaryResponseResource.data.getGlobal());
+                        }
+                        break;
+                }
+            }
+
+        });
+
+    }
+
+    private void setGlobalSummary(Global summary) {
+        affectedCasesValue.setText(String.valueOf(summary.getNewConfirmed()));
+        deathsCasesValue.setText(String.valueOf(summary.getNewDeaths()));
+        recoveredCasesValue.setText(String.valueOf(summary.getNewRecovered()));
+
     }
 }
