@@ -18,13 +18,12 @@
             android:layout_height="match_parent">
             <TextView
                 android:textColor="@color/white"
-                android:drawableStart="@drawable/ic_back_arrow_foreground"
+                android:drawableStart="@drawable/ic_keyboard_arrow_foreground"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:gravity="center_vertical"
-                android:text="@string/title_about"
                 android:layout_alignParentStart="true"
                  />
 
@@ -32,9 +31,130 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_bell_foreground" />
+                android:src="@drawable/ic_close_foreground" />
 
         </RelativeLayout>
 
     </androidx.appcompat.widget.Toolbar>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/title_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/covid_19_app"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_30ssp">
+
+            </TextView>
+
+            <View
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/version_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_layout"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/version"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/_1_0"
+                android:textSize="@dimen/_20sdp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/update_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/version_layout"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last Update"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/last_update"
+                android:textSize="@dimen/_20sdp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/update_layout"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/long_text"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp">
+
+            </TextView>
+
+            <TextView
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Lyec Developers"
+                android:textSize="@dimen/_20sdp"
+
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

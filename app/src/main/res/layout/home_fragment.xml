@@ -179,15 +179,14 @@
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/prevention_title">
+                    android:layout_below="@id/prevention_title"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp">
 
                     <LinearLayout
                         android:gravity="center_horizontal"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content">
 
                         <LinearLayout
                             android:id="@+id/layout_caution_1"
@@ -196,6 +195,7 @@
                             android:orientation="vertical">
 
                             <de.hdodenhof.circleimageview.CircleImageView
+                                app:civ_border_color="@color/white"
                                 android:id="@+id/image_1"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
@@ -222,6 +222,7 @@
 
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:id="@+id/image_2"
+                                app:civ_border_color="@color/white"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:layout_margin="10dp"
@@ -245,6 +246,7 @@
                             android:orientation="vertical">
 
                             <de.hdodenhof.circleimageview.CircleImageView
+                                app:civ_border_color="@color/white"
                                 android:id="@+id/image_3"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
