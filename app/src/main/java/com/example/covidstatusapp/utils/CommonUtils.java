@@ -1,4 +1,4 @@
-package com.example.covidstatusapp.common;
+package com.example.covidstatusapp.utils;
 
 import java.util.Locale;
 

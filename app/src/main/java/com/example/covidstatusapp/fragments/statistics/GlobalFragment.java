@@ -12,11 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.covidstatusapp.R;
-import com.example.covidstatusapp.common.FontUtils;
+import com.example.covidstatusapp.utils.FontUtils;
 import com.example.covidstatusapp.models.Global;
-import com.example.covidstatusapp.models.SummaryResponse;
 import com.example.covidstatusapp.viewModel.GlobalViewModel;
-import com.example.covidstatusapp.viewModel.MyCountryViewModel;
 
 public class GlobalFragment extends Fragment {
 

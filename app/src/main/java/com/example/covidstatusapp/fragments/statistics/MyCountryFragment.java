@@ -12,9 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.covidstatusapp.R;
-import com.example.covidstatusapp.common.FontUtils;
+import com.example.covidstatusapp.utils.FontUtils;
 import com.example.covidstatusapp.dashboard.models.LiveCases;
-import com.example.covidstatusapp.models.Country;
 import com.example.covidstatusapp.viewModel.MyCountryViewModel;
 
 import java.util.List;

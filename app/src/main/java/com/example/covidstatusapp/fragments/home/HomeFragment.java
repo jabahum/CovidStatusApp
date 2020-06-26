@@ -21,7 +21,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.covidstatusapp.R;
-import com.example.covidstatusapp.common.FontUtils;
+import com.example.covidstatusapp.utils.FontUtils;
 
 public class HomeFragment extends Fragment {
 

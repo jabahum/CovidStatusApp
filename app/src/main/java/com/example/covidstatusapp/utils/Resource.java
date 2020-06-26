@@ -1,4 +1,4 @@
-package com.example.covidstatusapp.common;
+package com.example.covidstatusapp.utils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

@@ -1,6 +1,6 @@
 package com.example.covidstatusapp.network;
 
-import com.example.covidstatusapp.common.Config;
+import com.example.covidstatusapp.utils.Config;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

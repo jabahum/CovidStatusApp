@@ -9,16 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.adapters.CustomPagerAdapter;
-import com.example.covidstatusapp.common.FontUtils;
-import com.example.covidstatusapp.models.Global;
-import com.example.covidstatusapp.models.SummaryResponse;
-import com.example.covidstatusapp.viewModel.GlobalViewModel;
-import com.example.covidstatusapp.viewModel.MyCountryViewModel;
+import com.example.covidstatusapp.utils.FontUtils;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 public class StatisticsFragment extends Fragment {

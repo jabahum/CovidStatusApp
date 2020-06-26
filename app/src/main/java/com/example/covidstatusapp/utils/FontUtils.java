@@ -1,4 +1,4 @@
-package com.example.covidstatusapp.common;
+package com.example.covidstatusapp.utils;
 
 import android.content.Context;
 import android.graphics.Typeface;
