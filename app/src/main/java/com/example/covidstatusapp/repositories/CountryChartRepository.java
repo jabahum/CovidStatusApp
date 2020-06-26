@@ -4,10 +4,12 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.LiveDataReactiveStreams;
 import androidx.lifecycle.MediatorLiveData;
 
+import com.example.covidstatusapp.models.ChartModel;
 import com.example.covidstatusapp.models.CountryChartModel;
 import com.example.covidstatusapp.network.APIClient;
 import com.example.covidstatusapp.network.APIinterface;
 import com.example.covidstatusapp.utils.Resource;
+import com.github.mikephil.charting.data.BarEntry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +21,11 @@ import io.reactivex.schedulers.Schedulers;
 public class CountryChartRepository {
     private static CountryChartRepository countryChartRepository;
     private APIinterface apIinterface;
+    private ChartModel chartModel;
 
     private MediatorLiveData<Resource<List<CountryChartModel>>> data = new MediatorLiveData<>();
+    private MediatorLiveData<Resource<ChartModel>> chartData;
+
 
     private CountryChartRepository() {
         apIinterface = APIClient.getClient().create(APIinterface.class);
@@ -66,5 +71,54 @@ public class CountryChartRepository {
 
         return data;
     }
+
+
+    // Chart
+/*
+    public LiveData<Resource<ChartModel>> observeChartData() {
+
+        if (chartData == null) {
+            chartData = new MediatorLiveData<>();
+            chartData.setValue(Resource.loading(null));
+
+            List<BarEntry> confirmedBarEntry = new ArrayList<>();
+
+
+            // Initialize Data Sets
+            for (int i = 1; i <= months.size(); i++) {
+                confirmedBarEntry.add(new BarEntry(i, 0));
+            }
+
+            ChartModel tempChartModel = new ChartModel(confirmedBarEntry);
+
+            LiveData<Resource<List<CountryChartModel>>> countryChartModel = getCountryChartModel();
+
+
+            chartData.addSource(countryChartModel, countryResource -> {
+                if (countryResource.status == Resource.Status.ERROR || countryResource.status == Resource.Status.SUCCESS) {
+                    if (countryResource.status == Resource.Status.SUCCESS) {
+                        for (CountryChartModel chartModel : countryResource.data) {
+                            BarEntry barEntry = confirmedBarEntry.get(chartModel.time().getMonthValue() - 1);
+                            barEntry.setY(barEntry.getY() + chartModel.getConfirmed());
+
+                            confirmedBarEntry.set(customIncome.time().getMonthValue() - 1, barEntry);
+                        }
+                        tempChartModel.setIncome(confirmedBarEntry);
+                    }
+
+                    chartData.removeSource(countryResource);
+
+                    chartModel = tempChartModel;
+                    chartData.setValue(Resource.success(tempChartModel));
+                }
+
+            });
+
+        }
+
+        return chartData;
+    }
+*/
+
 
 }

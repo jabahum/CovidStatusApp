@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.covidstatusapp.fragments.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_statisticsFragment2"
+            app:destination="@id/statisticsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_aboutFragment2"
+            app:destination="@id/aboutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/statisticsFragment"
+        android:name="com.example.covidstatusapp.fragments.statistics.StatisticsFragment"
+        android:label="StatisticsFragment"
+        tools:layout="@layout/statistics_fragment">
+
+        <action
+            android:id="@+id/action_statisticsFragment_to_aboutFragment2"
+            app:destination="@id/aboutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.covidstatusapp.fragments.AboutFragment"
+        android:label="AboutFragment"
+        tools:layout="@layout/help_fragment" />
+    <fragment
+        android:id="@+id/myCountryFragment"
+        android:name="com.example.covidstatusapp.fragments.statistics.MyCountryFragment"
+        android:label="MyCountryFragment"
+        tools:layout="@layout/mycountry_fragment" />
+    <fragment
+        android:id="@+id/globalFragment"
+        android:name="com.example.covidstatusapp.fragments.statistics.GlobalFragment"
+        android:label="GlobalFragment"
+        tools:layout="@layout/global_fragment"/>
+</navigation>

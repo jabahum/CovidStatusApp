@@ -27,6 +27,7 @@
                 android:contentDescription="@string/todo" />
 
             <ImageView
+                android:id="@+id/img_options"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -162,7 +163,7 @@
                     android:layout_height="wrap_content">
 
                     <com.github.mikephil.charting.charts.BarChart
-                        android:id="@+id/bar_chart_revenue_analysis"
+                        android:id="@+id/bar_chart_covid_data_analysis"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_200sdp"
                         android:layout_marginTop="@dimen/_10sdp"

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.utils.FontUtils;
@@ -34,6 +36,7 @@ public class HomeFragment extends Fragment {
     private TextView cautionOne;
     private TextView cautionTwo;
     private TextView cautionThree;
+    private ImageView optionsImg;
 
     private static final int PERMISSIONS_REQUEST_READ_CONTACTS = 100;
 
@@ -52,8 +55,11 @@ public class HomeFragment extends Fragment {
         pageParagraph = view.findViewById(R.id.pageParagraph);
         pageSubHeadingTitle = view.findViewById(R.id.prevention_title);
 
+
         callbutton = view.findViewById(R.id.btnCallButton);
         smsButton = view.findViewById(R.id.btnSmsButton);
+
+        optionsImg = view.findViewById(R.id.img_options);
 
         cautionOne = view.findViewById(R.id.txt_caution_1);
         cautionTwo = view.findViewById(R.id.txt_caution_2);
@@ -64,8 +70,15 @@ public class HomeFragment extends Fragment {
         }
 
         setFonts();
+        about();
         call();
         sendSms();
+
+
+    }
+
+    private void about() {
+        optionsImg.setOnClickListener(view -> Navigation.findNavController(view).navigate(R.id.aboutFragment));
     }
 
     private void sendSms() {
