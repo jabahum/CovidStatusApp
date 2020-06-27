@@ -73,10 +73,10 @@ public class CountryChartViewModel extends ViewModel {
                 if (listResource.status == Resource.Status.ERROR || listResource.status == Resource.Status.SUCCESS) {
                     if (listResource.status == Resource.Status.SUCCESS) {
                         for (CountryChartModel countryChartModel : listResource.data) {
-                            BarEntry barEntry = confirmedBarEntry.get(month(countryChartModel.getDate()) - 1);
+                            BarEntry barEntry = confirmedBarEntry.get(month(countryChartModel.getDate()));
                             barEntry.setY(barEntry.getY() + countryChartModel.getConfirmed());
 
-                            confirmedBarEntry.set(month(countryChartModel.getDate()) - 1, barEntry);
+                            confirmedBarEntry.set(month(countryChartModel.getDate()), barEntry);
                         }
 
                         tempChartModel.setConfirmed(confirmedBarEntry);
