@@ -20,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.covidstatusapp.R;
@@ -37,7 +38,7 @@ public class HomeFragment extends Fragment {
     private TextView cautionTwo;
     private TextView cautionThree;
     private ImageView optionsImg;
-
+    NavController navController;
     private static final int PERMISSIONS_REQUEST_READ_CONTACTS = 100;
 
     @Nullable
@@ -49,7 +50,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        navController = Navigation.findNavController(view);
         pageTitle = view.findViewById(R.id.pagetitle);
         pageSubTitle = view.findViewById(R.id.pageSubTitle);
         pageParagraph = view.findViewById(R.id.pageParagraph);
@@ -72,8 +73,17 @@ public class HomeFragment extends Fragment {
         setFonts();
         call();
         sendSms();
+        about();
 
+    }
 
+    private void about() {
+        /*optionsImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ///navController.navigate(getActivity(),R.id.help_fragment);
+            }
+        });*/
     }
 
     private void sendSms() {

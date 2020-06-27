@@ -14,6 +14,10 @@ public class ChartModel {
         this.error = error;
     }
 
+    public ChartModel(List<BarEntry> confirmed) {
+        this.confirmed = confirmed;
+    }
+
     public List<BarEntry> getConfirmed() {
         return confirmed;
     }

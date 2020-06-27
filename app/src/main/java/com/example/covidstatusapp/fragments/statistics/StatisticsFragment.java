@@ -1,6 +1,7 @@
 package com.example.covidstatusapp.fragments.statistics;
 
 import android.app.ActionBar;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -20,9 +20,18 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.adapters.CustomPagerAdapter;
+import com.example.covidstatusapp.models.ChartModel;
 import com.example.covidstatusapp.utils.FontUtils;
 import com.example.covidstatusapp.viewModel.CountryChartViewModel;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.text.DateFormatSymbols;
@@ -43,6 +52,7 @@ public class StatisticsFragment extends Fragment {
     NavController navController;
     ImageView backImage;
 
+    ArrayList<BarEntry> active = new ArrayList<>();
 
 
     @Nullable
@@ -73,7 +83,7 @@ public class StatisticsFragment extends Fragment {
         init();
 
         initToolbar();
-        //initChart();
+        initChart();
         //populateMonths();
         subscriberObservers();
 
@@ -83,7 +93,12 @@ public class StatisticsFragment extends Fragment {
         backImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                requireActivity().finish();
+               /* requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
+                    @Override
+                    public void handleOnBackPressed() {
+                        navController = Navigation.findNavController(view).navigate(R.layout.help_fragment);
+                    }
+                });*/
             }
         });
 
@@ -107,43 +122,34 @@ public class StatisticsFragment extends Fragment {
         barChart.setDrawGridBackground(false);
     }
 
-    private void populateMonths() {
-        String[] months = new DateFormatSymbols().getShortMonths();
-        for (int i = 0; i < months.length - 1; i++) {
-            String month = months[i];
-            System.out.println("Month [" + i + "] = " + month);
 
-            monthsShort.add(month);
-        }
-    }
 
     private void subscriberObservers() {
         chartViewModel = new ViewModelProvider(this).get(CountryChartViewModel.class);
         chartViewModel.init("uganda");
-        chartViewModel.getCountryChartRepository().removeObservers(getViewLifecycleOwner());
-        chartViewModel.getCountryChartRepository().observe(getViewLifecycleOwner(), listResource -> {
-            if (listResource != null) {
-                switch (listResource.status){
-                    case ERROR:
-                        break;
-                    case SUCCESS:
-                        if (listResource.data != null) {
-                            //setChartData(listResource.data);
-                        }
-                        break;
-                    case LOADING:
-                        break;
-                }
+        chartViewModel.observeChartData().removeObservers(getViewLifecycleOwner());
+        chartViewModel.observeChartData().observe(getViewLifecycleOwner(), listResource -> {
+            switch (listResource.status) {
+
+                case SUCCESS:
+                    setChartData(listResource.data);
+                    break;
+                case ERROR:
+                    break;
+                case LOADING:
+                    break;
+
             }
         });
     }
 
-/*
-    private void setChartData(List<CountryChartModel> data) {
+
+    private void setChartData(ChartModel data) {
         if (data == null) return;
 
+
         BarDataSet dataSet;
-        dataSet = new BarDataSet(data.g(), "INCOME");
+        dataSet = new BarDataSet(data.getConfirmed(), "Active Cases");
         dataSet.setColor(getResources().getColor(R.color.red));
         dataSet.setValueTextColor(Color.WHITE);
 
@@ -194,8 +200,9 @@ public class StatisticsFragment extends Fragment {
         leftAxis.setTextColor(getResources().getColor(R.color.white));
         leftAxis.setGridColor(getResources().getColor(R.color.white));
 
+
     }
-*/
+
 
     private void init() {
         mViewPager.setAdapter(new CustomPagerAdapter(getChildFragmentManager(), getContext()));
