@@ -84,22 +84,13 @@ public class StatisticsFragment extends Fragment {
         init();
         subscriberObservers();
 
-        backImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               /* requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
-                    @Override
-                    public void handleOnBackPressed() {
-                        navController = Navigation.findNavController(view).navigate(R.layout.help_fragment);
-                    }
-                });*/
-            }
+        backImage.setOnClickListener(view1 -> {
         });
 
     }
 
     private void subscriberObservers() {
-        //
+        //Chart data
         chartViewModel = new ViewModelProvider(this).get(CountryChartViewModel.class);
         chartViewModel.init("uganda");
         chartViewModel.observeChartData().removeObservers(getViewLifecycleOwner());
@@ -139,19 +130,15 @@ public class StatisticsFragment extends Fragment {
         dataSet.setColor(getResources().getColor(R.color.red));
         dataSet.setValueTextColor(Color.WHITE);
 
-
         BarData barData = new BarData(dataSet);
         barData.setValueFormatter(new LargeValueFormatter());
 
         float barWidth = 0.3f;
-        float groupSpace = 0.4f;
-        float barSpace = 0f;
 
         barChart.setData(barData);
         barChart.getBarData().setBarWidth(barWidth);
         barChart.getXAxis().setAxisMinimum(0);
-        barChart.getXAxis().setAxisMaximum(0 + barChart.getBarData().getGroupWidth(groupSpace, barSpace) * monthsShort.size());
-        //barChart.groupBars(0, groupSpace, barSpace);
+        barChart.getXAxis().setAxisMaximum(0 + barChart.getBarData().getBarWidth() * monthsShort.size());
         barChart.getData().setHighlightEnabled(false);
         barChart.invalidate();
 
@@ -191,6 +178,14 @@ public class StatisticsFragment extends Fragment {
 
 
     private void init() {
+        //toolbar
+        if (requireActivity().getActionBar() != null) {
+            Objects.requireNonNull(requireActivity().getActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+            Objects.requireNonNull(requireActivity().getActionBar()).setCustomView(R.layout.toolbar);
+
+        }
+
+        //tablayout
         mViewPager.setAdapter(new CustomPagerAdapter(getChildFragmentManager(), getContext()));
         mTabLayout.setCustomTabView((container, position, adapter) -> {
             LayoutInflater inflater = LayoutInflater.from(container.getContext());
@@ -207,7 +202,6 @@ public class StatisticsFragment extends Fragment {
             }
             return tab;
         });
-
         mTabLayout.setViewPager(mViewPager);
         mViewPager.setOffscreenPageLimit(2);
 
@@ -217,12 +211,5 @@ public class StatisticsFragment extends Fragment {
         barChart.setScaleEnabled(false);
         barChart.setDrawBarShadow(false);
         barChart.setDrawGridBackground(false);
-
-        //toolbar
-        if (requireActivity().getActionBar() !=null){
-            Objects.requireNonNull(requireActivity().getActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-            Objects.requireNonNull(requireActivity().getActionBar()).setCustomView(R.layout.toolbar);
-
-        }
     }
 }
