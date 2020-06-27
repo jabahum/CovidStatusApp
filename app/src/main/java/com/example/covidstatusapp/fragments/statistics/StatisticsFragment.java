@@ -1,5 +1,6 @@
 package com.example.covidstatusapp.fragments.statistics;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class StatisticsFragment extends Fragment {
     private SmartTabLayout mTabLayout;
@@ -52,6 +54,7 @@ public class StatisticsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         navController = Navigation.findNavController(view);
 
 
@@ -59,16 +62,17 @@ public class StatisticsFragment extends Fragment {
         mViewPager = view.findViewById(R.id.vp_region);
         pageTitle = view.findViewById(R.id.pagetitle);
         chartTitle = view.findViewById(R.id.chart_title);
-        //barChart = view.findViewById(R.id.bar_chart_covid_data_analysis);
+        barChart = view.findViewById(R.id.bar_chart_covid_data_analysis);
 
         optionsImg = view.findViewById(R.id.img_options);
         backImage = view.findViewById(R.id.toolbar_back_button);
 
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(pageTitle);
-        //FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(chartTitle);
+        FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(chartTitle);
 
         init();
 
+        initToolbar();
         //initChart();
         //populateMonths();
         subscriberObservers();
@@ -76,13 +80,21 @@ public class StatisticsFragment extends Fragment {
 
 
 
-      /*  backImage.setOnClickListener(view1 -> requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
+        backImage.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void handleOnBackPressed() {
-                navController.popBackStack(R.id.statisticsFragment, false);
+            public void onClick(View view) {
+                requireActivity().finish();
             }
-        }));*/
+        });
 
+    }
+
+    private void initToolbar() {
+        if (requireActivity().getActionBar() !=null){
+            Objects.requireNonNull(requireActivity().getActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+            Objects.requireNonNull(requireActivity().getActionBar()).setCustomView(R.layout.toolbar);
+
+        }
     }
 
 

@@ -67,7 +67,7 @@ public class AboutFragment extends Fragment {
     }
 
     private void about() {
-        optionsImg.setOnClickListener(view -> Navigation.findNavController(view).navigate(R.id.aboutFragment));
+        optionsImg.setOnClickListener(view -> requireActivity().finish());
     }
 
 }
