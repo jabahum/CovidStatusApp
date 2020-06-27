@@ -70,15 +70,10 @@ public class HomeFragment extends Fragment {
         }
 
         setFonts();
-        about();
         call();
         sendSms();
 
 
-    }
-
-    private void about() {
-        optionsImg.setOnClickListener(view -> Navigation.findNavController(view).navigate(R.id.aboutFragment));
     }
 
     private void sendSms() {

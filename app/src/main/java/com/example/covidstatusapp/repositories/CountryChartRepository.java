@@ -54,7 +54,7 @@ public class CountryChartRepository {
                         })
                         .map((Function<List<CountryChartModel>, Resource<List<CountryChartModel>>>) chartModelList -> {
                             if (chartModelList.size() > 0) {
-                                if (chartModelList.get(0).getDeaths() == 1) {
+                                if (chartModelList.get(0).getActive() == 1) {
                                     return Resource.error("Something Went Wrong", null);
                                 }
                             }

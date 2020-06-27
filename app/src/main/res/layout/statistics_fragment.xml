@@ -1,48 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/full_dashboard_background">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_margin="0dp"
-        android:background="@color/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:src="@drawable/ic_keyboard_arrow_foreground"
-                android:contentDescription="@string/todo" />
-
-            <ImageView
-                android:id="@+id/img_options"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_options_menu_foreground"
-                android:contentDescription="@string/todo" />
-
-        </RelativeLayout>
-
-    </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
-        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        android:id="@+id/scrollView2"
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -112,74 +80,73 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/vp_region"
                     android:layout_width="match_parent"
-                    android:layout_height="260dp"
+                    android:layout_height="240dp"
                     android:layout_below="@id/tl_main_statistics"
                     android:layout_marginTop="5dp" />
             </RelativeLayout>
 
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/half_dashboard_background"
+                app:layout_constraintTop_toBottomOf="@id/layout_tablayout">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    tools:ignore="UselessParent">
+
+                    <TextView
+                        android:id="@+id/chart_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/daily_new_cases"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/chart_title"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="10dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
+                        app:cardCornerRadius="@dimen/_8sdp"
+                        app:cardElevation="@dimen/_8sdp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <com.github.mikephil.charting.charts.BarChart
+                                android:id="@+id/bar_chart_covid_data_analysis"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_150sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_10sdp" />
+
+                            <ProgressBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                tools:visibility="visible" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="230dp"
-        android:background="@drawable/half_dashboard_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="200dp">
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                android:id="@+id/chart_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="@string/daily_new_cases"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/chart_title"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="10dp"
-                app:cardBackgroundColor="@color/colorPrimary"
-                app:cardCornerRadius="@dimen/_8sdp"
-                app:cardElevation="@dimen/_8sdp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.github.mikephil.charting.charts.BarChart
-                        android:id="@+id/bar_chart_covid_data_analysis"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_200sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_10sdp" />
-
-                    <ProgressBar
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        tools:visibility="visible" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-        </RelativeLayout>
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

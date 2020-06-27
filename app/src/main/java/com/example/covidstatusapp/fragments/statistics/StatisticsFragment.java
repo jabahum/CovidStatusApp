@@ -7,11 +7,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.covidstatusapp.R;
@@ -34,6 +37,9 @@ public class StatisticsFragment extends Fragment {
 
     ArrayList<String> monthsShort;
     private ImageView optionsImg;
+    AppBarConfiguration appBarConfiguration;
+    NavController navController;
+    ImageView backImage;
 
 
 
@@ -45,27 +51,40 @@ public class StatisticsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        navController = Navigation.findNavController(view);
+
+
         mTabLayout = view.findViewById(R.id.tl_main_statistics);
         mViewPager = view.findViewById(R.id.vp_region);
         pageTitle = view.findViewById(R.id.pagetitle);
         chartTitle = view.findViewById(R.id.chart_title);
-        barChart = view.findViewById(R.id.bar_chart_covid_data_analysis);
+        //barChart = view.findViewById(R.id.bar_chart_covid_data_analysis);
 
         optionsImg = view.findViewById(R.id.img_options);
+        backImage = view.findViewById(R.id.toolbar_back_button);
 
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(pageTitle);
-        FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(chartTitle);
+        //FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(chartTitle);
 
         init();
-        about();
+
         //initChart();
         //populateMonths();
         subscriberObservers();
+
+
+
+
+      /*  backImage.setOnClickListener(view1 -> requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                navController.popBackStack(R.id.statisticsFragment, false);
+            }
+        }));*/
+
     }
 
-    private void about() {
-        optionsImg.setOnClickListener(view -> Navigation.findNavController(view).navigate(R.id.aboutFragment));
-    }
 
     // Chart
     private void initChart() {
