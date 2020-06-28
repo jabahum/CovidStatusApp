@@ -18,7 +18,9 @@ import com.example.covidstatusapp.utils.FontUtils;
 import com.example.covidstatusapp.viewModel.GlobalViewModel;
 import com.example.covidstatusapp.viewModel.MyCountryViewModel;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class MyCountryFragment extends Fragment {
 
@@ -108,14 +110,18 @@ public class MyCountryFragment extends Fragment {
         if (countryList != null) {
             for (Country country : countryList) {
                 if (country.getCountry().equals("Uganda")) {
-                    affectedCasesValue.setText(String.valueOf(country.getTotalConfirmed()));
-                    deathsCasesValue.setText(String.valueOf(country.getTotalDeaths()));
-                    recoveredCasesValue.setText(String.valueOf(country.getTotalRecovered()));
-                    activeCasesValue.setText(String.valueOf(country.getNewConfirmed()));
+                    affectedCasesValue.setText(numberSeparator(country.getTotalConfirmed()));
+                    deathsCasesValue.setText(numberSeparator(country.getTotalDeaths()));
+                    recoveredCasesValue.setText(numberSeparator(country.getTotalRecovered()));
+                    activeCasesValue.setText(numberSeparator(country.getNewConfirmed()));
                 }
 
             }
 
         }
+    }
+
+    private String numberSeparator(int value) {
+        return String.valueOf(NumberFormat.getNumberInstance(Locale.UK).format(value));
     }
 }

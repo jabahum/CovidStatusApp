@@ -16,7 +16,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.covidstatusapp.R;
@@ -48,7 +47,6 @@ public class StatisticsFragment extends Fragment {
 
     ArrayList<String> monthsShort;
     NavController navController;
-    ImageView backImage;
     ProgressBar progressBar;
 
 

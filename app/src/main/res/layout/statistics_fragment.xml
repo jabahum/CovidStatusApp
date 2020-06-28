@@ -133,7 +133,7 @@
                                 <com.github.mikephil.charting.charts.BarChart
                                     android:id="@+id/bar_chart_covid_data_analysis"
                                     android:layout_width="match_parent"
-                                    android:layout_height="@dimen/_160sdp"
+                                    android:layout_height="@dimen/_185sdp"
                                     android:layout_marginTop="@dimen/_10sdp"
                                     android:layout_marginBottom="@dimen/_10sdp" />
 
