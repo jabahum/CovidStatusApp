@@ -124,20 +124,33 @@ public class StatisticsFragment extends Fragment {
         if (data == null) return;
 
 
-        BarDataSet dataSet;
-        dataSet = new BarDataSet(data.getConfirmed(), " Total Confirmed Cases");
-        dataSet.setColor(getResources().getColor(R.color.red));
-        dataSet.setValueTextColor(Color.WHITE);
+        BarDataSet confirmedSet;
+        confirmedSet = new BarDataSet(data.getConfirmed(), "Confirmed Cases");
+        confirmedSet.setColor(getResources().getColor(R.color.colorAccent));
+        confirmedSet.setValueTextColor(Color.WHITE);
 
-        BarData barData = new BarData(dataSet);
+        BarDataSet deathSet;
+        deathSet = new BarDataSet(data.getDeaths(), "Death Cases");
+        deathSet.setColor(getResources().getColor(R.color.themeRed));
+        deathSet.setValueTextColor(Color.WHITE);
+
+        BarDataSet recoveredSet;
+        recoveredSet = new BarDataSet(data.getRecovered(), " Recovered Cases");
+        recoveredSet.setColor(getResources().getColor(R.color.themeOrange));
+        recoveredSet.setValueTextColor(Color.WHITE);
+
+        BarData barData = new BarData(confirmedSet,deathSet,recoveredSet);
         barData.setValueFormatter(new LargeValueFormatter());
 
         float barWidth = 0.3f;
+        float groupSpace = 0.4f;
+        float barSpace = 0f;
 
         barChart.setData(barData);
         barChart.getBarData().setBarWidth(barWidth);
         barChart.getXAxis().setAxisMinimum(0);
         barChart.getXAxis().setAxisMaximum(0 + barChart.getBarData().getBarWidth() * monthsShort.size());
+        barChart.groupBars(0, groupSpace, barSpace);
         barChart.getData().setHighlightEnabled(false);
         barChart.invalidate();
 

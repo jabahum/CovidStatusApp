@@ -49,6 +49,8 @@ public class CountryChartViewModel extends ViewModel {
             chartData.setValue(Resource.loading(null));
 
             List<BarEntry> confirmedBarEntry = new ArrayList<>();
+            List<BarEntry> deathsBarEntry = new ArrayList<>();
+            List<BarEntry> recoveredBarEntry = new ArrayList<>();
 
             ArrayList<String> monthsShort = new ArrayList<>();
 
@@ -63,9 +65,11 @@ public class CountryChartViewModel extends ViewModel {
             // Initialize Data Sets
             for (int i = 1; i <= monthsShort.size(); i++) {
                 confirmedBarEntry.add(new BarEntry(i, 0));
+                deathsBarEntry.add(new BarEntry(i,0));
+                recoveredBarEntry.add(new BarEntry(i,0));
             }
 
-            ChartModel tempChartModel = new ChartModel(confirmedBarEntry);
+            ChartModel tempChartModel = new ChartModel(confirmedBarEntry,deathsBarEntry,recoveredBarEntry);
 
             LiveData<Resource<List<CountryChartModel>>> countrySource = getCountryChartRepository();
 
@@ -75,11 +79,26 @@ public class CountryChartViewModel extends ViewModel {
                         for (CountryChartModel countryChartModel : listResource.data) {
                             BarEntry barEntry = confirmedBarEntry.get(month(countryChartModel.getDate()));
                             barEntry.setY(barEntry.getY() + countryChartModel.getConfirmed());
-
                             confirmedBarEntry.set(month(countryChartModel.getDate()), barEntry);
+
+                        }
+
+                        for (CountryChartModel countryChartModel : listResource.data) {
+                            BarEntry barEntry = deathsBarEntry.get(month(countryChartModel.getDate()));
+                            barEntry.setY(barEntry.getY() + countryChartModel.getDeaths());
+                            deathsBarEntry.set(month(countryChartModel.getDate()), barEntry);
+
+                        }
+                        for (CountryChartModel countryChartModel : listResource.data) {
+                            BarEntry barEntry = recoveredBarEntry.get(month(countryChartModel.getDate()));
+                            barEntry.setY(barEntry.getY() + countryChartModel.getRecovered());
+                            recoveredBarEntry.set(month(countryChartModel.getDate()), barEntry);
+
                         }
 
                         tempChartModel.setConfirmed(confirmedBarEntry);
+                        tempChartModel.setDeaths(deathsBarEntry);
+                        tempChartModel.setRecovered(recoveredBarEntry);
 
                     }
 
