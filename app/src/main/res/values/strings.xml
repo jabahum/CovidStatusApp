@@ -13,9 +13,9 @@
     <string name="recovered_cases">Recovered Cases</string>
     <string name="deaths_cases">Deaths Cases</string>
     <string name="title_prevention">Prevention</string>
-    <string name="home">HOME</string>
-    <string name="statistics">STATISTICS</string>
-    <string name="about">ABOUT</string>
+    <string name="home">Home</string>
+    <string name="statistics">Statistics</string>
+    <string name="about">About</string>
     <string name="clean_your_hand_n_often">Clean Your Hand \n Often</string>
     <string name="avoid_close_contact">Avoid Close \n Contact</string>
     <string name="wear_a_face_mask">Wear a Face \n Mask</string>
@@ -43,7 +43,7 @@
     <string name="lyec_developers">Lyec Developers</string>
     <string name="txt_email">jabajnan8@gmail.com</string>
     <string name="todo">TODO</string>
-    <string name="info">INFO</string>
+    <string name="info">Info</string>
 
     <string name="home_global_data">Global Cases</string>
     <string name="home_confirmed">Confirmed</string>

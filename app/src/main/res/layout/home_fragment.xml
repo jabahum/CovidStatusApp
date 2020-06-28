@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        >
 
         <ScrollView
             app:layout_constraintTop_toTopOf="parent"
@@ -108,6 +108,7 @@
                             android:background="@drawable/red_background"
                             android:drawableStart="@drawable/ic_call_foreground"
                             android:padding="10dp"
+                            android:textColor="@color/white"
                             android:paddingLeft="10dp"
                             android:paddingTop="10dp"
                             android:paddingRight="10dp"
@@ -116,6 +117,7 @@
                             android:textSize="14sp" />
 
                         <Button
+                            android:textColor="@color/white"
                             android:id="@+id/btnSmsButton"
                             android:layout_width="150sp"
                             android:layout_height="50dp"
@@ -155,7 +157,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/prevention_title"
                         android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp">
+                        android:layout_marginEnd="20dp"
+                        android:scrollbars="none">
 
                         <LinearLayout
                             android:layout_width="wrap_content"

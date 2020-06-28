@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/full_dashboard_background">
+    >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_margin="0dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/white"
         android:minHeight="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -63,8 +63,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/covid_19_app"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_20ssp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_18ssp"
                 android:textStyle="bold">
 
             </TextView>
@@ -73,7 +73,7 @@
                 android:layout_width="@dimen/_90sdp"
                 android:layout_height="5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/white" />
+                android:background="@color/black" />
 
         </LinearLayout>
 
@@ -91,18 +91,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/version"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_18ssp">
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp">
 
             </TextView>
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/version_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/_1_0"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_12sdp" />
 
         </LinearLayout>
 
@@ -120,18 +121,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Last Update"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_18ssp">
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp">
 
             </TextView>
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/last_update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/last_update"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_12sdp" />
 
         </LinearLayout>
 
@@ -150,7 +152,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/long_text"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
+                android:visibility="gone"
                 android:textSize="@dimen/_18ssp">
 
             </TextView>
@@ -161,8 +164,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/lyec_developers"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_18ssp"
+                android:visibility="gone"
 
                 />
 
