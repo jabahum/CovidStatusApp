@@ -61,7 +61,8 @@
                             app:ccp_defaultNameCode="UG"
                             app:ccp_showFullName="false"
                             app:ccp_showNameCode="true"
-                            app:ccp_showPhoneCode="false" />
+                            app:ccp_showPhoneCode="false"
+                            app:ccp_rememberLastSelection="true"/>
 
                     </RelativeLayout>
 

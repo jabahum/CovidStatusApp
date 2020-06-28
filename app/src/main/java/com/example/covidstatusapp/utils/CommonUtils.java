@@ -1,8 +1,11 @@
 package com.example.covidstatusapp.utils;
 
+import android.content.Context;
+import android.telephony.TelephonyManager;
+
 import java.util.Locale;
 
-public final class CommonUtils {
+public class CommonUtils {
     public CommonUtils() {
     }
     public static String zero(int number) {
@@ -13,7 +16,11 @@ public final class CommonUtils {
         }
     }
 
-    public static String dateFormat(String format){
-        return format + "T00:00:00Z";
+
+    public static boolean isSimCardAvailable(Context context) {
+
+        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);  //gets the current TelephonyManager
+        return !(tm.getSimState() == TelephonyManager.SIM_STATE_ABSENT);
+
     }
 }

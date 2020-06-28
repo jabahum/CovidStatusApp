@@ -2,13 +2,11 @@ package com.example.covidstatusapp.fragments.home;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +27,8 @@ import androidx.navigation.Navigation;
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.models.Country;
 import com.example.covidstatusapp.models.SummaryResponse;
+import com.example.covidstatusapp.utils.ChartUtils;
+import com.example.covidstatusapp.utils.CommonUtils;
 import com.example.covidstatusapp.utils.FontUtils;
 import com.example.covidstatusapp.viewModel.GlobalViewModel;
 import com.github.mikephil.charting.animation.Easing;
@@ -37,11 +37,10 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.MPPointF;
+import com.hbb20.CountryCodePicker;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
@@ -50,13 +49,13 @@ public class HomeFragment extends Fragment {
     private TextView pageParagraph;
     private Button callbutton;
     private Button smsButton;
-    private TextView pageSubHeadingTitle,pageSubHeadingTitle2,pageSubHeadingTitle3;
+    private TextView pageSubHeadingTitle, pageSubHeadingTitle2, pageSubHeadingTitle3;
     private TextView cautionOne;
     private TextView cautionTwo;
     private TextView cautionThree;
 
     TextView mConfirmed, mDeath, mRecovered;
-    TextView countryConfirmed,countryDeath,countryRecovered;
+    TextView countryConfirmed, countryDeath, countryRecovered;
     private GlobalViewModel globalViewModel;
 
     NavController navController;
@@ -65,6 +64,9 @@ public class HomeFragment extends Fragment {
     PieChart mGlobalDataPieChart;
     PieChart mCountryDataPieChart;
     ProgressBar progressBar;
+    CountryCodePicker codePicker;
+    private String SELECTED_COUNTRY;
+
 
     @Nullable
     @Override
@@ -85,7 +87,7 @@ public class HomeFragment extends Fragment {
         pageSubHeadingTitle3 = view.findViewById(R.id.country_cases_title);
         mGlobalDataPieChart = view.findViewById(R.id.home_global_data_pie_chart);
         mCountryDataPieChart = view.findViewById(R.id.home_country_data_pie_chart);
-
+        codePicker = view.findViewById(R.id.sp_countries);
 
         mConfirmed = view.findViewById(R.id.home_confirmed);
         mDeath = view.findViewById(R.id.home_death);
@@ -95,10 +97,8 @@ public class HomeFragment extends Fragment {
         countryDeath = view.findViewById(R.id.home_country_death);
         countryRecovered = view.findViewById(R.id.home_country_recovered);
 
-
         callbutton = view.findViewById(R.id.btnCallButton);
         smsButton = view.findViewById(R.id.btnSmsButton);
-
 
         cautionOne = view.findViewById(R.id.txt_caution_1);
         cautionTwo = view.findViewById(R.id.txt_caution_2);
@@ -108,12 +108,9 @@ public class HomeFragment extends Fragment {
         if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, PERMISSIONS_REQUEST_READ_CONTACTS);
         }
-        setPieChartGlobalData();
-        setPieChartCountryData();
-        setFonts();
-        call();
-        sendSms();
+        init();
         subscribeObservers();
+
 
     }
 
@@ -147,7 +144,15 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private void sendSms() {
+    private void init() {
+
+        //countryCode
+        codePicker.setOnCountryChangeListener(() -> {
+            SELECTED_COUNTRY = codePicker.getSelectedCountryName();
+
+        });
+
+        //smsButton
         smsButton.setOnClickListener(view -> {
             Uri uri = Uri.parse("smsto:" + "+256800100066");
 
@@ -155,16 +160,15 @@ public class HomeFragment extends Fragment {
 
             startActivity(sms);
         });
-    }
 
-    private void call() {
+        //callButton
         callbutton.setOnClickListener(view -> {
 
             if (ContextCompat.checkSelfPermission(requireContext(),
                     Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(requireActivity(),
                         new String[]{Manifest.permission.CALL_PHONE}, PERMISSIONS_REQUEST_READ_CONTACTS);
-            } else if (!isSimCardAvailable(requireContext())) {
+            } else if (!CommonUtils.isSimCardAvailable(requireContext())) {
                 Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
 
             } else {
@@ -172,9 +176,39 @@ public class HomeFragment extends Fragment {
                 startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
             }
         });
-    }
 
-    private void setFonts() {
+        //Global Chart
+        mGlobalDataPieChart.getDescription().setEnabled(false);
+        mGlobalDataPieChart.setDragDecelerationFrictionCoef(0.95f);
+//        mGlobalDataPieChart.setDrawHoleEnabled(true);
+
+        mGlobalDataPieChart.setRotationAngle(0);
+        // enable rotation of the chart by touch
+        mGlobalDataPieChart.setRotationEnabled(true);
+        mGlobalDataPieChart.setHighlightPerTapEnabled(true);
+
+        mGlobalDataPieChart.animateY(1500, Easing.EaseInOutQuad);
+        mGlobalDataPieChart.getLegend().setEnabled(false);
+        // entry label styling
+
+
+        //Country Chart
+
+        mCountryDataPieChart.getDescription().setEnabled(false);
+        mCountryDataPieChart.setDragDecelerationFrictionCoef(0.95f);
+//        mGlobalDataPieChart.setDrawHoleEnabled(true);
+
+        mCountryDataPieChart.setRotationAngle(0);
+        // enable rotation of the chart by touch
+        mCountryDataPieChart.setRotationEnabled(true);
+        mCountryDataPieChart.setHighlightPerTapEnabled(true);
+
+        mCountryDataPieChart.animateY(1500, Easing.EaseInOutQuad);
+        mCountryDataPieChart.getLegend().setEnabled(false);
+        // entry label styling
+
+        //Set Fonts
+
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(pageTitle);
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(pageSubTitle);
         FontUtils.getFontUtils(getActivity()).setTextViewLightFont(pageParagraph);
@@ -190,44 +224,7 @@ public class HomeFragment extends Fragment {
         FontUtils.getFontUtils(getActivity()).setButtonBoldFont(smsButton);
     }
 
-    public static boolean isSimCardAvailable(Context context) {
 
-        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);  //gets the current TelephonyManager
-        return !(tm.getSimState() == TelephonyManager.SIM_STATE_ABSENT);
-
-    }
-
-    private void setPieChartGlobalData() {
-
-        mGlobalDataPieChart.getDescription().setEnabled(false);
-        mGlobalDataPieChart.setDragDecelerationFrictionCoef(0.95f);
-//        mGlobalDataPieChart.setDrawHoleEnabled(true);
-
-        mGlobalDataPieChart.setRotationAngle(0);
-        // enable rotation of the chart by touch
-        mGlobalDataPieChart.setRotationEnabled(true);
-        mGlobalDataPieChart.setHighlightPerTapEnabled(true);
-
-        mGlobalDataPieChart.animateY(1500, Easing.EaseInOutQuad);
-        mGlobalDataPieChart.getLegend().setEnabled(false);
-        // entry label styling
-    }
-
-    private void setPieChartCountryData() {
-
-        mCountryDataPieChart.getDescription().setEnabled(false);
-        mCountryDataPieChart.setDragDecelerationFrictionCoef(0.95f);
-//        mGlobalDataPieChart.setDrawHoleEnabled(true);
-
-        mCountryDataPieChart.setRotationAngle(0);
-        // enable rotation of the chart by touch
-        mCountryDataPieChart.setRotationEnabled(true);
-        mCountryDataPieChart.setHighlightPerTapEnabled(true);
-
-        mCountryDataPieChart.animateY(1500, Easing.EaseInOutQuad);
-        mCountryDataPieChart.getLegend().setEnabled(false);
-        // entry label styling
-    }
 
 
     @SuppressLint("ResourceType")
@@ -237,9 +234,9 @@ public class HomeFragment extends Fragment {
         int death = summaryResponse.getGlobal().getTotalDeaths();
         int recovered = summaryResponse.getGlobal().getTotalRecovered();
 
-        mConfirmed.setText(numberSeparator(confirmed));
-        mDeath.setText(numberSeparator(death));
-        mRecovered.setText(numberSeparator(recovered));
+        mConfirmed.setText(ChartUtils.numberSeparator(confirmed));
+        mDeath.setText(ChartUtils.numberSeparator(death));
+        mRecovered.setText(ChartUtils.numberSeparator(recovered));
 
         ArrayList<PieEntry> entries = new ArrayList<>();
 
@@ -276,13 +273,14 @@ public class HomeFragment extends Fragment {
             for (Country country : countryList) {
                 if (country.getCountry().equals("Uganda")) {
 
+
                     int confirmed = country.getTotalConfirmed();
                     int death = country.getTotalDeaths();
                     int recovered = country.getTotalRecovered();
 
-                    countryConfirmed.setText(numberSeparator(confirmed));
-                    countryDeath.setText(numberSeparator(death));
-                    countryRecovered.setText(numberSeparator(recovered));
+                    countryConfirmed.setText(ChartUtils.numberSeparator(confirmed));
+                    countryDeath.setText(ChartUtils.numberSeparator(death));
+                    countryRecovered.setText(ChartUtils.numberSeparator(recovered));
 
 
                     ArrayList<PieEntry> entries = new ArrayList<>();
@@ -291,7 +289,7 @@ public class HomeFragment extends Fragment {
                     entries.add(new PieEntry(death, 2));
                     entries.add(new PieEntry(recovered, 3));
 
-                    PieDataSet dataSet = new PieDataSet(entries, "Global Data");
+                    PieDataSet dataSet = new PieDataSet(entries, "Country Data");
 
                     dataSet.setDrawIcons(false);
                     dataSet.setDrawValues(false);
@@ -321,8 +319,5 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private String numberSeparator(int value) {
-        return String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(value));
-    }
 
 }
