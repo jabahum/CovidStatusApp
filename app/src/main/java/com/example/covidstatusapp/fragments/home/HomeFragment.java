@@ -1,9 +1,11 @@
 package com.example.covidstatusapp.fragments.home;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
@@ -11,7 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,11 +22,26 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.covidstatusapp.R;
+import com.example.covidstatusapp.models.Country;
+import com.example.covidstatusapp.models.SummaryResponse;
 import com.example.covidstatusapp.utils.FontUtils;
+import com.example.covidstatusapp.viewModel.GlobalViewModel;
+import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.MPPointF;
+
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
@@ -37,9 +54,17 @@ public class HomeFragment extends Fragment {
     private TextView cautionOne;
     private TextView cautionTwo;
     private TextView cautionThree;
-    private ImageView optionsImg;
+
+    TextView mConfirmed, mDeath, mRecovered;
+    TextView countryConfirmed,countryDeath,countryRecovered;
+    private GlobalViewModel globalViewModel;
+
     NavController navController;
     private static final int PERMISSIONS_REQUEST_READ_CONTACTS = 100;
+
+    PieChart mGlobalDataPieChart;
+    PieChart mCountryDataPieChart;
+    ProgressBar progressBar;
 
     @Nullable
     @Override
@@ -51,39 +76,73 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
+
         pageTitle = view.findViewById(R.id.pagetitle);
         pageSubTitle = view.findViewById(R.id.pageSubTitle);
         pageParagraph = view.findViewById(R.id.pageParagraph);
         pageSubHeadingTitle = view.findViewById(R.id.prevention_title);
+        mGlobalDataPieChart = view.findViewById(R.id.home_global_data_pie_chart);
+        mCountryDataPieChart = view.findViewById(R.id.home_country_data_pie_chart);
+
+
+        mConfirmed = view.findViewById(R.id.home_confirmed);
+        mDeath = view.findViewById(R.id.home_death);
+        mRecovered = view.findViewById(R.id.home_recovered);
+
+        countryConfirmed = view.findViewById(R.id.home_country_confirmed);
+        countryDeath = view.findViewById(R.id.home_country_death);
+        countryRecovered = view.findViewById(R.id.home_country_recovered);
 
 
         callbutton = view.findViewById(R.id.btnCallButton);
         smsButton = view.findViewById(R.id.btnSmsButton);
 
-        optionsImg = view.findViewById(R.id.img_options);
 
         cautionOne = view.findViewById(R.id.txt_caution_1);
         cautionTwo = view.findViewById(R.id.txt_caution_2);
         cautionThree = view.findViewById(R.id.txt_caution_3);
+        progressBar = view.findViewById(R.id.progressBar);
 
         if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, PERMISSIONS_REQUEST_READ_CONTACTS);
         }
-
+        setPieChartGlobalData();
+        setPieChartCountryData();
         setFonts();
         call();
         sendSms();
-        about();
+        subscribeObservers();
 
     }
 
-    private void about() {
-        /*optionsImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ///navController.navigate(getActivity(),R.id.about_fragment);
+
+    private void subscribeObservers() {
+
+        globalViewModel = new ViewModelProvider(this).get(GlobalViewModel.class);
+        globalViewModel.init();
+        globalViewModel.getGlobalRepository().removeObservers(getViewLifecycleOwner());
+        globalViewModel.getGlobalRepository().observe(getViewLifecycleOwner(), summaryResponseResource -> {
+            if (summaryResponseResource != null) {
+                switch (summaryResponseResource.status) {
+                    case ERROR:
+                        progressBar.setVisibility(View.GONE);
+                        Toast.makeText(getActivity(), "Failed to Fetch Data", Toast.LENGTH_SHORT).show();
+                        break;
+                    case LOADING:
+                        progressBar.setVisibility(View.VISIBLE);
+                        break;
+                    case SUCCESS:
+                        if (summaryResponseResource.data != null) {
+                            setDataGlobalDataPieChart(summaryResponseResource.data);
+                            setDataCountryDataPieChart(summaryResponseResource.data.getCountries());
+                            progressBar.setVisibility(View.GONE);
+                        }
+                        break;
+                }
             }
-        });*/
+
+        });
+
     }
 
     private void sendSms() {
@@ -133,4 +192,133 @@ public class HomeFragment extends Fragment {
         return !(tm.getSimState() == TelephonyManager.SIM_STATE_ABSENT);
 
     }
+
+    private void setPieChartGlobalData() {
+
+        mGlobalDataPieChart.getDescription().setEnabled(false);
+        mGlobalDataPieChart.setDragDecelerationFrictionCoef(0.95f);
+//        mGlobalDataPieChart.setDrawHoleEnabled(true);
+
+        mGlobalDataPieChart.setRotationAngle(0);
+        // enable rotation of the chart by touch
+        mGlobalDataPieChart.setRotationEnabled(true);
+        mGlobalDataPieChart.setHighlightPerTapEnabled(true);
+
+        mGlobalDataPieChart.animateY(1500, Easing.EaseInOutQuad);
+        mGlobalDataPieChart.getLegend().setEnabled(false);
+        // entry label styling
+    }
+
+    private void setPieChartCountryData() {
+
+        mCountryDataPieChart.getDescription().setEnabled(false);
+        mCountryDataPieChart.setDragDecelerationFrictionCoef(0.95f);
+//        mGlobalDataPieChart.setDrawHoleEnabled(true);
+
+        mCountryDataPieChart.setRotationAngle(0);
+        // enable rotation of the chart by touch
+        mCountryDataPieChart.setRotationEnabled(true);
+        mCountryDataPieChart.setHighlightPerTapEnabled(true);
+
+        mCountryDataPieChart.animateY(1500, Easing.EaseInOutQuad);
+        mCountryDataPieChart.getLegend().setEnabled(false);
+        // entry label styling
+    }
+
+
+    @SuppressLint("ResourceType")
+    private void setDataGlobalDataPieChart(SummaryResponse summaryResponse) {
+
+        int confirmed = summaryResponse.getGlobal().getTotalConfirmed();
+        int death = summaryResponse.getGlobal().getTotalDeaths();
+        int recovered = summaryResponse.getGlobal().getTotalRecovered();
+
+        mConfirmed.setText(numberSeparator(confirmed));
+        mDeath.setText(numberSeparator(death));
+        mRecovered.setText(numberSeparator(recovered));
+
+        ArrayList<PieEntry> entries = new ArrayList<>();
+
+        entries.add(new PieEntry(confirmed, 1));
+        entries.add(new PieEntry(death, 2));
+        entries.add(new PieEntry(recovered, 3));
+
+        PieDataSet dataSet = new PieDataSet(entries, "Global Data");
+
+        dataSet.setDrawIcons(false);
+        dataSet.setDrawValues(false);
+        dataSet.setSliceSpace(3f);
+        dataSet.setIconsOffset(new MPPointF(0, 40));
+        dataSet.setSelectionShift(5f);
+
+        // add a lot of colors
+
+        ArrayList<Integer> colors = new ArrayList<>();
+
+        colors.add(Color.parseColor(getResources().getString(R.color.colorAccent)));
+        colors.add(Color.parseColor(getResources().getString(R.color.themeRed)));
+        colors.add(Color.parseColor(getResources().getString(R.color.themeOrange)));
+
+        dataSet.setColors(colors);
+
+        PieData data = new PieData(dataSet);
+        mGlobalDataPieChart.setData(data);
+        mGlobalDataPieChart.invalidate();
+
+    }
+    @SuppressLint("ResourceType")
+    private void setDataCountryDataPieChart(List<Country> countryList) {
+        if (countryList != null) {
+            for (Country country : countryList) {
+                if (country.getCountry().equals("Uganda")) {
+
+                    int confirmed = country.getTotalConfirmed();
+                    int death = country.getTotalDeaths();
+                    int recovered = country.getTotalRecovered();
+
+                    countryConfirmed.setText(numberSeparator(confirmed));
+                    countryDeath.setText(numberSeparator(death));
+                    countryRecovered.setText(numberSeparator(recovered));
+
+
+                    ArrayList<PieEntry> entries = new ArrayList<>();
+
+                    entries.add(new PieEntry(confirmed, 1));
+                    entries.add(new PieEntry(death, 2));
+                    entries.add(new PieEntry(recovered, 3));
+
+                    PieDataSet dataSet = new PieDataSet(entries, "Global Data");
+
+                    dataSet.setDrawIcons(false);
+                    dataSet.setDrawValues(false);
+                    dataSet.setSliceSpace(3f);
+                    dataSet.setIconsOffset(new MPPointF(0, 40));
+                    dataSet.setSelectionShift(5f);
+
+                    // add a lot of colors
+
+                    ArrayList<Integer> colors = new ArrayList<>();
+
+                    colors.add(Color.parseColor(getResources().getString(R.color.colorAccent)));
+                    colors.add(Color.parseColor(getResources().getString(R.color.themeRed)));
+                    colors.add(Color.parseColor(getResources().getString(R.color.themeOrange)));
+
+                    dataSet.setColors(colors);
+
+                    PieData data = new PieData(dataSet);
+                    mCountryDataPieChart.setData(data);
+
+                    mCountryDataPieChart.invalidate();
+
+                }
+
+            }
+
+        }
+    }
+
+    private String numberSeparator(int value) {
+        return String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(value));
+    }
+
 }

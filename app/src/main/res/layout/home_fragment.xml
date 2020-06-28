@@ -247,15 +247,15 @@
                     </HorizontalScrollView>
                 </RelativeLayout>
 
-                <androidx.cardview.widget.CardView
+                <TextView
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:gravity="start"
+                    android:textSize="18sp"
+                    android:text="Global Data"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_margin="20dp"
-                    app:cardBackgroundColor="@color/grey"
-                    app:cardCornerRadius="5dp"
-                    app:cardElevation="10dp">
-
-                </androidx.cardview.widget.CardView>
+                    android:layout_height="wrap_content"/>
 
                 <LinearLayout
                     android:id="@+id/home_global_data_layout"
@@ -264,7 +264,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginBottom="60dp"
+                    android:layout_marginBottom="20dp"
                     android:orientation="horizontal">
 
                     <com.github.mikephil.charting.charts.PieChart
@@ -405,12 +405,179 @@
 
                 </LinearLayout>
 
+                <TextView
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:gravity="start"
+                    android:textSize="18sp"
+                    android:text="Country Data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:id="@+id/home_country_data_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="60dp"
+                    android:orientation="horizontal">
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/home_country_data_pie_chart"
+                        android:layout_width="fill_parent"
+                        android:layout_height="160dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="3" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="4"
+                        android:gravity="center|start"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="8dp"
+                                android:src="@drawable/global_case_positive"
+                                tools:ignore="ContentDescription" />
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/home_country_confirmed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/null_text"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="@string/home_confirmed"
+                                    android:textColor="@color/colorAccent"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="8dp"
+                                android:src="@drawable/global_case_recovered"
+                                tools:ignore="ContentDescription"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/home_country_recovered"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="7dp"
+                                    android:text="@string/null_text"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="@string/home_recovered"
+                                    android:textColor="@color/themeOrange"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="8dp"
+                                android:src="@drawable/global_case_death"
+                                tools:ignore="ContentDescription" />
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/home_country_death"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="7dp"
+                                    android:text="@string/null_text"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="@string/home_death"
+                                    android:textColor="@color/themeRed"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
 
 
         </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
