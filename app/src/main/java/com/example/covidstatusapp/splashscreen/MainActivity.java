@@ -16,7 +16,6 @@ import com.example.covidstatusapp.utils.FontUtils;
 public class MainActivity extends AppCompatActivity {
     Handler handler;
     TextView pageTitle,pageSubTitle;
-    Window window;
 
 
     @Override
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         },3000);
 
         FontUtils.getFontUtils(MainActivity.this).setTextViewBoldFont(pageTitle);
-        FontUtils.getFontUtils(MainActivity.this).setTextViewRegularFont(pageSubTitle);
+        FontUtils.getFontUtils(MainActivity.this).setTextViewLightFont(pageSubTitle);
     }
 
 
