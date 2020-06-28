@@ -50,7 +50,7 @@ public class HomeFragment extends Fragment {
     private TextView pageParagraph;
     private Button callbutton;
     private Button smsButton;
-    private TextView pageSubHeadingTitle;
+    private TextView pageSubHeadingTitle,pageSubHeadingTitle2,pageSubHeadingTitle3;
     private TextView cautionOne;
     private TextView cautionTwo;
     private TextView cautionThree;
@@ -81,6 +81,8 @@ public class HomeFragment extends Fragment {
         pageSubTitle = view.findViewById(R.id.pageSubTitle);
         pageParagraph = view.findViewById(R.id.pageParagraph);
         pageSubHeadingTitle = view.findViewById(R.id.prevention_title);
+        pageSubHeadingTitle2 = view.findViewById(R.id.global_cases_title);
+        pageSubHeadingTitle3 = view.findViewById(R.id.country_cases_title);
         mGlobalDataPieChart = view.findViewById(R.id.home_global_data_pie_chart);
         mCountryDataPieChart = view.findViewById(R.id.home_country_data_pie_chart);
 
@@ -177,6 +179,8 @@ public class HomeFragment extends Fragment {
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(pageSubTitle);
         FontUtils.getFontUtils(getActivity()).setTextViewLightFont(pageParagraph);
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(pageSubHeadingTitle);
+        FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(pageSubHeadingTitle2);
+        FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(pageSubHeadingTitle3);
 
         FontUtils.getFontUtils(getActivity()).setTextViewLightFont(cautionOne);
         FontUtils.getFontUtils(getActivity()).setTextViewLightFont(cautionTwo);

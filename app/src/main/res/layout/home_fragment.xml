@@ -248,6 +248,7 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/global_cases_title"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_marginStart="@dimen/_20sdp"
@@ -406,6 +407,7 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/country_cases_title"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_marginStart="@dimen/_20sdp"

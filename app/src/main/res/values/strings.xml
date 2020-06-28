@@ -51,7 +51,7 @@
     <string name="home_recovered">Recovered</string>
 
 
-    <string name="null_text" translatable="false">null</string>
+    <string name="null_text" translatable="false">...</string>
 
 
     <!--Trending fragment strings-->
