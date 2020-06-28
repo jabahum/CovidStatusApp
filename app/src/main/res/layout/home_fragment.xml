@@ -253,7 +253,7 @@
                     android:layout_marginStart="@dimen/_20sdp"
                     android:gravity="start"
                     android:textSize="18sp"
-                    android:text="Global Data"
+                    android:text="Global Cases"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -411,7 +411,7 @@
                     android:layout_marginStart="@dimen/_20sdp"
                     android:gravity="start"
                     android:textSize="18sp"
-                    android:text="Country Data"
+                    android:text="Country Cases"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
