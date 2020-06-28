@@ -14,6 +14,7 @@ import com.github.mikephil.charting.data.BarEntry;
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -118,6 +119,11 @@ public class CountryChartViewModel extends ViewModel {
         Date dateString =  toDate(date,"yyyy-mm-dd"); //new Date(date);
         return dateString.getMonth();
     }
+
+    /*private int toMonth (String date) {
+        LocalDateTime dateString = new LocalDateTime(date).getDayOfMonth(); //new Date(date);
+        return dateString.getMonth();
+    }*/
 
     public static Date toDate(String date, String format) {
         try {

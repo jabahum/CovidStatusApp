@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CovidStatusApp</string>
+    <string name="app_name">CovidStatus</string>
     <string name="select_country">UG</string>
     <string name="e_africa">E.Africa</string>
     <string name="world">World</string>
