@@ -149,7 +149,7 @@ public class StatisticsFragment extends Fragment {
         barChart.setData(barData);
         barChart.getBarData().setBarWidth(barWidth);
         barChart.getXAxis().setAxisMinimum(0);
-        barChart.getXAxis().setAxisMaximum(0 + barChart.getBarData().getBarWidth() * monthsShort.size());
+        barChart.getXAxis().setAxisMaximum(0 + barChart.getBarData().getGroupWidth(groupSpace, barSpace) * monthsShort.size());
         barChart.groupBars(0, groupSpace, barSpace);
         barChart.getData().setHighlightEnabled(false);
         barChart.invalidate();
@@ -159,7 +159,7 @@ public class StatisticsFragment extends Fragment {
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
         l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         l.setDrawInside(true);
-        l.setYOffset(20f);
+        l.setYOffset(5f);
         l.setXOffset(0f);
         l.setYEntrySpace(0f);
         l.setTextSize(8f);
@@ -180,7 +180,7 @@ public class StatisticsFragment extends Fragment {
         YAxis leftAxis = barChart.getAxisLeft();
         leftAxis.setValueFormatter(new LargeValueFormatter());
         leftAxis.setDrawGridLines(false);
-        leftAxis.setSpaceTop(35f);
+        leftAxis.setSpaceTop(50f);
         leftAxis.setAxisMinimum(0f);
         leftAxis.setTextColor(getResources().getColor(R.color.blue));
         leftAxis.setGridColor(getResources().getColor(R.color.blue));
