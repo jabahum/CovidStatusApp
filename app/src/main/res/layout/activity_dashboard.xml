@@ -8,30 +8,14 @@
         android:background="@color/white">
 
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <fragment
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
             app:layout_constraintTop_toTopOf="parent"
-            app:titleTextColor="@android:color/white"
-            android:visibility="gone"/>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/toolbar">
-
-            <fragment
-                android:id="@+id/nav_host_fragment"
-                android:name="androidx.navigation.fragment.NavHostFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:defaultNavHost="true"
-                app:layout_constraintTop_toTopOf="parent"
-                app:navGraph="@navigation/nav" />
-        </ScrollView>
+            app:navGraph="@navigation/nav" />
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -39,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/grey"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/nav_host_fragment"
             app:menu="@menu/navigation"
 
             />

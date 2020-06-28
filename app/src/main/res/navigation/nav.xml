@@ -31,7 +31,7 @@
         android:id="@+id/aboutFragment"
         android:name="com.example.covidstatusapp.fragments.AboutFragment"
         android:label="AboutFragment"
-        tools:layout="@layout/help_fragment" />
+        tools:layout="@layout/about_fragment" />
     <fragment
         android:id="@+id/myCountryFragment"
         android:name="com.example.covidstatusapp.fragments.statistics.MyCountryFragment"

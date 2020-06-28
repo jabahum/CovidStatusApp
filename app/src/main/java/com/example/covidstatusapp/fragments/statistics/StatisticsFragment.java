@@ -84,8 +84,7 @@ public class StatisticsFragment extends Fragment {
         init();
         subscriberObservers();
 
-        backImage.setOnClickListener(view1 -> {
-        });
+
 
     }
 

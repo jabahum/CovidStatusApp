@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,14 +7,10 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
-        <include
-            android:id="@+id/include_layout"
-            layout="@layout/toolbar"
-            app:layout_constraintTop_toTopOf="parent"/>
         <ScrollView
-            app:layout_constraintTop_toBottomOf="@id/include_layout"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:scrollbars="none">
 
             <LinearLayout
@@ -178,7 +174,7 @@
                                     android:layout_width="80dp"
                                     android:layout_height="80dp"
                                     android:layout_margin="10dp"
-                                    android:src="@drawable/distance"
+                                    android:src="@drawable/social_distancing"
                                     app:civ_border_color="@color/white"
                                     app:civ_border_width="2dp" />
 
@@ -205,7 +201,7 @@
                                     android:layout_width="80dp"
                                     android:layout_height="80dp"
                                     android:layout_margin="10dp"
-                                    android:src="@drawable/washhands"
+                                    android:src="@drawable/wash_hand"
                                     app:civ_border_color="@color/white"
                                     app:civ_border_width="2dp" />
 
@@ -231,7 +227,7 @@
                                     android:layout_width="80dp"
                                     android:layout_height="80dp"
                                     android:layout_margin="10dp"
-                                    android:src="@drawable/wearmask"
+                                    android:src="@drawable/wear_mask"
                                     app:civ_border_color="@color/white"
                                     app:civ_border_width="2dp" />
 
@@ -257,9 +253,162 @@
                     android:layout_margin="20dp"
                     app:cardBackgroundColor="@color/grey"
                     app:cardCornerRadius="5dp"
-                    app:cardElevation="10dp"></androidx.cardview.widget.CardView>
+                    app:cardElevation="10dp">
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:id="@+id/home_global_data_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="60dp"
+                    android:orientation="horizontal">
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/home_global_data_pie_chart"
+                        android:layout_width="fill_parent"
+                        android:layout_height="160dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="3" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="4"
+                        android:gravity="center|start"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="8dp"
+                                android:src="@drawable/global_case_positive"
+                                tools:ignore="ContentDescription" />
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/home_confirmed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/null_text"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="@string/home_confirmed"
+                                    android:textColor="@color/colorAccent"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="8dp"
+                                android:src="@drawable/global_case_recovered"
+                                tools:ignore="ContentDescription"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/home_recovered"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="7dp"
+                                    android:text="@string/null_text"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="@string/home_recovered"
+                                    android:textColor="@color/themeOrange"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="8dp"
+                                android:src="@drawable/global_case_death"
+                                tools:ignore="ContentDescription" />
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/home_death"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="7dp"
+                                    android:text="@string/null_text"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="@string/home_death"
+                                    android:textColor="@color/themeRed"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
 
             </LinearLayout>
+
+
 
         </ScrollView>
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -8,152 +7,138 @@
         android:layout_height="match_parent"
         android:background="@drawable/full_dashboard_background">
 
-        <include
-            android:id="@+id/include_layout"
-            layout="@layout/custom_toolbar"
-             app:layout_constraintTop_toTopOf="parent"/>
-
-        <ScrollView
-            app:layout_constraintTop_toBottomOf="@id/include_layout"
-            android:id="@+id/scrollView2"
+        <RelativeLayout
+            android:id="@+id/activity_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <TextView
+                android:id="@+id/pagetitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/title_statistics"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_title">
+
+            <com.ogaclejapan.smarttablayout.SmartTabLayout
+                android:id="@+id/tl_main_statistics"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="@dimen/_48sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/tablayout_background"
+                android:clipToPadding="false"
+                android:paddingLeft="@dimen/_12sdp"
+                android:paddingRight="@dimen/_12sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:stl_defaultTabTextColor="@color/white"
+                app:stl_defaultTabTextHorizontalPadding="14dp"
+                app:stl_defaultTabTextSize="@dimen/_10ssp"
+                app:stl_distributeEvenly="true"
+                app:stl_dividerColor="@android:color/transparent"
+                app:stl_dividerThickness="0dp"
+                app:stl_indicatorColor="#26000000"
+                app:stl_indicatorCornerRadius="18dp"
+                app:stl_indicatorGravity="center"
+                app:stl_indicatorInterpolation="smart"
+                app:stl_indicatorThickness="36dp"
+                app:stl_underlineColor="@android:color/transparent"
+                app:stl_underlineThickness="0dp">
 
-                <RelativeLayout
-                    android:id="@+id/activity_title"
+            </com.ogaclejapan.smarttablayout.SmartTabLayout>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vp_region"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_below="@id/tl_main_statistics"
+                android:layout_marginTop="5dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/half_dashboard_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:id="@+id/chart_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/daily_new_cases"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:id="@+id/pagetitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="@string/title_statistics"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/layout_tablayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_below="@id/chart_title"
                     android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginEnd="20dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/activity_title">
-
-                    <com.ogaclejapan.smarttablayout.SmartTabLayout
-                        android:id="@+id/tl_main_statistics"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_48sdp"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:background="@drawable/tablayout_background"
-                        android:clipToPadding="false"
-                        android:paddingLeft="@dimen/_12sdp"
-                        android:paddingRight="@dimen/_12sdp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:stl_defaultTabTextColor="@color/white"
-                        app:stl_defaultTabTextHorizontalPadding="14dp"
-                        app:stl_defaultTabTextSize="@dimen/_10ssp"
-                        app:stl_distributeEvenly="true"
-                        app:stl_dividerColor="@android:color/transparent"
-                        app:stl_dividerThickness="0dp"
-                        app:stl_indicatorColor="#26000000"
-                        app:stl_indicatorCornerRadius="18dp"
-                        app:stl_indicatorGravity="center"
-                        app:stl_indicatorInterpolation="smart"
-                        app:stl_indicatorThickness="36dp"
-                        app:stl_underlineColor="@android:color/transparent"
-                        app:stl_underlineThickness="0dp">
-
-                    </com.ogaclejapan.smarttablayout.SmartTabLayout>
-
-                    <androidx.viewpager.widget.ViewPager
-                        android:id="@+id/vp_region"
-                        android:layout_width="match_parent"
-                        android:layout_height="240dp"
-                        android:layout_below="@id/tl_main_statistics"
-                        android:layout_marginTop="5dp" />
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:id="@+id/linearLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/half_dashboard_background"
-                    app:layout_constraintTop_toBottomOf="@id/layout_tablayout">
+                    android:layout_marginBottom="10dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_8sdp"
+                    app:cardElevation="@dimen/_8sdp">
 
                     <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        tools:ignore="UselessParent">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/chart_title"
+                        <com.github.mikephil.charting.charts.BarChart
+                            android:id="@+id/bar_chart_covid_data_analysis"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_160sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_10sdp" />
+
+                        <ProgressBar
+                            android:id="@+id/progress"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="@string/daily_new_cases"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/chart_title"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="20dp"
-                            android:layout_marginBottom="10dp"
-                            app:cardBackgroundColor="@color/white"
-                            app:cardCornerRadius="@dimen/_8sdp"
-                            app:cardElevation="@dimen/_8sdp">
-
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <com.github.mikephil.charting.charts.BarChart
-                                    android:id="@+id/bar_chart_covid_data_analysis"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/_100sdp"
-                                    android:layout_marginTop="@dimen/_10sdp"
-                                    android:layout_marginBottom="@dimen/_10sdp" />
-
-                                <ProgressBar
-                                    android:id="@+id/progress"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerInParent="true"
-                                    tools:visibility="visible" />
-                            </RelativeLayout>
-                        </androidx.cardview.widget.CardView>
-
+                            android:layout_centerInParent="true"
+                            tools:visibility="visible" />
                     </RelativeLayout>
+                </androidx.cardview.widget.CardView>
 
-                </LinearLayout>
+            </RelativeLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
+        </LinearLayout>
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

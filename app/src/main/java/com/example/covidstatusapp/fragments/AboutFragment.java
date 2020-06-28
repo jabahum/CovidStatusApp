@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.utils.FontUtils;
@@ -31,7 +30,7 @@ public class AboutFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.help_fragment, container, false);
+        return inflater.inflate(R.layout.about_fragment, container, false);
     }
 
     @Override
@@ -67,7 +66,7 @@ public class AboutFragment extends Fragment {
     }
 
     private void about() {
-        optionsImg.setOnClickListener(view -> requireActivity().finish());
+        //optionsImg.setOnClickListener(view -> requireActivity().finish());
     }
 
 }

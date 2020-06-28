@@ -3,6 +3,8 @@ package com.example.covidstatusapp.splashscreen;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,12 +16,15 @@ import com.example.covidstatusapp.utils.FontUtils;
 public class MainActivity extends AppCompatActivity {
     Handler handler;
     TextView pageTitle,pageSubTitle;
+    Window window;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 
         pageTitle = findViewById(R.id.title);
         pageSubTitle = findViewById(R.id.subTitle);

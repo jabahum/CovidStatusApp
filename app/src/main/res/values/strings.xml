@@ -43,6 +43,16 @@
     <string name="lyec_developers">Lyec Developers</string>
     <string name="txt_email">jabajnan8@gmail.com</string>
     <string name="todo">TODO</string>
+    <string name="info">INFO</string>
+
+    <string name="home_global_data">Global Cases</string>
+    <string name="home_confirmed">Confirmed</string>
+    <string name="home_death">Death</string>
+    <string name="home_recovered">Recovered</string>
+
+
+    <string name="null_text" translatable="false">null</string>
+
 
     <!--Trending fragment strings-->
     <string-array name="statistics_tabs_array">

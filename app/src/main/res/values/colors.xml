@@ -17,12 +17,15 @@
     <color name="lightpurple">#BF07EC </color>
     <color name="ic_back_arrow_background">#FFFFFF</color>
     <color name="ic_call_background">#FFFFFF</color>
-    <color name="ic_help_background">#FFFFFF</color>
     <color name="ic_home_background">#FFFFFF</color>
     <color name="ic_menu_background">#FFFFFF</color>
     <color name="ic_notification_background">#FFFFFF</color>
     <color name="ic_sms_background">#FFFFFF</color>
     <color name="ic_spinner_arrow_background">#FFFFFF</color>
     <color name="ic_statistics_background">#FFFFFF</color>
+
+    <color name="themeOrange">#ffb259</color>
+    <color name="themeRed">#ff5959</color>
+
 
 </resources>

@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment {
         /*optionsImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ///navController.navigate(getActivity(),R.id.help_fragment);
+                ///navController.navigate(getActivity(),R.id.about_fragment);
             }
         });*/
     }

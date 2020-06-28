@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/_1_0"
-                android:textSize="@dimen/_20sdp" />
+                android:textSize="@dimen/_14sdp" />
 
         </LinearLayout>
 
@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/last_update"
-                android:textSize="@dimen/_20sdp" />
+                android:textSize="@dimen/_14sdp" />
 
         </LinearLayout>
 
