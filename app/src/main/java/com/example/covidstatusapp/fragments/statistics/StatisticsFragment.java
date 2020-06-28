@@ -47,8 +47,6 @@ public class StatisticsFragment extends Fragment {
     BarChart barChart;
 
     ArrayList<String> monthsShort;
-    private ImageView optionsImg;
-    AppBarConfiguration appBarConfiguration;
     NavController navController;
     ImageView backImage;
     ProgressBar progressBar;
@@ -73,9 +71,6 @@ public class StatisticsFragment extends Fragment {
         chartTitle = view.findViewById(R.id.chart_title);
         barChart = view.findViewById(R.id.bar_chart_covid_data_analysis);
         progressBar = view.findViewById(R.id.progress);
-
-        optionsImg = view.findViewById(R.id.img_options);
-        backImage = view.findViewById(R.id.toolbar_back_button);
 
 
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(pageTitle);
@@ -125,17 +120,17 @@ public class StatisticsFragment extends Fragment {
 
 
         BarDataSet confirmedSet;
-        confirmedSet = new BarDataSet(data.getConfirmed(), "Confirmed Cases");
+        confirmedSet = new BarDataSet(data.getConfirmed(), "Confirmed");
         confirmedSet.setColor(getResources().getColor(R.color.colorAccent));
         confirmedSet.setValueTextColor(Color.WHITE);
 
         BarDataSet deathSet;
-        deathSet = new BarDataSet(data.getDeaths(), "Death Cases");
+        deathSet = new BarDataSet(data.getDeaths(), "Deaths");
         deathSet.setColor(getResources().getColor(R.color.themeRed));
         deathSet.setValueTextColor(Color.WHITE);
 
         BarDataSet recoveredSet;
-        recoveredSet = new BarDataSet(data.getRecovered(), " Recovered Cases");
+        recoveredSet = new BarDataSet(data.getRecovered(), " Recovered");
         recoveredSet.setColor(getResources().getColor(R.color.themeOrange));
         recoveredSet.setValueTextColor(Color.WHITE);
 
