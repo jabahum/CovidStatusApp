@@ -249,11 +249,11 @@
 
                 <TextView
                     android:id="@+id/global_cases_title"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_marginStart="@dimen/_20sdp"
                     android:gravity="start"
                     android:textSize="18sp"
+                    android:textStyle="bold"
                     android:text="Global Cases"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -408,11 +408,11 @@
 
                 <TextView
                     android:id="@+id/country_cases_title"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_marginStart="@dimen/_20sdp"
                     android:gravity="start"
                     android:textSize="18sp"
+                    android:textStyle="bold"
                     android:text="Country Cases"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
