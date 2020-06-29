@@ -224,4 +224,11 @@ public class CommonUtils {
         Intent shareIntent = Intent.createChooser(sendIntent, null);
         context.startActivity(shareIntent);
     }
+
+    public static String getCurrentTime() {
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        Calendar calendar = GregorianCalendar.getInstance();
+        String currentTimeString = dateFormatter.format(calendar.getTime());
+        return currentTimeString;
+    }
 }
