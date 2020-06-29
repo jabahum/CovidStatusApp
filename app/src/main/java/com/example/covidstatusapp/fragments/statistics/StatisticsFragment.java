@@ -123,20 +123,21 @@ public class StatisticsFragment extends Fragment {
         BarDataSet confirmedSet;
         confirmedSet = new BarDataSet(data.getConfirmed(), "Confirmed");
         confirmedSet.setColor(getResources().getColor(R.color.colorAccent));
-        confirmedSet.setValueTextColor(Color.WHITE);
+        confirmedSet.setValueTextColor(getResources().getColor(R.color.colorAccent));
 
         BarDataSet deathSet;
         deathSet = new BarDataSet(data.getDeaths(), "Deaths");
         deathSet.setColor(getResources().getColor(R.color.themeRed));
-        deathSet.setValueTextColor(Color.WHITE);
+        deathSet.setValueTextColor(getResources().getColor(R.color.themeRed));
 
         BarDataSet recoveredSet;
         recoveredSet = new BarDataSet(data.getRecovered(), " Recovered");
         recoveredSet.setColor(getResources().getColor(R.color.themeOrange));
-        recoveredSet.setValueTextColor(Color.WHITE);
+        recoveredSet.setValueTextColor(getResources().getColor(R.color.themeOrange));
 
         BarData barData = new BarData(confirmedSet,deathSet,recoveredSet);
         barData.setValueFormatter(new LargeValueFormatter());
+
 
         float barWidth = 0.3f;
         float groupSpace = 0.4f;
@@ -155,7 +156,7 @@ public class StatisticsFragment extends Fragment {
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
         l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         l.setDrawInside(true);
-        l.setYOffset(5f);
+        l.setYOffset(20f);
         l.setXOffset(0f);
         l.setYEntrySpace(0f);
         l.setTextSize(8f);
@@ -176,7 +177,7 @@ public class StatisticsFragment extends Fragment {
         YAxis leftAxis = barChart.getAxisLeft();
         leftAxis.setValueFormatter(new LargeValueFormatter());
         leftAxis.setDrawGridLines(false);
-        leftAxis.setSpaceTop(50f);
+        leftAxis.setSpaceTop(35f);
         leftAxis.setAxisMinimum(0f);
         leftAxis.setTextColor(getResources().getColor(R.color.blue));
         leftAxis.setGridColor(getResources().getColor(R.color.blue));
