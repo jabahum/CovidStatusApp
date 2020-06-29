@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent=new Intent(MainActivity.this, DashBoardActivity.class);
             startActivity(intent);
             finish();
-        },3000);
+        },2000);
 
         FontUtils.getFontUtils(MainActivity.this).setTextViewBoldFont(pageTitle);
         FontUtils.getFontUtils(MainActivity.this).setTextViewLightFont(pageSubTitle);

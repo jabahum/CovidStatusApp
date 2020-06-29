@@ -18,8 +18,6 @@ public interface APIinterface {
     @GET("summary")
     Single<SummaryResponse> getSummary();
 
-    //https://api.covid19api.com/total/country/uganda
-
     @GET("/total/country/{country}")
     Single<List<CountryChartModel>> getCountryChartData(@Path("country") String country);
 }

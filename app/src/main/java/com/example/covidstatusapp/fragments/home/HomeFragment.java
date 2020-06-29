@@ -154,25 +154,19 @@ public class HomeFragment extends Fragment {
 
         //countryCode
         codePicker.setOnCountryChangeListener(() -> {
-            String countryName  = codePicker.getSelectedCountryName();
-            SELECTED_COUNTRY = countryName;
+            SELECTED_COUNTRY = codePicker.getSelectedCountryName();
             preferenceManager.setSelectedCountry(SELECTED_COUNTRY);
-
-
         });
 
         //smsButton
         smsButton.setOnClickListener(view -> {
             Uri uri = Uri.parse("smsto:" + "+256800100066");
-
             Intent sms = new Intent(Intent.ACTION_SENDTO, uri);
-
             startActivity(sms);
         });
 
         //callButton
         callbutton.setOnClickListener(view -> {
-
             if (ContextCompat.checkSelfPermission(requireContext(),
                     Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(requireActivity(),
@@ -217,7 +211,6 @@ public class HomeFragment extends Fragment {
         // entry label styling
 
         //Set Fonts
-
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(pageTitle);
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(pageSubTitle);
         FontUtils.getFontUtils(getActivity()).setTextViewLightFont(pageParagraph);
