@@ -48,7 +48,7 @@ public class CommonUtils {
 
 
     public static int month (String date) {
-        Date dateString =  toDate(date,"yyyy-mm-dd"); //new Date(date);
+        Date dateString =  toDate(date,"yyyy-MM-dd"); //new Date(date);
         return dateString.getMonth();
     }
     public static Date toDate(String date, String format) {
