@@ -1,9 +1,9 @@
-package com.example.covidstatusapp.dashboard.models;
+package com.example.covidstatusapp.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ConfirmedCases {
+public class LiveCases {
 
     @SerializedName("Country")
     @Expose

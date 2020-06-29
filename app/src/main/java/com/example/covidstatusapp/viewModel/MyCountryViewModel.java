@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.covidstatusapp.dashboard.models.LiveCases;
+import com.example.covidstatusapp.models.LiveCases;
 import com.example.covidstatusapp.repositories.MyCountryRepository;
 import com.example.covidstatusapp.utils.Resource;
 
