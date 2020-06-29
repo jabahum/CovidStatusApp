@@ -28,7 +28,9 @@ import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.models.Country;
 import com.example.covidstatusapp.models.SummaryResponse;
 import com.example.covidstatusapp.utils.CommonUtils;
+import com.example.covidstatusapp.utils.Config;
 import com.example.covidstatusapp.utils.FontUtils;
+import com.example.covidstatusapp.utils.PreferenceManager;
 import com.example.covidstatusapp.viewModel.GlobalViewModel;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -65,6 +67,7 @@ public class HomeFragment extends Fragment {
     ProgressBar progressBar;
     CountryCodePicker codePicker;
     String SELECTED_COUNTRY;
+    PreferenceManager preferenceManager;
 
 
     @Nullable
@@ -103,6 +106,10 @@ public class HomeFragment extends Fragment {
         cautionTwo = view.findViewById(R.id.txt_caution_2);
         cautionThree = view.findViewById(R.id.txt_caution_3);
         progressBar = view.findViewById(R.id.progressBar);
+
+        preferenceManager = new PreferenceManager(requireContext(), Config.prefName);
+
+
 
         if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, PERMISSIONS_REQUEST_READ_CONTACTS);
@@ -149,6 +156,7 @@ public class HomeFragment extends Fragment {
         codePicker.setOnCountryChangeListener(() -> {
             String countryName  = codePicker.getSelectedCountryName();
             SELECTED_COUNTRY = countryName;
+            preferenceManager.setSelectedCountry(SELECTED_COUNTRY);
 
 
         });
@@ -278,7 +286,7 @@ public class HomeFragment extends Fragment {
     private void setDataCountryDataPieChart(List<Country> countryList) {
         if (countryList != null) {
             for (Country country : countryList) {
-                if (country.getCountry().equals("Uganda")) {
+                if (country.getCountry().equals(preferenceManager.getSelectedCountry())) {
 
 
                     int confirmed = country.getTotalConfirmed();

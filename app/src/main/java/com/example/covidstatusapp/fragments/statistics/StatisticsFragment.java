@@ -21,7 +21,9 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.adapters.CustomPagerAdapter;
 import com.example.covidstatusapp.models.ChartModel;
+import com.example.covidstatusapp.utils.Config;
 import com.example.covidstatusapp.utils.FontUtils;
+import com.example.covidstatusapp.utils.PreferenceManager;
 import com.example.covidstatusapp.viewModel.CountryChartViewModel;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
@@ -48,6 +50,7 @@ public class StatisticsFragment extends Fragment {
     ArrayList<String> monthsShort;
     NavController navController;
     ProgressBar progressBar;
+    PreferenceManager preferenceManager;
 
 
     @Nullable
@@ -73,6 +76,7 @@ public class StatisticsFragment extends Fragment {
 
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(pageTitle);
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(chartTitle);
+        preferenceManager = new PreferenceManager(requireContext(), Config.prefName);
 
         init();
         subscriberObservers();
@@ -84,7 +88,7 @@ public class StatisticsFragment extends Fragment {
     private void subscriberObservers() {
         //Chart data
         chartViewModel = new ViewModelProvider(this).get(CountryChartViewModel.class);
-        chartViewModel.init("uganda");
+        chartViewModel.init(preferenceManager.getSelectedCountry().toLowerCase());
         chartViewModel.observeChartData().removeObservers(getViewLifecycleOwner());
         chartViewModel.observeChartData().observe(getViewLifecycleOwner(), listResource -> {
             switch (listResource.status) {

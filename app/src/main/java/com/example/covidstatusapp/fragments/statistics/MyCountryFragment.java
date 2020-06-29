@@ -15,7 +15,9 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.models.Country;
 import com.example.covidstatusapp.utils.CommonUtils;
+import com.example.covidstatusapp.utils.Config;
 import com.example.covidstatusapp.utils.FontUtils;
+import com.example.covidstatusapp.utils.PreferenceManager;
 import com.example.covidstatusapp.viewModel.GlobalViewModel;
 import com.example.covidstatusapp.viewModel.MyCountryViewModel;
 
@@ -41,6 +43,8 @@ public class MyCountryFragment extends Fragment {
 
     private MyCountryViewModel countryViewModel;
     private GlobalViewModel globalViewModel;
+    PreferenceManager preferenceManager;
+
 
 
 
@@ -65,7 +69,7 @@ public class MyCountryFragment extends Fragment {
         recoveredCasesValue = view.findViewById(R.id.country_txt_recovered_value);
         activeCasesValue = view.findViewById(R.id.country_txt_active_value);
         seriousCasesValue = view.findViewById(R.id.country_txt_serious_value);
-
+        preferenceManager = new PreferenceManager(requireContext(), Config.prefName);
         subscribeObservers();
 
         FontUtils.getFontUtils(getActivity()).setTextViewBoldFont(affectedCases);
@@ -112,7 +116,7 @@ public class MyCountryFragment extends Fragment {
     private void setMyCountrySummary(List<Country> countryList) {
         if (countryList != null) {
             for (Country country : countryList) {
-                if (country.getCountry().equals("Uganda")) {
+                if (country.getCountry().equals(preferenceManager.getSelectedCountry())) {
                     affectedCasesValue.setText(CommonUtils.numberSeparator(country.getTotalConfirmed()));
                     deathsCasesValue.setText(CommonUtils.numberSeparator(country.getTotalDeaths()));
                     recoveredCasesValue.setText(CommonUtils.numberSeparator(country.getTotalRecovered()));
