@@ -65,7 +65,7 @@ public class HomeFragment extends Fragment {
     PieChart mCountryDataPieChart;
     ProgressBar progressBar;
     CountryCodePicker codePicker;
-    private String SELECTED_COUNTRY;
+    String SELECTED_COUNTRY;
 
 
     @Nullable
@@ -271,7 +271,7 @@ public class HomeFragment extends Fragment {
         mGlobalDataPieChart.highlightValues(null);
         mGlobalDataPieChart.setCenterText("Update:\n" + summaryResponse.getDate()
                 .replace("T","\n")
-                .replace(".000Z",""));
+                .replace(".[0-9]Z",""));
         mGlobalDataPieChart.invalidate();
 
     }
