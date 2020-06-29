@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.models.Country;
+import com.example.covidstatusapp.utils.CommonUtils;
 import com.example.covidstatusapp.utils.FontUtils;
 import com.example.covidstatusapp.viewModel.GlobalViewModel;
 import com.example.covidstatusapp.viewModel.MyCountryViewModel;
@@ -21,6 +22,8 @@ import com.example.covidstatusapp.viewModel.MyCountryViewModel;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
+
+import static com.example.covidstatusapp.utils.CommonUtils.numberSeparator;
 
 public class MyCountryFragment extends Fragment {
 
@@ -110,10 +113,10 @@ public class MyCountryFragment extends Fragment {
         if (countryList != null) {
             for (Country country : countryList) {
                 if (country.getCountry().equals("Uganda")) {
-                    affectedCasesValue.setText(numberSeparator(country.getTotalConfirmed()));
-                    deathsCasesValue.setText(numberSeparator(country.getTotalDeaths()));
-                    recoveredCasesValue.setText(numberSeparator(country.getTotalRecovered()));
-                    activeCasesValue.setText(numberSeparator(country.getNewConfirmed()));
+                    affectedCasesValue.setText(CommonUtils.numberSeparator(country.getTotalConfirmed()));
+                    deathsCasesValue.setText(CommonUtils.numberSeparator(country.getTotalDeaths()));
+                    recoveredCasesValue.setText(CommonUtils.numberSeparator(country.getTotalRecovered()));
+                    activeCasesValue.setText(CommonUtils.numberSeparator(country.getNewConfirmed()));
                 }
 
             }
@@ -121,7 +124,5 @@ public class MyCountryFragment extends Fragment {
         }
     }
 
-    private String numberSeparator(int value) {
-        return String.valueOf(NumberFormat.getNumberInstance(Locale.UK).format(value));
-    }
+
 }

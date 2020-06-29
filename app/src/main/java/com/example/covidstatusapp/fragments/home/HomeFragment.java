@@ -27,7 +27,6 @@ import androidx.navigation.Navigation;
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.models.Country;
 import com.example.covidstatusapp.models.SummaryResponse;
-import com.example.covidstatusapp.utils.ChartUtils;
 import com.example.covidstatusapp.utils.CommonUtils;
 import com.example.covidstatusapp.utils.FontUtils;
 import com.example.covidstatusapp.viewModel.GlobalViewModel;
@@ -236,9 +235,9 @@ public class HomeFragment extends Fragment {
         int death = summaryResponse.getGlobal().getTotalDeaths();
         int recovered = summaryResponse.getGlobal().getTotalRecovered();
 
-        mConfirmed.setText(ChartUtils.numberSeparator(confirmed));
-        mDeath.setText(ChartUtils.numberSeparator(death));
-        mRecovered.setText(ChartUtils.numberSeparator(recovered));
+        mConfirmed.setText(CommonUtils.numberSeparator(confirmed));
+        mDeath.setText(CommonUtils.numberSeparator(death));
+        mRecovered.setText(CommonUtils.numberSeparator(recovered));
 
         ArrayList<PieEntry> entries = new ArrayList<>();
 
@@ -286,9 +285,9 @@ public class HomeFragment extends Fragment {
                     int death = country.getTotalDeaths();
                     int recovered = country.getTotalRecovered();
 
-                    countryConfirmed.setText(ChartUtils.numberSeparator(confirmed));
-                    countryDeath.setText(ChartUtils.numberSeparator(death));
-                    countryRecovered.setText(ChartUtils.numberSeparator(recovered));
+                    countryConfirmed.setText(CommonUtils.numberSeparator(confirmed));
+                    countryDeath.setText(CommonUtils.numberSeparator(death));
+                    countryRecovered.setText(CommonUtils.numberSeparator(recovered));
 
 
                     ArrayList<PieEntry> entries = new ArrayList<>();

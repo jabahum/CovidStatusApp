@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 import android.util.Base64;
 import android.util.DisplayMetrics;
@@ -12,6 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 
 import java.io.ByteArrayOutputStream;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,6 +35,9 @@ public class CommonUtils {
         }
     }
 
+    public static String numberSeparator(int value) {
+        return String.valueOf(NumberFormat.getNumberInstance(Locale.US).format(value));
+    }
 
     public static boolean isSimCardAvailable(Context context) {
 
@@ -230,5 +236,28 @@ public class CommonUtils {
         Calendar calendar = GregorianCalendar.getInstance();
         String currentTimeString = dateFormatter.format(calendar.getTime());
         return currentTimeString;
+    }
+
+    public static String getConnectivityStatusString(Context context) {
+        String status = null;
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = null;
+        if (cm != null) {
+            activeNetwork = cm.getActiveNetworkInfo();
+            if (activeNetwork != null) {
+                if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
+                    status = "Wifi enabled";
+                    return status;
+                } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
+                    status = "Mobile data enabled";
+                    return status;
+                }
+            } else {
+                status = "No internet is available";
+                return status;
+            }
+        }
+
+        return status;
     }
 }

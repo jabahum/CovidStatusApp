@@ -14,11 +14,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.models.Global;
+import com.example.covidstatusapp.utils.CommonUtils;
 import com.example.covidstatusapp.utils.FontUtils;
 import com.example.covidstatusapp.viewModel.GlobalViewModel;
 
 import java.text.NumberFormat;
 import java.util.Locale;
+
+import static com.example.covidstatusapp.utils.CommonUtils.numberSeparator;
 
 public class GlobalFragment extends Fragment {
 
@@ -101,14 +104,12 @@ public class GlobalFragment extends Fragment {
 
     private void setGlobalSummary(Global globalSummary) {
         if (globalSummary !=null){
-            affectedCasesValue.setText(numberSeparator(globalSummary.getTotalConfirmed()));
-            deathsCasesValue.setText(numberSeparator(globalSummary.getTotalDeaths()));
-            recoveredCasesValue.setText(numberSeparator(globalSummary.getTotalRecovered()));
-            activeCasesValue.setText(numberSeparator(globalSummary.getNewConfirmed()));
+            affectedCasesValue.setText(CommonUtils.numberSeparator(globalSummary.getTotalConfirmed()));
+            deathsCasesValue.setText(CommonUtils.numberSeparator(globalSummary.getTotalDeaths()));
+            recoveredCasesValue.setText(CommonUtils.numberSeparator(globalSummary.getTotalRecovered()));
+            activeCasesValue.setText(CommonUtils.numberSeparator(globalSummary.getNewConfirmed()));
         }
     }
 
-    private String numberSeparator(int value) {
-        return String.valueOf(NumberFormat.getNumberInstance(Locale.UK).format(value));
-    }
+
 }
