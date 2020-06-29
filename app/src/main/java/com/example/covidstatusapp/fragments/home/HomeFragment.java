@@ -148,7 +148,9 @@ public class HomeFragment extends Fragment {
 
         //countryCode
         codePicker.setOnCountryChangeListener(() -> {
-            SELECTED_COUNTRY = codePicker.getSelectedCountryName();
+            String countryName  = codePicker.getSelectedCountryName();
+            SELECTED_COUNTRY = countryName;
+
 
         });
 
