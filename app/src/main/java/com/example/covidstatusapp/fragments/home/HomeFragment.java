@@ -322,7 +322,7 @@ public class HomeFragment extends Fragment {
                     mCountryDataPieChart.highlightValues(null);
                     mCountryDataPieChart.setCenterText("Update:\n" + country.getDate()
                             .replace("T","\n")
-                            .replace(".000Z",""));
+                            .replace("Z",""));
 
                     mCountryDataPieChart.invalidate();
 
