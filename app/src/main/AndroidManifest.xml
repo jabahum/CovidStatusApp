@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".dashboard.DashBoardActivity"
+        <activity android:name=".activities.DashBoardActivity"
             android:screenOrientation="unspecified"/>
         <activity android:name=".countrydetails.DetailsActivity"
             android:screenOrientation="unspecified"/>

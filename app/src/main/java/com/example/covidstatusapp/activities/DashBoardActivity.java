@@ -1,4 +1,4 @@
-package com.example.covidstatusapp.dashboard;
+package com.example.covidstatusapp.activities;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
