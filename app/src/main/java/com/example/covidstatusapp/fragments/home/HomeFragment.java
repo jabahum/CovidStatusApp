@@ -266,6 +266,12 @@ public class HomeFragment extends Fragment {
 
         PieData data = new PieData(dataSet);
         mGlobalDataPieChart.setData(data);
+
+        // undo all highlights
+        mGlobalDataPieChart.highlightValues(null);
+        mGlobalDataPieChart.setCenterText("Update:\n" + summaryResponse.getDate()
+                .replace("T","\n")
+                .replace(".000Z",""));
         mGlobalDataPieChart.invalidate();
 
     }
@@ -311,6 +317,13 @@ public class HomeFragment extends Fragment {
 
                     PieData data = new PieData(dataSet);
                     mCountryDataPieChart.setData(data);
+
+
+                    // undo all highlights
+                    mCountryDataPieChart.highlightValues(null);
+                    mCountryDataPieChart.setCenterText("Update:\n" + country.getDate()
+                            .replace("T","\n")
+                            .replace(".000Z",""));
 
                     mCountryDataPieChart.invalidate();
 
