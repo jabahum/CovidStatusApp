@@ -8,17 +8,13 @@ import androidx.lifecycle.ViewModel;
 import com.example.covidstatusapp.models.ChartModel;
 import com.example.covidstatusapp.models.CountryChartModel;
 import com.example.covidstatusapp.repositories.CountryChartRepository;
+import com.example.covidstatusapp.utils.CommonUtils;
 import com.example.covidstatusapp.utils.Resource;
 import com.github.mikephil.charting.data.BarEntry;
 
 import java.text.DateFormatSymbols;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class CountryChartViewModel extends ViewModel {
     private MutableLiveData<Resource<List<CountryChartModel>>> mutableLiveData;
@@ -77,29 +73,32 @@ public class CountryChartViewModel extends ViewModel {
             chartData.addSource(countrySource, listResource -> {
                 if (listResource.status == Resource.Status.ERROR || listResource.status == Resource.Status.SUCCESS) {
                     if (listResource.status == Resource.Status.SUCCESS) {
-                        for (CountryChartModel countryChartModel : listResource.data) {
-                            BarEntry barEntry = confirmedBarEntry.get(month(countryChartModel.getDate()));
-                            barEntry.setY(barEntry.getY() + countryChartModel.getConfirmed());
-                            confirmedBarEntry.set(month(countryChartModel.getDate()), barEntry);
+                        if (listResource.data != null) {
+                            for (CountryChartModel countryChartModel : listResource.data) {
+                                BarEntry barEntry = confirmedBarEntry.get(CommonUtils.month(countryChartModel.getDate()));
+                                barEntry.setY(barEntry.getY() + countryChartModel.getConfirmed());
+                                confirmedBarEntry.set(CommonUtils.month(countryChartModel.getDate()), barEntry);
 
+                            }
+                            tempChartModel.setConfirmed(confirmedBarEntry);
+
+                            for (CountryChartModel countryChartModel : listResource.data) {
+                                BarEntry barEntry = deathsBarEntry.get(CommonUtils.month(countryChartModel.getDate()));
+                                barEntry.setY(barEntry.getY() + countryChartModel.getDeaths());
+                                deathsBarEntry.set(CommonUtils.month(countryChartModel.getDate()), barEntry);
+
+                            }
+
+                            tempChartModel.setDeaths(deathsBarEntry);
+                            for (CountryChartModel countryChartModel : listResource.data) {
+                                BarEntry barEntry = recoveredBarEntry.get(CommonUtils.month(countryChartModel.getDate()));
+                                barEntry.setY(barEntry.getY() + countryChartModel.getRecovered());
+                                recoveredBarEntry.set(CommonUtils.month(countryChartModel.getDate()), barEntry);
+
+                            }
+
+                            tempChartModel.setRecovered(recoveredBarEntry);
                         }
-
-                        for (CountryChartModel countryChartModel : listResource.data) {
-                            BarEntry barEntry = deathsBarEntry.get(month(countryChartModel.getDate()));
-                            barEntry.setY(barEntry.getY() + countryChartModel.getDeaths());
-                            deathsBarEntry.set(month(countryChartModel.getDate()), barEntry);
-
-                        }
-                        for (CountryChartModel countryChartModel : listResource.data) {
-                            BarEntry barEntry = recoveredBarEntry.get(month(countryChartModel.getDate()));
-                            barEntry.setY(barEntry.getY() + countryChartModel.getRecovered());
-                            recoveredBarEntry.set(month(countryChartModel.getDate()), barEntry);
-
-                        }
-
-                        tempChartModel.setConfirmed(confirmedBarEntry);
-                        tempChartModel.setDeaths(deathsBarEntry);
-                        tempChartModel.setRecovered(recoveredBarEntry);
 
                     }
 
@@ -112,26 +111,6 @@ public class CountryChartViewModel extends ViewModel {
         }
 
         return chartData;
-    }
-
-
-    private int month (String date) {
-        Date dateString =  toDate(date,"yyyy-mm-dd"); //new Date(date);
-        return dateString.getMonth();
-    }
-
-    /*private int toMonth (String date) {
-        LocalDateTime dateString = new LocalDateTime(date).getDayOfMonth(); //new Date(date);
-        return dateString.getMonth();
-    }*/
-
-    public static Date toDate(String date, String format) {
-        try {
-            return new SimpleDateFormat(format, Locale.US).parse(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 
 }

@@ -271,7 +271,7 @@ public class HomeFragment extends Fragment {
         mGlobalDataPieChart.highlightValues(null);
         mGlobalDataPieChart.setCenterText("Update:\n" + summaryResponse.getDate()
                 .replace("T","\n")
-                .replace(".[0-9]Z",""));
+                .replaceAll("Z",""));
         mGlobalDataPieChart.invalidate();
 
     }
