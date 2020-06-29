@@ -25,14 +25,8 @@ public class DashBoardActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     BottomNavigationView bottomNavigationView;
-
-    ArrayAdapter<String> countriesArrayAdapter;
-    ArrayList<String> countriesList;
-    String countrySelected;
-
     NavHostFragment navHostFragment;
 
-    //CountriesViewModel countriesViewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
