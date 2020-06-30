@@ -156,6 +156,7 @@ public class HomeFragment extends Fragment {
         codePicker.setOnCountryChangeListener(() -> {
             SELECTED_COUNTRY = codePicker.getSelectedCountryName();
             preferenceManager.setSelectedCountry(SELECTED_COUNTRY);
+            subscribeObservers();
         });
 
         //smsButton
