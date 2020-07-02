@@ -44,6 +44,8 @@
     <string name="txt_email">jabajnan8@gmail.com</string>
     <string name="todo">TODO</string>
     <string name="info">Info</string>
+    <string name="please_wait">PLEASE WAIT...</string>
+
 
     <string name="home_global_data">Global Cases</string>
     <string name="home_confirmed">Confirmed</string>

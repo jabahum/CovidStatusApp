@@ -74,13 +74,19 @@ public class GlobalFragment extends BaseFragment<GlobalFragmentBinding, GlobalVi
             if (summaryResponseResource != null) {
                 switch (summaryResponseResource.status) {
                     case ERROR:
+                        hideLoading();
+                        binding.setLoading(false);
                         Toast.makeText(getActivity(), "Failed to Fetch Data", Toast.LENGTH_SHORT).show();
                         break;
                     case LOADING:
+                        hideLoading();
+                        showLoading("Loading..");
                         break;
                     case SUCCESS:
                         if (summaryResponseResource.data != null) {
                             setGlobalSummary(summaryResponseResource.data.getGlobal());
+                            hideLoading();
+                            binding.setLoading(false);
                         }
                         break;
                 }

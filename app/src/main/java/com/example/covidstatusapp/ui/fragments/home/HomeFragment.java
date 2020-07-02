@@ -90,17 +90,20 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, GlobalViewMo
             if (summaryResponseResource != null) {
                 switch (summaryResponseResource.status) {
                     case ERROR:
-                        binding.progressBar.setVisibility(View.GONE);
+                        hideLoading();
+                        binding.setLoading(false);
                         Toast.makeText(getActivity(), "Failed to Fetch Data", Toast.LENGTH_SHORT).show();
                         break;
                     case LOADING:
-                        binding.progressBar.setVisibility(View.VISIBLE);
+                        binding.setLoading(true);
+                        showLoading("PLEASE WAIT ...");
                         break;
                     case SUCCESS:
                         if (summaryResponseResource.data != null) {
                             setDataGlobalDataPieChart(summaryResponseResource.data);
                             setDataCountryDataPieChart(summaryResponseResource.data.getCountries());
-                            binding.progressBar.setVisibility(View.GONE);
+                            hideLoading();
+                            binding.setLoading(false);
                         }
                         break;
                 }

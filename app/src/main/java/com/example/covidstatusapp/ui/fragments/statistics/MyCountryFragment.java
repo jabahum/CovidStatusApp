@@ -74,13 +74,19 @@ public class MyCountryFragment extends BaseFragment<MycountryFragmentBinding, Gl
             if (summaryResponseResource != null) {
                 switch (summaryResponseResource.status) {
                     case ERROR:
+                        hideLoading();
+                        binding.setLoading(false);
                         Toast.makeText(getActivity(), "Failed to Fetch Data", Toast.LENGTH_SHORT).show();
                         break;
                     case LOADING:
+                        binding.setLoading(true);
+                        showLoading("Loading...");
                         break;
                     case SUCCESS:
                         if (summaryResponseResource.data != null) {
                             setMyCountrySummary(summaryResponseResource.data.getCountries());
+                            hideLoading();
+                            binding.setLoading(false);
                         }
                         break;
                 }
