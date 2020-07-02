@@ -1,26 +1,21 @@
 <resources>
     <string name="app_name">CovidStatus</string>
-    <string name="select_country">UG</string>
-    <string name="e_africa">E.Africa</string>
-    <string name="world">World</string>
-    <string name="uganda">Uganda</string>
-    <string name="africa">Africa</string>
-    <string name="from">From</string>
-    <string name="to">To</string>
-    <string name="from_date">2020-05-25</string>
-    <string name="to_date">2020-05-25</string>
+
     <string name="confirmed_cases">Confirmed Cases</string>
     <string name="recovered_cases">Recovered Cases</string>
     <string name="deaths_cases">Deaths Cases</string>
+
     <string name="title_prevention">Prevention</string>
     <string name="home">Home</string>
     <string name="statistics">Statistics</string>
     <string name="about">About</string>
+
     <string name="clean_your_hand_n_often">Clean Your Hand \n Often</string>
     <string name="avoid_close_contact">Avoid Close \n Contact</string>
     <string name="wear_a_face_mask">Wear a Face \n Mask</string>
     <string name="are_you_feeling_sick">Are you feeling sick ?</string>
     <string name="if_you_are_feeling_sick_with_any_of_the_covid_19_symptoms_please_cal_or_sms_us_immediately_for_help">If you are feeling sick with any of the covid-19  symptoms \n please call or SMS us immediately for help</string>
+
     <string name="covid_19">Covid-19</string>
     <string name="title_statistics">Statistics</string>
     <string name="title_about">About</string>
@@ -44,7 +39,7 @@
     <string name="txt_email">jabajnan8@gmail.com</string>
     <string name="todo">TODO</string>
     <string name="info">Info</string>
-    <string name="please_wait">PLEASE WAIT...</string>
+    <string name="please_wait">PLEASE WAIT…</string>
 
 
     <string name="home_global_data">Global Cases</string>

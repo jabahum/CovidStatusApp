@@ -20,11 +20,9 @@ import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.Navigator;
 
-
 import com.crowdfire.cfalertdialog.CFAlertDialog;
 import com.example.covidstatusapp.R;
 import com.tbruyelle.rxpermissions2.RxPermissions;
-
 
 import dagger.android.support.DaggerFragment;
 import timber.log.Timber;

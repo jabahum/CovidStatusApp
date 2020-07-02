@@ -20,10 +20,6 @@ import com.example.covidstatusapp.ui.viewModel.GlobalViewModel;
 
 import javax.inject.Inject;
 
-import static com.example.covidstatusapp.ui.utils.Resource.Status.ERROR;
-import static com.example.covidstatusapp.ui.utils.Resource.Status.LOADING;
-import static com.example.covidstatusapp.ui.utils.Resource.Status.SUCCESS;
-
 
 public class GlobalFragment extends BaseFragment<GlobalFragmentBinding, GlobalViewModel> {
 

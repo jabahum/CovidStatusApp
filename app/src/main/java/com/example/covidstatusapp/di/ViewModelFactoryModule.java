@@ -2,7 +2,6 @@ package com.example.covidstatusapp.di;
 
 import androidx.lifecycle.ViewModelProvider;
 
-
 import com.example.covidstatusapp.ViewModelProviderFactory;
 
 import dagger.Binds;

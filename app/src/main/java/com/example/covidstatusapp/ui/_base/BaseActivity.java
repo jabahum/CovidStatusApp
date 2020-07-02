@@ -15,7 +15,6 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentManager;
 
-
 import com.example.covidstatusapp.ui.utils.CustomLoader;
 import com.example.covidstatusapp.ui.utils.NetworkUtils;
 import com.tbruyelle.rxpermissions2.RxPermissions;

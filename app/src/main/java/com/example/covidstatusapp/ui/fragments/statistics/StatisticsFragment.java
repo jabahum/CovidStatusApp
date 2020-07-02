@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.ViewModelProviderFactory;
 import com.example.covidstatusapp.databinding.StatisticsFragmentBinding;
-import com.example.covidstatusapp.network.MainApi;
 import com.example.covidstatusapp.ui._base.BaseFragment;
 import com.example.covidstatusapp.ui.adapters.CustomPagerAdapter;
 import com.example.covidstatusapp.ui.models.ChartModel;

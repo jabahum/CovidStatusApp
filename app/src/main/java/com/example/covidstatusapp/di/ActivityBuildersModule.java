@@ -1,6 +1,5 @@
 package com.example.covidstatusapp.di;
 
-import com.example.covidstatusapp.di.modules.AppModule;
 import com.example.covidstatusapp.di.modules.main.MainBuildersModule;
 import com.example.covidstatusapp.di.modules.main.MainModule;
 import com.example.covidstatusapp.di.modules.main.MainScope;
