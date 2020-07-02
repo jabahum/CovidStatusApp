@@ -23,7 +23,7 @@
     <color name="ic_sms_background">#FFFFFF</color>
     <color name="ic_spinner_arrow_background">#FFFFFF</color>
     <color name="ic_statistics_background">#FFFFFF</color>
-
+    <color name="sv_low_color">#F44336</color>
     <color name="themeOrange">#ffb259</color>
     <color name="themeRed">#ff5959</color>
 

@@ -1,6 +1,7 @@
+/*
 package com.example.covidstatusapp.network;
 
-import com.example.covidstatusapp.utils.Config;
+import com.example.covidstatusapp.ui.utils.Constants;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -17,7 +18,7 @@ public class APIClient {
 
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl(Config.base_Url)
+                    .baseUrl(Constants.base_Url)
                     .client(setLogging())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
@@ -36,3 +37,4 @@ public class APIClient {
     }
 
 }
+*/

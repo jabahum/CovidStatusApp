@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.covidstatusapp.fragments.home.HomeFragment"
+        android:name="com.example.covidstatusapp.ui.fragments.home.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/home_fragment" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/statisticsFragment"
-        android:name="com.example.covidstatusapp.fragments.statistics.StatisticsFragment"
+        android:name="com.example.covidstatusapp.ui.fragments.statistics.StatisticsFragment"
         android:label="StatisticsFragment"
         tools:layout="@layout/statistics_fragment">
 
@@ -29,17 +29,17 @@
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.example.covidstatusapp.fragments.AboutFragment"
+        android:name="com.example.covidstatusapp.ui.fragments.AboutFragment"
         android:label="AboutFragment"
         tools:layout="@layout/about_fragment" />
     <fragment
         android:id="@+id/myCountryFragment"
-        android:name="com.example.covidstatusapp.fragments.statistics.MyCountryFragment"
+        android:name="com.example.covidstatusapp.ui.fragments.statistics.MyCountryFragment"
         android:label="MyCountryFragment"
         tools:layout="@layout/mycountry_fragment" />
     <fragment
         android:id="@+id/globalFragment"
-        android:name="com.example.covidstatusapp.fragments.statistics.GlobalFragment"
+        android:name="com.example.covidstatusapp.ui.fragments.statistics.GlobalFragment"
         android:label="GlobalFragment"
         tools:layout="@layout/global_fragment"/>
 </navigation>

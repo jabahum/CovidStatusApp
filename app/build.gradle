@@ -47,12 +47,25 @@ dependencies {
     def constraint_version = "1.1.3"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
 
+    def cf_alert_version = "1.3.1"
+    implementation "com.crowdfire.cfalertdialog:cfalertdialog:$cf_alert_version"
+
     /**
      * Testing libraries/dependencies
      * */
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    def auto_value_moshi_version = "0.4.7"
+    annotationProcessor "com.ryanharter.auto.value:auto-value-moshi:$auto_value_moshi_version"
+    compileOnly "com.ryanharter.auto.value:auto-value-moshi-annotations:$auto_value_moshi_version"
+
+    def auto_value_parcel_version = "0.2.8"
+    annotationProcessor "com.ryanharter.auto.value:auto-value-parcel:$auto_value_parcel_version"
+    implementation "com.ryanharter.auto.value:auto-value-parcel-adapter:$auto_value_parcel_version"
+
+
 
 
     /**
@@ -105,6 +118,9 @@ dependencies {
 
     def reactivestreams_version = "1.1.1"
     implementation "android.arch.lifecycle:reactivestreams:$reactivestreams_version"
+
+    def rxpermission_version = "0.10.2"
+    implementation "com.github.tbruyelle:rxpermissions:$rxpermission_version"
 
 
 

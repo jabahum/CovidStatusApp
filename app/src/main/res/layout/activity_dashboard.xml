@@ -23,7 +23,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bottom_navigation_background"
-
             app:layout_constraintBottom_toBottomOf="@id/nav_host_fragment"
             app:menu="@menu/navigation"
 
