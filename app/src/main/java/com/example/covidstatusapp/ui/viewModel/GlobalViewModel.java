@@ -36,7 +36,7 @@ public class GlobalViewModel extends BaseViewModel {
             final LiveData<Resource<SummaryResponse>> source = LiveDataReactiveStreams.fromPublisher(
                     mainApi.getSummary()
                             .toFlowable()
-                            .onErrorReturn((Throwable throwable) -> {
+                            .onErrorReturn(throwable -> {
                                 SummaryResponse responseError = new SummaryResponse();
                                 responseError.setDate("-1");
                                 return responseError;
