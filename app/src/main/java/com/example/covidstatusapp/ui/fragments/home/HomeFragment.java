@@ -118,8 +118,8 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, GlobalViewMo
         //countryCode
         binding.spCountries.setOnCountryChangeListener(() -> {
             SELECTED_COUNTRY = binding.spCountries.getSelectedCountryName();
-            //preferenceManager.(SELECTED_COUNTRY);
-            subscribeObservers();
+            preferenceManager.setSelectedCountry(SELECTED_COUNTRY);
+            //subscribeObservers();
         });
 
         //smsButton
@@ -177,7 +177,11 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, GlobalViewMo
     }
 
 
-
+    @Override
+    public void onResume() {
+        subscribeObservers();
+        super.onResume();
+    }
 
     @SuppressLint("ResourceType")
     private void setDataGlobalDataPieChart(SummaryResponse summaryResponse) {
