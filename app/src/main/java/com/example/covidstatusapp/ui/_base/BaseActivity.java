@@ -122,7 +122,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends DaggerAppC
     public void shareApp(){
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "Let's farm with EzyAgric!, it's a fast and simple app we can use for our Agricultural needs.Get it at https://play.google.com/store/apps/details?id=com.ezyagric.extension.android");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "Lets Be up to date with current Covid-19 Status ");
         sendIntent.setType("text/plain");
 
         Intent shareIntent = Intent.createChooser(sendIntent, null);
