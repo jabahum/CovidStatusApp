@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activities.DashBoardActivity"
-            android:screenOrientation="unspecified"/>
+            android:screenOrientation="sensorPortrait"/>
     </application>
 
 </manifest>
