@@ -36,9 +36,13 @@ public class GlobalViewModel extends BaseViewModel {
             final LiveData<Resource<SummaryResponse>> source = LiveDataReactiveStreams.fromPublisher(
                     mainApi.getSummary()
                             .toFlowable()
-                            .onErrorReturn(throwable -> new SummaryResponse())
+                            .onErrorReturn((Throwable throwable) -> {
+                                SummaryResponse responseError = new SummaryResponse();
+                                responseError.setDate("-1");
+                                return responseError;
+                            })
                             .map((Function<SummaryResponse, Resource<SummaryResponse>>) summaryResponse -> {
-                                if (summaryResponse == null) {
+                                if (summaryResponse == null || summaryResponse.getDate().equals("-1")) {
                                     return Resource.error("Error Couldn't Fetch Data", null);
                                 }
                                 return Resource.success(summaryResponse);
