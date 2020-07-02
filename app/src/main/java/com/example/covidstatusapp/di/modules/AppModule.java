@@ -3,7 +3,7 @@ package com.example.covidstatusapp.di.modules;
 import android.app.Application;
 
 import com.example.covidstatusapp.ui.utils.Constants;
-import com.example.covidstatusapp.ui.utils.sharedPreferences.AppPreferenceManager;
+import com.example.covidstatusapp.ui.utils.sharedPreferences.AppPreferenceManagerHelper;
 import com.example.covidstatusapp.ui.utils.sharedPreferences.PreferenceManager;
 
 import java.util.concurrent.TimeUnit;
@@ -62,7 +62,7 @@ public class AppModule {
 
     @Provides
     @Singleton
-    AppPreferenceManager providePreferenceManager(Application context, @Named("PREF_NAME") String prefName) {
+    AppPreferenceManagerHelper providePreferenceManager(Application context, @Named("PREF_NAME") String prefName) {
         return new PreferenceManager(context, prefName);
     }
 

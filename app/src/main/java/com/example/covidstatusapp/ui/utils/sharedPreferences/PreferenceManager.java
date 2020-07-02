@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
 /**
  * Created by jaba
  */
-public class PreferenceManager implements AppPreferenceManager  {
+public class PreferenceManager implements AppPreferenceManagerHelper {
 
     private static final String SELECTED_COUNTRY = "SelectedCountry";
 

@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,7 +19,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.ViewModelProviderFactory;
 import com.example.covidstatusapp.databinding.HomeFragmentBinding;
-import com.example.covidstatusapp.network.MainApi;
 import com.example.covidstatusapp.ui._base.BaseFragment;
 import com.example.covidstatusapp.ui.models.Country;
 import com.example.covidstatusapp.ui.models.SummaryResponse;
@@ -32,7 +30,6 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.MPPointF;
-import com.hbb20.CountryCodePicker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,9 +44,6 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, GlobalViewMo
 
     int PERMISSIONS_REQUEST_READ_CONTACTS = 101;
 
-
-    ProgressBar progressBar;
-    CountryCodePicker codePicker;
     String SELECTED_COUNTRY;
 
 
@@ -96,17 +90,17 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, GlobalViewMo
             if (summaryResponseResource != null) {
                 switch (summaryResponseResource.status) {
                     case ERROR:
-                        progressBar.setVisibility(View.GONE);
+                        binding.progressBar.setVisibility(View.GONE);
                         Toast.makeText(getActivity(), "Failed to Fetch Data", Toast.LENGTH_SHORT).show();
                         break;
                     case LOADING:
-                        progressBar.setVisibility(View.VISIBLE);
+                        binding.progressBar.setVisibility(View.VISIBLE);
                         break;
                     case SUCCESS:
                         if (summaryResponseResource.data != null) {
                             setDataGlobalDataPieChart(summaryResponseResource.data);
                             setDataCountryDataPieChart(summaryResponseResource.data.getCountries());
-                            progressBar.setVisibility(View.GONE);
+                            binding.progressBar.setVisibility(View.GONE);
                         }
                         break;
                 }
@@ -119,8 +113,8 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, GlobalViewMo
     private void init() {
 
         //countryCode
-        codePicker.setOnCountryChangeListener(() -> {
-            SELECTED_COUNTRY = codePicker.getSelectedCountryName();
+        binding.spCountries.setOnCountryChangeListener(() -> {
+            SELECTED_COUNTRY = binding.spCountries.getSelectedCountryName();
             //preferenceManager.(SELECTED_COUNTRY);
             subscribeObservers();
         });

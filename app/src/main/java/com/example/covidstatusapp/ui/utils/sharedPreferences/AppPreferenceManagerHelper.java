@@ -1,6 +1,6 @@
 package com.example.covidstatusapp.ui.utils.sharedPreferences;
 
-public interface AppPreferenceManager {
+public interface AppPreferenceManagerHelper {
     void setSelectedCountry(String selectedCountry);
     String getSelectedCountry();
 }
