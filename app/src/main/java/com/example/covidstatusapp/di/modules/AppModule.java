@@ -65,4 +65,6 @@ public class AppModule {
     AppPreferenceManager providePreferenceManager(Application context, @Named("PREF_NAME") String prefName) {
         return new PreferenceManager(context, prefName);
     }
+
+
 }

@@ -1,12 +1,19 @@
 package com.example.covidstatusapp.di.modules.main;
 
 
+import android.app.Application;
+
 import com.example.covidstatusapp.network.MainApi;
 import com.example.covidstatusapp.ui.utils.Constants;
+import com.example.covidstatusapp.ui.utils.sharedPreferences.AppPreferenceManager;
+import com.example.covidstatusapp.ui.utils.sharedPreferences.PreferenceManager;
 
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import javax.inject.Named;
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -17,11 +24,8 @@ public class MainModule {
 
     @MainScope
     @Provides
-    static MainApi provideMainApi(Retrofit.Builder retrofitBuilder) {
-        return retrofitBuilder
-                .baseUrl(Constants.base_Url)
-                .build()
-                .create(MainApi.class);
+    static MainApi provideMainApi(Retrofit retrofit){
+        return retrofit.create(MainApi.class);
     }
 
     // Months
