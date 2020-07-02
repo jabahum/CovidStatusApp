@@ -34,26 +34,6 @@ public class AppModule {
     }
 
     @Provides
-    @Singleton
-    static OkHttpClient okHttpClient(HttpLoggingInterceptor loggingInterceptor, Cache cache) {
-        return new OkHttpClient.Builder()
-                .addInterceptor(loggingInterceptor)
-                .connectTimeout(100, TimeUnit.SECONDS)
-                .readTimeout(100, TimeUnit.SECONDS)
-                .cache(cache)
-                .build();
-    }
-
-    @Provides
-    @Singleton
-    static HttpLoggingInterceptor loggingInterceptor() {
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(message -> Timber.i(message));
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        return interceptor;
-    }
-
-
-    @Provides
     @Named("PREF_NAME")
     String providePreferenceName() {
         return Constants.prefName;

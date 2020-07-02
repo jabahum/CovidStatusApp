@@ -119,7 +119,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, GlobalViewMo
         binding.spCountries.setOnCountryChangeListener(() -> {
             SELECTED_COUNTRY = binding.spCountries.getSelectedCountryName();
             preferenceManager.setSelectedCountry(SELECTED_COUNTRY);
-            //subscribeObservers();
+            subscribeObservers();
         });
 
         //smsButton
@@ -233,7 +233,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, GlobalViewMo
     private void setDataCountryDataPieChart(List<Country> countryList) {
         if (countryList != null) {
             for (Country country : countryList) {
-                if (country.getCountry().equals("uganda")) {
+                if (country.getCountry().equals(preferenceManager.getSelectedCountry())) {
 
 
                     int confirmed = country.getTotalConfirmed();
