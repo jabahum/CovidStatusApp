@@ -3,7 +3,7 @@ package com.example.covidstatusapp.ui.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public abstract class Global {
+public class Global {
 
     @SerializedName("NewConfirmed")
     @Expose

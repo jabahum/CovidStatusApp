@@ -87,8 +87,8 @@ public class StatisticsFragment extends BaseFragment<StatisticsFragmentBinding, 
             switch (listResource.status) {
 
                 case SUCCESS:
-                    setChartData(listResource.data);
                     hideLoading();
+                    setChartData(listResource.data);
                     break;
                 case ERROR:
                 case LOADING:

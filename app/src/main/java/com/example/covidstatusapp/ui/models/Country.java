@@ -4,7 +4,7 @@ package com.example.covidstatusapp.ui.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public abstract class Country {
+public  class Country {
 
     @SerializedName("Country")
     @Expose

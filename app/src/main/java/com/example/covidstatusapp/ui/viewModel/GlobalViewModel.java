@@ -19,7 +19,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class GlobalViewModel extends BaseViewModel {
 
-    private MainApi mainApi;
+    private final MainApi mainApi;
     private MediatorLiveData<Resource<SummaryResponse>> data;
 
     @Inject
