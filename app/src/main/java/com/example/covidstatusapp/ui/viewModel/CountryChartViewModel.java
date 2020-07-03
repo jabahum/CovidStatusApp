@@ -30,8 +30,6 @@ public class CountryChartViewModel extends BaseViewModel {
     private MainApi mainApi;
     private PreferenceManager preferenceManager;
     ChartModel chartModel;
-
-
     private MediatorLiveData<Resource<List<LiveCases>>> data;
     private MediatorLiveData<Resource<ChartModel>> chartData;
 
@@ -118,7 +116,7 @@ public class CountryChartViewModel extends BaseViewModel {
     }
 
 
-    public LiveData<Resource<List<LiveCases>>> getCountryChartModel() {
+    LiveData<Resource<List<LiveCases>>> getCountryChartModel() {
 
         if (data == null) {
             data = new MediatorLiveData<>();
