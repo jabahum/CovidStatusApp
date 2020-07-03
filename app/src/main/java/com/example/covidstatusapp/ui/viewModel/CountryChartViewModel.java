@@ -4,11 +4,11 @@ package com.example.covidstatusapp.ui.viewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.LiveDataReactiveStreams;
 import androidx.lifecycle.MediatorLiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.covidstatusapp.network.MainApi;
 import com.example.covidstatusapp.ui._base.BaseViewModel;
 import com.example.covidstatusapp.ui.models.ChartModel;
-import com.example.covidstatusapp.ui.models.CountryChartModel;
 import com.example.covidstatusapp.ui.models.LiveCases;
 import com.example.covidstatusapp.ui.utils.CommonUtils;
 import com.example.covidstatusapp.ui.utils.Resource;
@@ -27,6 +27,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class CountryChartViewModel extends BaseViewModel {
 
+    private MutableLiveData<Resource<List<LiveCases>>> mutableLiveData = new MediatorLiveData<>();
     private MainApi mainApi;
     private PreferenceManager preferenceManager;
     ChartModel chartModel;
@@ -40,7 +41,6 @@ public class CountryChartViewModel extends BaseViewModel {
         this.mainApi = mainApi;
         this.preferenceManager = preferenceManager;
     }
-
 
 
     // Chart
