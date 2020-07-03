@@ -9,6 +9,7 @@ import com.example.covidstatusapp.network.MainApi;
 import com.example.covidstatusapp.ui._base.BaseViewModel;
 import com.example.covidstatusapp.ui.models.ChartModel;
 import com.example.covidstatusapp.ui.models.CountryChartModel;
+import com.example.covidstatusapp.ui.models.LiveCases;
 import com.example.covidstatusapp.ui.utils.CommonUtils;
 import com.example.covidstatusapp.ui.utils.Resource;
 import com.example.covidstatusapp.ui.utils.sharedPreferences.PreferenceManager;
@@ -26,14 +27,13 @@ import io.reactivex.schedulers.Schedulers;
 
 public class CountryChartViewModel extends BaseViewModel {
 
-    MediatorLiveData<Resource<List<CountryChartModel>>> mutableLiveData = new MediatorLiveData<>();
-
     private MainApi mainApi;
     private PreferenceManager preferenceManager;
+
     ChartModel chartModel;
 
 
-    private MediatorLiveData<Resource<List<CountryChartModel>>> data;
+    private MediatorLiveData<Resource<List<LiveCases>>> data;
     private MediatorLiveData<Resource<ChartModel>> chartData;
 
     @Inject
@@ -42,9 +42,6 @@ public class CountryChartViewModel extends BaseViewModel {
         this.preferenceManager = preferenceManager;
     }
 
-    public LiveData<Resource<List<CountryChartModel>>> getCountryChartRepository() {
-        return mutableLiveData;
-    }
 
 
     // Chart
@@ -77,13 +74,13 @@ public class CountryChartViewModel extends BaseViewModel {
 
             ChartModel tempChartModel = new ChartModel(confirmedBarEntry,deathsBarEntry,recoveredBarEntry);
 
-            LiveData<Resource<List<CountryChartModel>>> countrySource = getCountryChartRepository();
+            LiveData<Resource<List<LiveCases>>> countrySource = getCountryChartModel();
 
             chartData.addSource(countrySource, listResource -> {
                 if (listResource.status == Resource.Status.ERROR || listResource.status == Resource.Status.SUCCESS) {
                     if (listResource.status == Resource.Status.SUCCESS) {
                         if (listResource.data != null) {
-                            for (CountryChartModel countryChartModel : listResource.data) {
+                            for (LiveCases countryChartModel : listResource.data) {
                                 BarEntry barEntry = confirmedBarEntry.get(CommonUtils.month(countryChartModel.getDate()));
                                 barEntry.setY(barEntry.getY() + countryChartModel.getConfirmed());
                                 confirmedBarEntry.set(CommonUtils.month(countryChartModel.getDate()), barEntry);
@@ -91,7 +88,7 @@ public class CountryChartViewModel extends BaseViewModel {
                             }
                             tempChartModel.setConfirmed(confirmedBarEntry);
 
-                            for (CountryChartModel countryChartModel : listResource.data) {
+                            for (LiveCases countryChartModel : listResource.data) {
                                 BarEntry barEntry = deathsBarEntry.get(CommonUtils.month(countryChartModel.getDate()));
                                 barEntry.setY(barEntry.getY() + countryChartModel.getDeaths());
                                 deathsBarEntry.set(CommonUtils.month(countryChartModel.getDate()), barEntry);
@@ -99,7 +96,7 @@ public class CountryChartViewModel extends BaseViewModel {
                             }
 
                             tempChartModel.setDeaths(deathsBarEntry);
-                            for (CountryChartModel countryChartModel : listResource.data) {
+                            for (LiveCases countryChartModel : listResource.data) {
                                 BarEntry barEntry = recoveredBarEntry.get(CommonUtils.month(countryChartModel.getDate()));
                                 barEntry.setY(barEntry.getY() + countryChartModel.getRecovered());
                                 recoveredBarEntry.set(CommonUtils.month(countryChartModel.getDate()), barEntry);
@@ -123,23 +120,23 @@ public class CountryChartViewModel extends BaseViewModel {
     }
 
 
-    public LiveData<Resource<List<CountryChartModel>>> getCountryChartModel() {
+    public LiveData<Resource<List<LiveCases>>> getCountryChartModel() {
 
         if (data == null) {
             data = new MediatorLiveData<>();
             data.setValue(Resource.loading(null));
 
-            final LiveData<Resource<List<CountryChartModel>>> source = LiveDataReactiveStreams.fromPublisher(
-                    mainApi.getCountryChartData(preferenceManager.getSelectedCountry())
+            final LiveData<Resource<List<LiveCases>>> source = LiveDataReactiveStreams.fromPublisher(
+                    mainApi.getCountryCases(preferenceManager.getSelectedCountry())
                             .toFlowable()
                             .onErrorReturn(throwable -> {
-                                CountryChartModel chartModel = new CountryChartModel();
+                                LiveCases chartModel = new LiveCases();
                                 chartModel.setActive(1);
-                                ArrayList<CountryChartModel> list = new ArrayList<>();
+                                ArrayList<LiveCases> list = new ArrayList<>();
                                 list.add(chartModel);
                                 return list;
                             })
-                            .map((Function<List<CountryChartModel>, Resource<List<CountryChartModel>>>) chartModelList -> {
+                            .map((Function<List<LiveCases>, Resource<List<LiveCases>>>) chartModelList -> {
                                 if (chartModelList.size() > 0) {
                                     if (chartModelList.get(0).getActive() == 1) {
                                         return Resource.error("Something Went Wrong", null);

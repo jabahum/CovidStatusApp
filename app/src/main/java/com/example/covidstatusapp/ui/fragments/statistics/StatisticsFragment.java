@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -87,12 +88,12 @@ public class StatisticsFragment extends BaseFragment<StatisticsFragmentBinding, 
             switch (listResource.status) {
 
                 case SUCCESS:
-                    hideLoading();
+                    //hideLoading();
                     setChartData(listResource.data);
                     break;
                 case ERROR:
                 case LOADING:
-                    showLoading("Loading..");
+                    //showLoading("PLEASE WAIT");
                     break;
 
             }
@@ -108,16 +109,21 @@ public class StatisticsFragment extends BaseFragment<StatisticsFragmentBinding, 
             monthsShort.add(month);
         }
 
-        //fetchChartData
+       //fetchChartData
         chartViewModel.getCountryChartModel().removeObservers(getViewLifecycleOwner());
         chartViewModel.getCountryChartModel().observe(getViewLifecycleOwner(), listResource -> {
             switch (listResource.status) {
                 case SUCCESS:
                     hideLoading();
+                    binding.setLoading(false);
                     break;
                 case ERROR:
+                    Toast.makeText(getBaseActivity(), "An Error Occured", Toast.LENGTH_SHORT).show();
+                    hideLoading();
+                    binding.setLoading(false);
+                    break;
                 case LOADING:
-                    //showLoading("Loading..");
+                    showLoading("PLEASE WAIT");
                     break;
 
             }
