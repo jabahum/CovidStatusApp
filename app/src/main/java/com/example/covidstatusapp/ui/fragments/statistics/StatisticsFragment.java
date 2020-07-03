@@ -80,20 +80,28 @@ public class StatisticsFragment extends BaseFragment<StatisticsFragmentBinding, 
         return chartViewModel;
     }
 
+    @Override
+    public void onResume() {
+        subscriberObservers();
+        super.onResume();
+    }
 
     private void subscriberObservers() {
-
         chartViewModel.observeChartData().removeObservers(getViewLifecycleOwner());
         chartViewModel.observeChartData().observe(getViewLifecycleOwner(), listResource -> {
             switch (listResource.status) {
-
                 case SUCCESS:
-                    //hideLoading();
+                    hideLoading();
+                    binding.setLoading(false);
                     setChartData(listResource.data);
                     break;
                 case ERROR:
+                    Toast.makeText(getBaseActivity(), "An Error Occured", Toast.LENGTH_SHORT).show();
+                    hideLoading();
+                    binding.setLoading(false);
+                    break;
                 case LOADING:
-                    //showLoading("PLEASE WAIT");
+                    showLoading("PLEASE WAIT....");
                     break;
 
             }
@@ -108,26 +116,6 @@ public class StatisticsFragment extends BaseFragment<StatisticsFragmentBinding, 
             System.out.println("Month [" + i + "] = " + month);
             monthsShort.add(month);
         }
-
-       //fetchChartData
-        chartViewModel.getCountryChartModel().removeObservers(getViewLifecycleOwner());
-        chartViewModel.getCountryChartModel().observe(getViewLifecycleOwner(), listResource -> {
-            switch (listResource.status) {
-                case SUCCESS:
-                    hideLoading();
-                    binding.setLoading(false);
-                    break;
-                case ERROR:
-                    Toast.makeText(getBaseActivity(), "An Error Occured", Toast.LENGTH_SHORT).show();
-                    hideLoading();
-                    binding.setLoading(false);
-                    break;
-                case LOADING:
-                    showLoading("PLEASE WAIT");
-                    break;
-
-            }
-        });
 
     }
 

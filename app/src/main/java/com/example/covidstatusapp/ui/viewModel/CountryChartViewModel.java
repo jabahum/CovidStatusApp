@@ -29,7 +29,6 @@ public class CountryChartViewModel extends BaseViewModel {
 
     private MainApi mainApi;
     private PreferenceManager preferenceManager;
-
     ChartModel chartModel;
 
 
