@@ -9,12 +9,15 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.databinding.ActivityDashboardBinding;
 import com.example.covidstatusapp.ui._base.BaseActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DashBoardActivity extends BaseActivity<ActivityDashboardBinding> {
 
     public static final String TAG = DashBoardActivity.class.getSimpleName();
-    NavHostFragment navHostFragment;
+
     ActivityDashboardBinding binding;
+    NavHostFragment navHostFragment;
+    BottomNavigationView bottomNavigationView;
 
 
     @Override
@@ -30,16 +33,14 @@ public class DashBoardActivity extends BaseActivity<ActivityDashboardBinding> {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setUpNavigation();
-    }
+        bottomNavigationView = findViewById(R.id.navigation);
+        setUpNavigation();
 
+    }
 
     private void setUpNavigation() {
         navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-        if (navHostFragment != null) {
-            NavigationUI.setupWithNavController(binding.navigation, navHostFragment.getNavController());
-        }
+        NavigationUI.setupWithNavController(bottomNavigationView, navHostFragment.getNavController());
     }
-
 
 }
