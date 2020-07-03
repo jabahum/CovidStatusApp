@@ -27,7 +27,6 @@ import io.reactivex.schedulers.Schedulers;
 
 public class CountryChartViewModel extends BaseViewModel {
 
-    private MutableLiveData<Resource<List<LiveCases>>> mutableLiveData = new MediatorLiveData<>();
     private MainApi mainApi;
     private PreferenceManager preferenceManager;
     ChartModel chartModel;
