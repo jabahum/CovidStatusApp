@@ -29,6 +29,7 @@ import com.github.mikephil.charting.formatter.LargeValueFormatter;
 
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 import javax.inject.Inject;
@@ -87,8 +88,8 @@ public class StatisticsFragment extends BaseFragment<StatisticsFragmentBinding, 
     }
 
     private void subscriberObservers() {
-        chartViewModel.getChartData().removeObservers(getViewLifecycleOwner());
-        chartViewModel.getChartData().observe(getViewLifecycleOwner(), listResource -> {
+        chartViewModel.observeChartData().removeObservers(getViewLifecycleOwner());
+        chartViewModel.observeChartData().observe(getViewLifecycleOwner(), listResource -> {
             switch (listResource.status) {
                 case SUCCESS:
                     hideLoading();
@@ -111,11 +112,7 @@ public class StatisticsFragment extends BaseFragment<StatisticsFragmentBinding, 
         //months
         monthsShort = new ArrayList<>();
         String[] months = new DateFormatSymbols().getShortMonths();
-        for (int i = 0; i < months.length - 1; i++) {
-            String month = months[i];
-            System.out.println("Month [" + i + "] = " + month);
-            monthsShort.add(month);
-        }
+        monthsShort.addAll(Arrays.asList(months).subList(0, months.length - 1));
 
     }
 
@@ -143,8 +140,8 @@ public class StatisticsFragment extends BaseFragment<StatisticsFragmentBinding, 
         barData.setValueFormatter(new LargeValueFormatter());
 
 
-        float barWidth = 0.3f;
-        float groupSpace = 0.4f;
+        float barWidth = 0.2f;
+        float groupSpace = 0.2f;
         float barSpace = 0f;
 
         binding.barChartCovidDataAnalysis.setData(barData);
