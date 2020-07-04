@@ -87,8 +87,8 @@ public class StatisticsFragment extends BaseFragment<StatisticsFragmentBinding, 
     }
 
     private void subscriberObservers() {
-        chartViewModel.observeChartData().removeObservers(getViewLifecycleOwner());
-        chartViewModel.observeChartData().observe(getViewLifecycleOwner(), listResource -> {
+        chartViewModel.getChartData().removeObservers(getViewLifecycleOwner());
+        chartViewModel.getChartData().observe(getViewLifecycleOwner(), listResource -> {
             switch (listResource.status) {
                 case SUCCESS:
                     hideLoading();

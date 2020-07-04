@@ -40,6 +40,10 @@ public class CountryChartViewModel extends BaseViewModel {
     }
 
 
+    public MutableLiveData<Resource<ChartModel>> getChartData(){
+        return chartData;
+    }
+
     // Chart
     public LiveData<Resource<ChartModel>> observeChartData() {
 
