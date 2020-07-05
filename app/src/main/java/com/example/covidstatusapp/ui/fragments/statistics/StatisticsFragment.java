@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.covidstatusapp.R;
@@ -17,6 +18,8 @@ import com.example.covidstatusapp.databinding.StatisticsFragmentBinding;
 import com.example.covidstatusapp.ui._base.BaseFragment;
 import com.example.covidstatusapp.ui.adapters.CustomPagerAdapter;
 import com.example.covidstatusapp.ui.models.ChartModel;
+import com.example.covidstatusapp.ui.models.CountryChartModel;
+import com.example.covidstatusapp.ui.utils.Resource;
 import com.example.covidstatusapp.ui.utils.sharedPreferences.PreferenceManager;
 import com.example.covidstatusapp.ui.viewModel.CountryChartViewModel;
 import com.github.mikephil.charting.components.Legend;
@@ -30,6 +33,7 @@ import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 import javax.inject.Inject;
@@ -107,6 +111,8 @@ public class StatisticsFragment extends BaseFragment<StatisticsFragmentBinding, 
 
             }
         });
+
+
 
 
         //months

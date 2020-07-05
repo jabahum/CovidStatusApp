@@ -4,14 +4,11 @@ package com.example.covidstatusapp.ui.viewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.LiveDataReactiveStreams;
 import androidx.lifecycle.MediatorLiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 
 import com.example.covidstatusapp.network.MainApi;
 import com.example.covidstatusapp.ui._base.BaseViewModel;
 import com.example.covidstatusapp.ui.models.ChartModel;
 import com.example.covidstatusapp.ui.models.CountryChartModel;
-import com.example.covidstatusapp.ui.models.LiveCases;
 import com.example.covidstatusapp.ui.utils.CommonUtils;
 import com.example.covidstatusapp.ui.utils.Resource;
 import com.example.covidstatusapp.ui.utils.sharedPreferences.PreferenceManager;
@@ -24,7 +21,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
@@ -100,9 +96,11 @@ public class CountryChartViewModel extends BaseViewModel {
                         }
 
                     }
-
                     chartData.removeSource(countrySource);
+
+
                     chartModel = tempChartModel;
+
                     chartData.setValue(Resource.success(tempChartModel));
 
                 }
@@ -138,8 +136,9 @@ public class CountryChartViewModel extends BaseViewModel {
                                 }
                                 return Resource.success(chartModelList);
                             }).subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
+                            .observeOn(Schedulers.newThread())
             );
+
 
             data.addSource(source, liveCasesResource -> {
                 data.setValue(liveCasesResource);
