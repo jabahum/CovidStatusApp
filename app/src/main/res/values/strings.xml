@@ -49,6 +49,7 @@
 
 
     <string name="null_text" translatable="false">...</string>
+    <string name="clean_hands">Clean Hands</string>
 
 
     <!--Trending fragment strings-->
@@ -57,4 +58,50 @@
         <item>Global</item>
 
     </string-array>
+
+
+    <!--    PREVENTIVE STRING ASSET-->
+    <string name="social_distancing">
+        With social distancing, we reduce contact with each other to prevent COVID-19 spread. Conversely, if you turn out
+        infected but not aware of it, so keeping away from the crowd will really help prevent the spread.\n\n
+        So, if someone infected with this virus then accidentally coughs or sneezes without closing his mouth,
+        then the droplet will fall on a nearby surface. When there are other people who are not infected holding
+        the surface, then touches the mouth, nose or eyes without washing hands first, he has high infected risk.
+        \n\nThis is what makes the transmission of this disease rise dramatically in a short time.
+        Many people are not aware that they are infected, then go to various locations to meet friends
+        and relatives. As a result, the spread of this virus is increasingly widespread.
+    </string>
+    <string name="social_distancing_citation">
+        From: https://lifestyle.kompas.com/read/2020/03/16/143303720/social-distancing-efektif-cegah-penyebaran-corona-bagaimana-caranya?page=all
+    </string>
+
+    <string name="wash_hand">
+        World Health Organization (WHO) recommends that everyone always wash their hands
+        in order to prevent the spread of the corona virus COVID-19. Clean your hands regularly and thoroughly with soap
+        and water or alcohol-based liquids.\n\nWash your hands with soap and water or use cleaning fluid
+        alcohol-based can kill viruses that may be in your hands. Washing hands can get you
+        stay healthy and prevent the spread of respiratory infections and diarrhea from one person to another.\n\nGerms can
+        spread from other people or surfaces when you: \ n1. Touch your eyes, nose and mouth with hands
+        not washed.\n2. Eat or prepare food and drinks with your hands not washed.\n3. Touch the surface
+        or contaminated object.\n4. Flinches, coughs, or sneezes on the hands and then touches the hands
+        other people or objects.
+    </string>
+    <string name="wash_hand_citation">
+        From: https://tirto.id/cara-cuci-tangan-dengan-7-langkah-menurut-who-untuk-cegah-corona-eLyQ
+    </string>
+
+    <string name="wear_mask">
+        Research from the University of Hong Kong and the University of Maryland found that masks
+        simple blocking 100 percent of droplets and aerosols. The Guardian writes, countries that are
+        has required their citizen wearing a face mask from the beginning shows a lower mortality rate than
+        countries that don\'t enforce it.\n\nHowever, the big challenge is using masks only
+        will work if most people use it. Analysis from the Food and Drug Administration (FDA)
+        about the flu estimates, if 50 percent of the population uses masks, transmission of the virus can be reduced
+        by half. Meanwhile, if 80 percent of the population uses masks, the virus can be lost.\n\nBecause
+        that, various regions are currently adopting laws that require the use of masks in crowded places
+        such as public transportation and shops.
+    </string>
+    <string name="wear_mask_citation">
+        From: https://www.kompas.com/tren/read/2020/04/08/073100465/pandemi-virus-corona-dan-alasan-kenapa-kini-kita-semua-harus-pakai-masker-?page=all#page4
+    </string>
 </resources>

@@ -14,12 +14,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.covidstatusapp.R;
 import com.example.covidstatusapp.ViewModelProviderFactory;
 import com.example.covidstatusapp.databinding.HomeFragmentBinding;
 import com.example.covidstatusapp.ui._base.BaseFragment;
+import com.example.covidstatusapp.ui.dialogs.CleanHandsDialogFragment;
+import com.example.covidstatusapp.ui.dialogs.CloseContactDialogFragment;
+import com.example.covidstatusapp.ui.dialogs.FaceMaskDialogFragment;
 import com.example.covidstatusapp.ui.models.Country;
 import com.example.covidstatusapp.ui.models.SummaryResponse;
 import com.example.covidstatusapp.ui.utils.CommonUtils;
@@ -37,7 +42,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class HomeFragment extends BaseFragment<HomeFragmentBinding, GlobalViewModel> {
-
+    private static final String TAG = "HomeFragment";
     HomeFragmentBinding binding;
 
     private GlobalViewModel globalViewModel;
@@ -114,6 +119,44 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, GlobalViewMo
     }
 
     private void init() {
+
+        //Close Contact
+        binding.layoutCaution1.setOnClickListener(view -> {
+
+            String passingContent = getResources().getString(R.string.social_distancing);
+            String passingCitation = getResources().getString(R.string.social_distancing_citation);
+
+            FragmentManager ft = getBaseActivity().getSupportFragmentManager();
+            if (ft.findFragmentByTag(TAG) == null) {
+                DialogFragment dialogFragment = new CloseContactDialogFragment(passingContent,passingCitation);
+                dialogFragment.show(ft, TAG);
+            }
+        });
+
+        //Clean Hands
+        binding.layoutCaution2.setOnClickListener(view -> {
+            String passingContent = getResources().getString(R.string.wash_hand);
+            String passingCitation = getResources().getString(R.string.wash_hand_citation);
+
+            FragmentManager ft = getBaseActivity().getSupportFragmentManager();
+            if (ft.findFragmentByTag(TAG) == null) {
+                DialogFragment dialogFragment = new CleanHandsDialogFragment(passingContent,passingCitation);
+                dialogFragment.show(ft, TAG);
+            }
+        });
+
+        //Face Mask Contact
+        binding.layoutCaution3.setOnClickListener(view -> {
+
+            String passingContent = getResources().getString(R.string.wear_mask);
+            String passingCitation = getResources().getString(R.string.wear_mask_citation);
+
+            FragmentManager ft = getBaseActivity().getSupportFragmentManager();
+            if (ft.findFragmentByTag(TAG) == null) {
+                DialogFragment dialogFragment = new FaceMaskDialogFragment(passingContent,passingCitation);
+                dialogFragment.show(ft, TAG);
+            }
+        });
 
         //countryCode
         binding.spCountries.setOnCountryChangeListener(() -> {
