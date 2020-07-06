@@ -38,21 +38,39 @@
 
             </RelativeLayout>
 
-        <RelativeLayout
-            app:layout_constraintTop_toBottomOf="@id/layout_close_contact"
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/layout_close_contact">
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/social_distancing_header"/>
-
-        </RelativeLayout>
+                android:layout_marginBottom="20dp">
 
 
+                <ImageView
+                    android:id="@+id/img_social_distancing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/social_distancing_header" />
+
+                <TextView
+                    content="@{content}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/img_social_distancing"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp" />
+
+            </RelativeLayout>
+
+
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 
