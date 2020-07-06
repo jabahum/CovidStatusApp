@@ -7,7 +7,6 @@ import androidx.databinding.BindingAdapter;
 
 public final class BindingUtils {
 
-
     @BindingAdapter({"content"})
     public static void setContent(TextView tv, String value) {
         if (value != null) {
