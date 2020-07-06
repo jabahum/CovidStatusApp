@@ -4,6 +4,7 @@ package com.example.covidstatusapp.ui.viewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.LiveDataReactiveStreams;
 import androidx.lifecycle.MediatorLiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.covidstatusapp.network.MainApi;
 import com.example.covidstatusapp.ui._base.BaseViewModel;
@@ -39,9 +40,6 @@ public class CountryChartViewModel extends BaseViewModel {
         this.preferenceManager = preferenceManager;
     }
 
-    public MediatorLiveData<Resource<ChartModel>> getData(){
-        return chartData;
-    }
 
     // Chart
     public LiveData<Resource<ChartModel>> observeChartData() {
