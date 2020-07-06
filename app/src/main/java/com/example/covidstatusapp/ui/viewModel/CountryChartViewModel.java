@@ -65,7 +65,7 @@ public class CountryChartViewModel extends BaseViewModel {
 
             ChartModel tempChartModel = new ChartModel(confirmedBarEntry,deathsBarEntry,recoveredBarEntry);
 
-            LiveData<Resource<List<CountryChartModel>>> countrySource = getCountryChartModel();
+            LiveData<Resource<List<CountryChartModel>>> countrySource =  getCountryChartModel();
 
             chartData.addSource(countrySource, listResource -> {
                 if (listResource.status == Resource.Status.ERROR || listResource.status == Resource.Status.SUCCESS) {
