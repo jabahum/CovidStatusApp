@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context=".splashscreen.MainActivity">
+    tools:context=".ui.splashscreen.MainActivity">
 
 
     <ImageView
@@ -29,7 +29,8 @@
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/virus_image" />
+        app:layout_constraintTop_toBottomOf="@id/virus_image"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/subTitle"
@@ -42,7 +43,8 @@
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title" />
+        app:layout_constraintTop_toBottomOf="@id/title"
+        android:visibility="gone"/>
 
     <ProgressBar
         android:layout_marginTop="600dp"
