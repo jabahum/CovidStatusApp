@@ -94,10 +94,10 @@ public class GlobalFragment extends BaseFragment<GlobalFragmentBinding, GlobalVi
 
     private void setGlobalSummary(Global globalSummary) {
         if (globalSummary !=null) {
-            binding.globalTxtAffectedValue.setText(CommonUtils.numberSeparator(globalSummary.getTotalConfirmed()));
-            binding.globalTxtDeathsValue.setText(CommonUtils.numberSeparator(globalSummary.getTotalDeaths()));
-            binding.globalTxtRecoveredValue.setText(CommonUtils.numberSeparator(globalSummary.getTotalRecovered()));
-            binding.globalTxtActiveValue.setText(CommonUtils.numberSeparator(globalSummary.getNewConfirmed()));
+            binding.setGlobalConfirmed(CommonUtils.numberSeparator(globalSummary.getTotalConfirmed()));
+            binding.setGlobalDeaths(CommonUtils.numberSeparator(globalSummary.getTotalDeaths()));
+            binding.setGlobalRecovered(CommonUtils.numberSeparator(globalSummary.getTotalRecovered()));
+            binding.setGlobalNewConfirmed(CommonUtils.numberSeparator(globalSummary.getNewConfirmed()));
         }
     }
 

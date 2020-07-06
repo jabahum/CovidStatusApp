@@ -101,10 +101,10 @@ public class MyCountryFragment extends BaseFragment<MycountryFragmentBinding, Gl
         if (countryList != null) {
             for (Country country : countryList) {
                 if (country.getCountry().equals(preferenceManager.getSelectedCountry())) {
-                    binding.countryTxtAffectedValue.setText(CommonUtils.numberSeparator(country.getTotalConfirmed()));
-                    binding.countryTxtDeathsValue.setText(CommonUtils.numberSeparator(country.getTotalDeaths()));
-                    binding.countryTxtRecoveredValue.setText(CommonUtils.numberSeparator(country.getTotalRecovered()));
-                    binding.countryTxtActiveValue.setText(CommonUtils.numberSeparator(country.getNewConfirmed()));
+                    binding.setCountryConfirmed(CommonUtils.numberSeparator(country.getTotalConfirmed()));
+                    binding.setCountryDeaths(CommonUtils.numberSeparator(country.getTotalDeaths()));
+                    binding.setCountryRecovered(CommonUtils.numberSeparator(country.getTotalRecovered()));
+                    binding.setCountryNewConfirmed(CommonUtils.numberSeparator(country.getNewConfirmed()));
                 }
 
             }

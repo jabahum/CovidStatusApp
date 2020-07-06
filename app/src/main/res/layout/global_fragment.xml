@@ -7,6 +7,22 @@
         <variable
             name="loading"
             type="java.lang.Boolean" />
+
+        <variable
+            name="global_confirmed"
+            type="String" />
+
+        <variable
+            name="global_recovered"
+            type="String" />
+
+        <variable
+            name="global_deaths"
+            type="String" />
+        <variable
+            name="global_new_confirmed"
+            type="String" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -105,6 +121,7 @@
                             android:layout_margin="5dp"
                             android:layout_marginStart="10dp"
                             android:text="..."
+                            content="@{global_confirmed}"
                             style="@style/CardTextBigTitleStyle"
                             />
                     </RelativeLayout>
@@ -150,6 +167,7 @@
                             android:layout_margin="5dp"
                             android:layout_marginStart="10dp"
                             android:text="..."
+                            content="@{global_deaths}"
                             style="@style/CardTextBigTitleStyle" />
                     </RelativeLayout>
 
@@ -199,6 +217,7 @@
                             android:layout_margin="5dp"
                             android:layout_marginStart="10dp"
                             android:text="..."
+                            content="@{global_recovered}"
                             style="@style/CardTextBigTitleStyle" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
@@ -242,6 +261,7 @@
                             android:layout_margin="5dp"
                             android:layout_marginStart="10dp"
                             android:text="..."
+                            content="@{global_new_confirmed}"
                             style="@style/CardTextBigTitleStyle" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>

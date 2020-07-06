@@ -6,6 +6,20 @@
         <variable
             name="loading"
             type="java.lang.Boolean" />
+        <variable
+            name="country_confirmed"
+            type="String" />
+
+        <variable
+            name="country_recovered"
+            type="String" />
+
+        <variable
+            name="country_deaths"
+            type="String" />
+        <variable
+            name="country_new_confirmed"
+            type="String" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -102,6 +116,7 @@
                             android:layout_margin="5dp"
                             android:layout_marginStart="10dp"
                             android:text="..."
+                            content="@{country_confirmed}"
                             style="@style/CardTextBigTitleStyle" />
                     </RelativeLayout>
 
@@ -146,6 +161,7 @@
                             android:layout_margin="5dp"
                             android:layout_marginStart="10dp"
                             android:text="..."
+                            content="@{country_deaths}"
                             style="@style/CardTextBigTitleStyle" />
                     </RelativeLayout>
 
@@ -195,6 +211,7 @@
                             android:layout_margin="5dp"
                             android:layout_marginStart="10dp"
                             android:text="..."
+                            content="@{country_recovered}"
                             style="@style/CardTextBigTitleStyle" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
@@ -238,6 +255,7 @@
                             android:layout_margin="5dp"
                             android:layout_marginStart="10dp"
                             android:text="..."
+                            content="@{country_new_confirmed}"
                             style="@style/CardTextBigTitleStyle" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
