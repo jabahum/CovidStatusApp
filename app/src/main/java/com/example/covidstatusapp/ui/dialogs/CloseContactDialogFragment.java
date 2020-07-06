@@ -11,7 +11,6 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.covidstatusapp.R;
-import com.example.covidstatusapp.databinding.CleanHandsDialogBinding;
 import com.example.covidstatusapp.databinding.CloseContactDialogBinding;
 
 public class CloseContactDialogFragment extends DialogFragment {

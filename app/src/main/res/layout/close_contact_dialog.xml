@@ -42,6 +42,7 @@
 
 
         <ScrollView
+            android:fillViewport="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/layout_close_contact">
