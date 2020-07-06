@@ -107,6 +107,7 @@ public class StatisticsFragment extends BaseFragment<StatisticsFragmentBinding, 
                     break;
                 case LOADING:
                     showLoading("PLEASE WAIT....");
+                    binding.setLoading(true);
                     break;
 
             }
@@ -147,8 +148,8 @@ public class StatisticsFragment extends BaseFragment<StatisticsFragmentBinding, 
 
 
         float barWidth = 0.2f;
-        float groupSpace = 0.2f;
-        float barSpace = 0f;
+        float groupSpace = 0.4f;
+        float barSpace = 0.0f;
 
         binding.barChartCovidDataAnalysis.setData(barData);
         binding.barChartCovidDataAnalysis.getBarData().setBarWidth(barWidth);
@@ -156,7 +157,9 @@ public class StatisticsFragment extends BaseFragment<StatisticsFragmentBinding, 
         binding.barChartCovidDataAnalysis.getXAxis().setAxisMaximum(0 + binding.barChartCovidDataAnalysis.getBarData().getGroupWidth(groupSpace, barSpace) * monthsShort.size());
         binding.barChartCovidDataAnalysis.groupBars(0, groupSpace, barSpace);
         binding.barChartCovidDataAnalysis.getData().setHighlightEnabled(false);
+        binding.barChartCovidDataAnalysis.animateXY(1000, 1000);
         binding.barChartCovidDataAnalysis.invalidate();
+
 
         Legend l = binding.barChartCovidDataAnalysis.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);

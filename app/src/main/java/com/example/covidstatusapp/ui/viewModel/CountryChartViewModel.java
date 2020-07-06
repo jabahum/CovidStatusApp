@@ -21,6 +21,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
@@ -38,6 +39,9 @@ public class CountryChartViewModel extends BaseViewModel {
         this.preferenceManager = preferenceManager;
     }
 
+    public MediatorLiveData<Resource<ChartModel>> getData(){
+        return chartData;
+    }
 
     // Chart
     public LiveData<Resource<ChartModel>> observeChartData() {
@@ -136,7 +140,7 @@ public class CountryChartViewModel extends BaseViewModel {
                                 }
                                 return Resource.success(chartModelList);
                             }).subscribeOn(Schedulers.io())
-                            .observeOn(Schedulers.newThread())
+                            .observeOn(AndroidSchedulers.mainThread())
             );
 
 
