@@ -40,6 +40,7 @@ public class CloseContactDialogFragment extends DialogFragment {
 
     private void init() {
         binding.setContent(content);
+        binding.setCitation(citation);
         binding.closeCloseContact.setOnClickListener(view -> {
             dismiss();
         });

@@ -17,11 +17,11 @@ public class CleanHandsDialogFragment extends DialogFragment {
 
     private CleanHandsDialogBinding binding;
     private String content;
-    private String citattion;
+    private String citation;
 
-    public CleanHandsDialogFragment(String content, String citattion) {
+    public CleanHandsDialogFragment(String content, String citation) {
         this.content = content;
-        this.citattion = citattion;
+        this.citation = citation;
     }
 
     @Nullable
@@ -42,6 +42,7 @@ public class CleanHandsDialogFragment extends DialogFragment {
 
     private void init() {
         binding.setContent(content);
+        binding.setCitation(citation);
         binding.closeCleanHands.setOnClickListener(view -> {
             dismiss();
         });

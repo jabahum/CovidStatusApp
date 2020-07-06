@@ -40,6 +40,7 @@ public class FaceMaskDialogFragment extends DialogFragment {
 
     private void init() {
         binding.setContent(content);
+        binding.setContent(citation);
         binding.closeFaceMasks.setOnClickListener(view -> {
             dismiss();
         });
