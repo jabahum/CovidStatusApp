@@ -233,9 +233,9 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, GlobalViewMo
         int death = summaryResponse.getGlobal().getTotalDeaths();
         int recovered = summaryResponse.getGlobal().getTotalRecovered();
 
-        binding.homeConfirmed.setText(CommonUtils.numberSeparator(confirmed));
-        binding.homeDeath.setText(CommonUtils.numberSeparator(death));
-        binding.homeRecovered.setText(CommonUtils.numberSeparator(recovered));
+        binding.setGlobalConfirmed(CommonUtils.numberSeparator(confirmed));
+        binding.setGlobalRecovered(CommonUtils.numberSeparator(death));
+        binding.setGlobalDeaths(CommonUtils.numberSeparator(recovered));
 
         ArrayList<PieEntry> entries = new ArrayList<>();
 
@@ -283,10 +283,9 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, GlobalViewMo
                     int death = country.getTotalDeaths();
                     int recovered = country.getTotalRecovered();
 
-                    binding.homeCountryConfirmed.setText(CommonUtils.numberSeparator(confirmed));
-                    binding.homeCountryDeath.setText(CommonUtils.numberSeparator(death));
-                    binding.homeCountryRecovered.setText(CommonUtils.numberSeparator(recovered));
-
+                    binding.setCountryConfirmed(CommonUtils.numberSeparator(confirmed));
+                    binding.setCountryRecovered(CommonUtils.numberSeparator(death));
+                    binding.setCountryDeaths(CommonUtils.numberSeparator(recovered));
 
                     ArrayList<PieEntry> entries = new ArrayList<>();
 

@@ -8,6 +8,30 @@
         <variable
             name="loading"
             type="java.lang.Boolean" />
+
+        <variable
+            name="global_confirmed"
+            type="String" />
+
+        <variable
+            name="global_recovered"
+            type="String" />
+
+        <variable
+            name="global_deaths"
+            type="String" />
+
+        <variable
+            name="country_confirmed"
+            type="String" />
+
+        <variable
+            name="country_recovered"
+            type="String" />
+
+        <variable
+            name="country_deaths"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -310,7 +334,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/null_text"
-                                  style="@style/TextviewTitleStyle" />
+                                    style="@style/TextviewTitleStyle"
+                                    tools:global_confirmed="@{}" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -349,6 +374,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="7dp"
                                     android:text="@string/null_text"
+                                    tools:global_recovered="@{}"
                                     style="@style/TextviewTitleStyle" />
 
                                 <TextView
@@ -387,6 +413,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="7dp"
                                     android:text="@string/null_text"
+                                    tools:global_deaths="@{}"
                                     style="@style/TextviewTitleStyle" />
 
                                 <TextView
@@ -462,6 +489,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/null_text"
+                                    tools:country_confirmed="@{}"
+
                                     style="@style/TextviewTitleStyle" />
 
                                 <TextView
@@ -501,6 +530,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="7dp"
                                     android:text="@string/null_text"
+                                    tools:country_recovered="@{}"
                                     style="@style/TextviewTitleStyle" />
 
                                 <TextView
@@ -539,6 +569,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="7dp"
                                     android:text="@string/null_text"
+                                    tools:country_deaths="@{}"
                                     style="@style/TextviewTitleStyle" />
 
                                 <TextView
