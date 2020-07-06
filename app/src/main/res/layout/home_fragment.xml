@@ -335,7 +335,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="@string/null_text"
                                     style="@style/TextviewTitleStyle"
-                                    tools:global_confirmed="@{}" />
+                                    content="@{global_confirmed}" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -374,7 +374,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="7dp"
                                     android:text="@string/null_text"
-                                    tools:global_recovered="@{}"
+                                    content="@{global_recovered}"
                                     style="@style/TextviewTitleStyle" />
 
                                 <TextView
@@ -413,7 +413,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="7dp"
                                     android:text="@string/null_text"
-                                    tools:global_deaths="@{}"
+                                    content="@{global_deaths}"
                                     style="@style/TextviewTitleStyle" />
 
                                 <TextView
@@ -489,7 +489,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/null_text"
-                                    tools:country_confirmed="@{}"
+                                    content="@{country_confirmed}"
 
                                     style="@style/TextviewTitleStyle" />
 
@@ -530,7 +530,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="7dp"
                                     android:text="@string/null_text"
-                                    tools:country_recovered="@{}"
+                                    content="@{country_recovered}"
                                     style="@style/TextviewTitleStyle" />
 
                                 <TextView
@@ -569,7 +569,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="7dp"
                                     android:text="@string/null_text"
-                                    tools:country_deaths="@{}"
+                                    content="@{country_deaths}"
                                     style="@style/TextviewTitleStyle" />
 
                                 <TextView
