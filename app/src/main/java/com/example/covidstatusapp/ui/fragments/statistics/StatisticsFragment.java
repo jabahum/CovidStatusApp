@@ -157,6 +157,7 @@ public class StatisticsFragment extends BaseFragment<StatisticsFragmentBinding, 
         binding.barChartCovidDataAnalysis.getXAxis().setAxisMaximum(0 + binding.barChartCovidDataAnalysis.getBarData().getGroupWidth(groupSpace, barSpace) * monthsShort.size());
         binding.barChartCovidDataAnalysis.groupBars(0, groupSpace, barSpace);
         binding.barChartCovidDataAnalysis.getData().setHighlightEnabled(false);
+        binding.barChartCovidDataAnalysis.setVisibleXRangeMinimum(6);
         binding.barChartCovidDataAnalysis.animateXY(1000, 1000);
         binding.barChartCovidDataAnalysis.invalidate();
 
