@@ -42,5 +42,8 @@ public class CleanHandsDialogFragment extends DialogFragment {
 
     private void init() {
         binding.setContent(content);
+        binding.closeCleanHands.setOnClickListener(view -> {
+            dismiss();
+        });
     }
 }
