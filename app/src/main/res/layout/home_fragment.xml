@@ -51,8 +51,7 @@
                             android:text="@string/covid_19"
                             android:textAlignment="center"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            style="@style/TextviewTitleStyleWhite" />
 
                         <com.hbb20.CountryCodePicker
                             android:id="@+id/sp_countries"
@@ -88,8 +87,7 @@
                             android:layout_marginStart="20dp"
                             android:text="@string/are_you_feeling_sick"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            style="@style/TextviewTitleStyleWhite"/>
 
                         <TextView
                             android:id="@+id/pageParagraph"
@@ -97,8 +95,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:text="@string/if_you_are_feeling_sick_with_any_of_the_covid_19_symptoms_please_cal_or_sms_us_immediately_for_help"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
+                            style="@style/CardTextTitleStyle"/>
 
                     </LinearLayout>
 
@@ -156,10 +153,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
+                        style="@style/TextviewTitleStyle"
                         android:text="@string/title_prevention"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/black" />
 
                     <HorizontalScrollView
                         android:layout_width="match_parent"
@@ -196,8 +192,7 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:text="@string/avoid_close_contact"
-                                    android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    style="style/CardTextTitleStyleBlack" />
 
                             </LinearLayout>
 
@@ -223,8 +218,7 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:text="@string/clean_your_hand_n_often"
-                                    android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    style="style/CardTextTitleStyleBlack" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -250,8 +244,7 @@
                                     android:gravity="center"
                                     android:text="@string/wear_a_face_mask"
                                     android:textAlignment="center"
-                                    android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    style="style/CardTextTitleStyleBlack" />
                             </LinearLayout>
 
 
@@ -264,9 +257,9 @@
                     android:textColor="@color/black"
                     android:layout_marginStart="@dimen/_20sdp"
                     android:gravity="start"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
+
                     android:text="Global Cases"
+                    style="@style/TextviewTitleStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -317,9 +310,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/null_text"
-                                    android:textColor="@color/black"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
+                                  style="@style/TextviewTitleStyle" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -358,9 +349,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="7dp"
                                     android:text="@string/null_text"
-                                    android:textColor="@color/black"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
+                                    style="@style/TextviewTitleStyle" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -398,9 +387,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="7dp"
                                     android:text="@string/null_text"
-                                    android:textColor="@color/black"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
+                                    style="@style/TextviewTitleStyle" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -423,9 +410,8 @@
                     android:textColor="@color/black"
                     android:layout_marginStart="@dimen/_20sdp"
                     android:gravity="start"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
                     android:text="Country Cases"
+                    style="@style/TextviewTitleStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -476,9 +462,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/null_text"
-                                    android:textColor="@color/black"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
+                                    style="@style/TextviewTitleStyle" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -517,9 +501,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="7dp"
                                     android:text="@string/null_text"
-                                    android:textColor="@color/black"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
+                                    style="@style/TextviewTitleStyle" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -557,9 +539,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="7dp"
                                     android:text="@string/null_text"
-                                    android:textColor="@color/black"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
+                                    style="@style/TextviewTitleStyle" />
 
                                 <TextView
                                     android:layout_width="wrap_content"

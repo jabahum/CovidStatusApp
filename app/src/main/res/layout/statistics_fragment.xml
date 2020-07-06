@@ -42,8 +42,7 @@
                         android:text="@string/title_statistics"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        style="@style/TextviewTitleStyleWhite" />
 
                 </RelativeLayout>
 
@@ -116,8 +115,7 @@
                             android:layout_marginStart="10dp"
                             android:text="@string/daily_new_cases"
                             android:textColor="@color/black"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                          style="@style/TextviewTitleStyle"/>
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
