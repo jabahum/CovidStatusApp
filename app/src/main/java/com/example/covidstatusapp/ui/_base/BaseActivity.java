@@ -90,7 +90,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends DaggerAppC
         }
     }
 
-    private static CustomLoader progressBar = new CustomLoader("PLEASE WAIT");
+    public static CustomLoader progressBar = new CustomLoader("PLEASE WAIT");
     private static final String LOADER_TAG = "LOADER_TAG";
     public void showLoading(String message){
         progressBar.setMessage(message);

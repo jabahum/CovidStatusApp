@@ -57,7 +57,7 @@ public class CountryChartViewModel extends BaseViewModel {
             ArrayList<String> monthsShort = new ArrayList<>(Arrays.asList(months).subList(0, months.length - 1));
 
             // Initialize Data Sets
-            for (int i = 1; i <= monthsShort.size(); i++) {
+            for (int i = 0; i <= monthsShort.size(); i++) {
                 confirmedBarEntry.add(new BarEntry(i, 0));
                 deathsBarEntry.add(new BarEntry(i,0));
                 recoveredBarEntry.add(new BarEntry(i,0));
