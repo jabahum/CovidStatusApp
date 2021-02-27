@@ -1,4 +1,4 @@
-package com.example.covidstatusapp;
+package com.lyecdevelopers.covidstatus;
 
 import org.junit.Test;
 
