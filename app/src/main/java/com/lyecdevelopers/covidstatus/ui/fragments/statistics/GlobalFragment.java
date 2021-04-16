@@ -8,15 +8,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.covidstatusapp.R;
 import com.lyecdevelopers.covidstatus.ViewModelProviderFactory;
-import com.example.covidstatusapp.databinding.GlobalFragmentBinding;
 import com.lyecdevelopers.covidstatus.network.MainApi;
+
 import com.lyecdevelopers.covidstatus.ui._base.BaseFragment;
 import com.lyecdevelopers.covidstatus.ui.models.Global;
 import com.lyecdevelopers.covidstatus.ui.utils.CommonUtils;
 import com.lyecdevelopers.covidstatus.ui.utils.sharedPreferences.PreferenceManager;
 import com.lyecdevelopers.covidstatus.ui.viewModel.GlobalViewModel;
+import com.lyecdevelopers.covidstatusapp.R;
+import com.lyecdevelopers.covidstatusapp.databinding.GlobalFragmentBinding;
 
 import javax.inject.Inject;
 

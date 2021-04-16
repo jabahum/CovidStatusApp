@@ -1,4 +1,4 @@
-/*
+
 package com.lyecdevelopers.covidstatus.ui.utils.rx;
 
 
@@ -23,4 +23,4 @@ public class AppSchedulerProvider implements SchedulerProvider {
         return AndroidSchedulers.mainThread();
     }
 }
-*/
+

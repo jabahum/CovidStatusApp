@@ -11,9 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.covidstatusapp.R;
+
 import com.lyecdevelopers.covidstatus.ViewModelProviderFactory;
-import com.example.covidstatusapp.databinding.StatisticsFragmentBinding;
+
 import com.lyecdevelopers.covidstatus.ui._base.BaseFragment;
 import com.lyecdevelopers.covidstatus.ui.adapters.CustomPagerAdapter;
 import com.lyecdevelopers.covidstatus.ui.models.ChartModel;
@@ -26,6 +26,8 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.LargeValueFormatter;
+import com.lyecdevelopers.covidstatusapp.R;
+import com.lyecdevelopers.covidstatusapp.databinding.StatisticsFragmentBinding;
 
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;

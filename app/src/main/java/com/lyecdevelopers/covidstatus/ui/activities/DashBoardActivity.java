@@ -6,10 +6,11 @@ import androidx.annotation.Nullable;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.covidstatusapp.R;
-import com.example.covidstatusapp.databinding.ActivityDashboardBinding;
-import com.lyecdevelopers.covidstatus.ui._base.BaseActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.lyecdevelopers.covidstatus.ui._base.BaseActivity;
+import com.lyecdevelopers.covidstatusapp.R;
+import com.lyecdevelopers.covidstatusapp.databinding.ActivityDashboardBinding;
 
 public class DashBoardActivity extends BaseActivity<ActivityDashboardBinding> {
 

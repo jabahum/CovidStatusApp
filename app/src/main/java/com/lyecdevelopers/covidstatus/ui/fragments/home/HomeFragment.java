@@ -16,9 +16,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.covidstatusapp.R;
+
 import com.lyecdevelopers.covidstatus.ViewModelProviderFactory;
-import com.example.covidstatusapp.databinding.HomeFragmentBinding;
+
 import com.lyecdevelopers.covidstatus.ui._base.BaseFragment;
 import com.lyecdevelopers.covidstatus.ui.models.Country;
 import com.lyecdevelopers.covidstatus.ui.models.SummaryResponse;
@@ -30,6 +30,8 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.MPPointF;
+import com.lyecdevelopers.covidstatusapp.R;
+import com.lyecdevelopers.covidstatusapp.databinding.HomeFragmentBinding;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -10,8 +10,9 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.DialogFragment;
 
-import com.example.covidstatusapp.R;
-import com.example.covidstatusapp.databinding.ProgressBarBinding;
+import com.lyecdevelopers.covidstatusapp.R;
+import com.lyecdevelopers.covidstatusapp.databinding.ProgressBarBinding;
+
 
 public final class CustomLoader extends DialogFragment {
     private String message;

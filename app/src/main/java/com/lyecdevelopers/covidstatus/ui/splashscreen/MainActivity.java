@@ -8,8 +8,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.covidstatusapp.R;
+
 import com.lyecdevelopers.covidstatus.ui.activities.DashBoardActivity;
+import com.lyecdevelopers.covidstatusapp.R;
 
 public class MainActivity extends AppCompatActivity {
     Handler handler;

@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.example.covidstatusapp.R;
 import com.lyecdevelopers.covidstatus.ui.fragments.statistics.GlobalFragment;
 import com.lyecdevelopers.covidstatus.ui.fragments.statistics.MyCountryFragment;
+import com.lyecdevelopers.covidstatusapp.R;
 
 public class CustomPagerAdapter extends FragmentStatePagerAdapter {
 

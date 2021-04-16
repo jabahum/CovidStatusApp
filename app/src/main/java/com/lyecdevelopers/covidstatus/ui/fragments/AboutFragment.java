@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.covidstatusapp.R;
+import com.lyecdevelopers.covidstatusapp.R;
 
 
 public class AboutFragment extends Fragment {
